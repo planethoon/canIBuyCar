@@ -713,7 +713,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
 
-      (KIA = {
+      {
         brand: '기아',
         name: '소렌토',
         type: '중형 SUV',
@@ -727,7 +727,7 @@ module.exports = {
           .toISOString()
           .replace(/T/, ' ')
           .replace(/\..+/, ''),
-      }),
+      },
       {
         brand: '기아',
         name: '스포티지',
@@ -864,7 +864,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
 
-      (BMW = {
+      {
         brand: 'BMW',
         name: '2Series',
         type: '준중형 세단',
@@ -878,7 +878,7 @@ module.exports = {
           .toISOString()
           .replace(/T/, ' ')
           .replace(/\..+/, ''),
-      }),
+      },
       {
         brand: 'BMW',
         name: '3Series',
@@ -1045,7 +1045,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
 
-      (TESLA = {
+      {
         brand: 'TESLA',
         name: 'modelS',
         type: '준대형 세단',
@@ -1059,7 +1059,7 @@ module.exports = {
           .toISOString()
           .replace(/T/, ' ')
           .replace(/\..+/, ''),
-      }),
+      },
       {
         brand: 'TESLA',
         name: 'model3',
@@ -1257,7 +1257,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
 
-      (SUNG = {
+      {
         brand: 'RENAULTSAMSUNG',
         name: 'XM3',
         type: '소형 SUV',
@@ -1271,7 +1271,7 @@ module.exports = {
           .toISOString()
           .replace(/T/, ' ')
           .replace(/\..+/, ''),
-      }),
+      },
       {
         brand: 'RENAULTSAMSUNG',
         name: 'SM6',
