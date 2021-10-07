@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NaviBar = styled.div`
   box-sizing: border-box;
-  height: 4vh;
+  height: 3rem;
   background-color: skyblue;
   display: flex;
   flex-direction: row;
@@ -20,13 +20,18 @@ const BtnContainer = styled.ul`
   display: flex;
   flex-direction: row;
   flex: 1 0 0;
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 
 const NaviBtn = styled.li`
   border: 2px solid black;
   flex: 1 0 0;
   padding: 0.4rem;
+`;
+
+const Dummy = styled.li`
+  flex: 1 0 0;
+  border: 1px solid black;
 `;
 
 export default function Navbar() {
@@ -40,6 +45,7 @@ export default function Navbar() {
           <Link to="/signin">
             <NaviBtn>Sign in</NaviBtn>
           </Link>
+          <Dummy />
           <Link to="/signup">
             <NaviBtn>Sign up</NaviBtn>
           </Link>
