@@ -19,14 +19,13 @@ const TitleText = styled.span`
 const BtnContainer = styled.ul`
   display: flex;
   flex-direction: row;
-  flex: 1 0 0;
-  justify-content: center;
+  flex: 1 0 20;
 `;
 
 const NaviBtn = styled.li`
   border: 2px solid black;
-  flex: 1 0 0;
   padding: 0.4rem;
+  margin-right: 10px;
 `;
 
 const Dummy = styled.li`
