@@ -1,11 +1,14 @@
-import styled from 'styled-components';
+import Navbar from "../components/Navbar";
+import styled from "styled-components";
 
 const PageContainer = styled.div`
   background-color: grey;
 `;
-export default function MainPage() {
+
+export default function Main() {
   return (
     <>
+      <Navbar />
       <PageContainer>hello world</PageContainer>
     </>
   );
