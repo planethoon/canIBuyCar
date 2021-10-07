@@ -1,5 +1,14 @@
+import Navbar from "./components/Navbar";
+import MainPage from "./pages/MainPage";
+import "./reset.css";
+
 function App() {
-  return <div>hello world</div>;
+  return (
+    <>
+      <Navbar />
+      <MainPage />
+    </>
+  );
 }
 
 export default App;
