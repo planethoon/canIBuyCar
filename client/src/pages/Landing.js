@@ -71,7 +71,7 @@ export default function Landing() {
     <Background>
       <DummyContainer />
       <Container>
-        <TitleBox>제목</TitleBox>
+        <TitleBox>Title</TitleBox>
         <TextBox>내용</TextBox>
         <StyledLink to='/main'>
           <StartBtn>시작하기</StartBtn>
