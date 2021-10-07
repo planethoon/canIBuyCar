@@ -45,7 +45,6 @@ export default function Navbar() {
           <Link to="/signin">
             <NaviBtn>Sign in</NaviBtn>
           </Link>
-          <Dummy />
           <Link to="/signup">
             <NaviBtn>Sign up</NaviBtn>
           </Link>

@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 const Background = styled.div`
   height: 100vh;
   width: 100vw;
-  background-color: yellow;
+  background-color: black;
   display: flex;
+  align-items: center;
+`;
+
+const DummyContainer = styled.div`
+  flex: 5 1 auto;
 `;
 
 const Container = styled.div`
@@ -15,8 +20,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 0 1 auto;
-  background-color: orange;
+  flex: 1 1 auto;
+  background-color: rgba(219, 219, 219, 0.4);
 `;
 
 const TitleBox = styled.div`
@@ -24,6 +29,7 @@ const TitleBox = styled.div`
   height: 12rem;
   width: 30rem;
   background-color: white;
+  opacity: 1;
 `;
 
 const TextBox = styled.div`
@@ -40,20 +46,36 @@ const StartBtn = styled.div`
   align-items: center;
   height: 3rem;
   width: 8rem;
-  border: 0.1rem solid black;
+  border: 0.1rem solid white;
   border-radius: 0.5rem;
   cursor: pointer;
+  color: white;
+  &:hover {
+    color: black;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
 `;
 
 export default function Landing() {
   return (
     <Background>
+      <DummyContainer />
       <Container>
-        <TitleBox>제목</TitleBox>
+        <TitleBox>Title</TitleBox>
         <TextBox>내용</TextBox>
-        {/* <Link to=''> */}
-        <StartBtn>버튼</StartBtn>
-        {/* </Link> */}
+        <StyledLink to='/main'>
+          <StartBtn>시작하기</StartBtn>
+        </StyledLink>
       </Container>
     </Background>
   );
