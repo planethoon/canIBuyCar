@@ -28,11 +28,6 @@ const NaviBtn = styled.li`
   margin-right: 10px;
 `;
 
-const Dummy = styled.li`
-  flex: 1 0 0;
-  border: 1px solid black;
-`;
-
 export default function Navbar() {
   return (
     <>
