@@ -518,7 +518,7 @@ module.exports = {
 
       {
         brand: '포르쉐',
-        name: '파나메라,',
+        name: '파나메라',
         type: '스포츠카',
         price: 29520,
         img: '#',
@@ -1595,6 +1595,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('Cars', null, {});
     /**
      * Add commands to revert seed here.
      *
