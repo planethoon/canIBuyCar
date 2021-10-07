@@ -2,12 +2,12 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('Users_comments', 'userId', Sequelize.INTEGER);
+    await queryInterface.addColumn('Comments', 'userId', Sequelize.INTEGER);
 
-    await queryInterface.addConstraint('Users_comments', {
+    await queryInterface.addConstraint('Comments', {
       fields: ['userId'],
       type: 'foreign key',
-      name: 'Users_comments.userId-fk',
+      name: 'Comments.userId-fk',
       references: {
         table: 'Users',
         field: 'id',
@@ -19,9 +19,9 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.removeConstraint(
-      'Users_comments',
-      'Users_comments.userId-fk'
+      'Comments',
+      'Comments.userId-fk'
     );
-    await queryInterface.removeColumn('Users_comments', 'userId');
+    await queryInterface.removeColumn('Comments', 'userId');
   },
 };
