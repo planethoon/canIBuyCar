@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const NaviBar = styled.div`
   box-sizing: border-box;
-  height: 4vh;
+  height: 3rem;
   background-color: skyblue;
   display: flex;
   flex-direction: row;
@@ -19,14 +19,13 @@ const TitleText = styled.span`
 const BtnContainer = styled.ul`
   display: flex;
   flex-direction: row;
-  flex: 1 0 0;
-  justify-content: space-evenly;
+  flex: 1 0 20;
 `;
 
 const NaviBtn = styled.li`
   border: 2px solid black;
-  flex: 1 0 0;
   padding: 0.4rem;
+  margin-right: 10px;
 `;
 
 export default function Navbar() {
@@ -34,13 +33,13 @@ export default function Navbar() {
     <>
       <NaviBar>
         <TitleText>
-          <Link to='/main'>canIBuyCar</Link>
+          <Link to="/main">canIBuyCar</Link>
         </TitleText>
         <BtnContainer>
-          <Link to='/signin'>
+          <Link to="/signin">
             <NaviBtn>Sign in</NaviBtn>
           </Link>
-          <Link to='/signup'>
+          <Link to="/signup">
             <NaviBtn>Sign up</NaviBtn>
           </Link>
         </BtnContainer>

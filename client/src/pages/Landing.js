@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Background = styled.div`
   height: 100vh;
@@ -73,7 +73,7 @@ export default function Landing() {
       <Container>
         <TitleBox>Title</TitleBox>
         <TextBox>내용</TextBox>
-        <StyledLink to='/main'>
+        <StyledLink to="/main">
           <StartBtn>시작하기</StartBtn>
         </StyledLink>
       </Container>
