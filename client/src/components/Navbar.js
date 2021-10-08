@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import StyledLink from "./StyledLink";
+import styled from 'styled-components';
+import StyledLink from './StyledLink';
 
 const NaviBar = styled.div`
   box-sizing: border-box;
@@ -33,16 +33,16 @@ export default function Navbar() {
     <>
       <NaviBar>
         <TitleText>
-          <StyledLink to="/main">canIBuyCar</StyledLink>
+          <StyledLink to='/main'>canIBuyCar</StyledLink>
         </TitleText>
         <BtnContainer>
-          <StyledLink to="/signin">
+          <StyledLink to='/signin'>
             <NaviBtn>Sign In</NaviBtn>
           </StyledLink>
-          <StyledLink to="/mypage">
+          <StyledLink to='/mypage'>
             <NaviBtn>Mypage</NaviBtn>
           </StyledLink>
-          <StyledLink to="/request">
+          <StyledLink to='/request'>
             <NaviBtn>Request</NaviBtn>
           </StyledLink>
         </BtnContainer>

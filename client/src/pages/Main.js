@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 // import { useEffect, useState } from "react";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import StyledDiv from "../components/StyledDiv";
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import StyledDiv from '../components/StyledDiv';
 
 const Background = styled.div`
   background-color: grey;
@@ -59,40 +59,40 @@ export default function Main() {
                 </Link>
               )
             })} */}
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to="/brand">
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
           </LogoWrapper>

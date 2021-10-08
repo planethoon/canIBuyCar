@@ -1,5 +1,5 @@
-import StyledDiv from "./StyledDiv";
-import styled from "styled-components";
+import StyledDiv from './StyledDiv';
+import styled from 'styled-components';
 
 const ContentContainer = styled(StyledDiv)`
   border: 2px solid black;

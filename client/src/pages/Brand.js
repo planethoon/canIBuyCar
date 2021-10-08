@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import StyledDiv from "../components/StyledDiv";
-import ContentContainer from "../components/ContentContainer";
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import StyledDiv from '../components/StyledDiv';
+import ContentContainer from '../components/ContentContainer';
 
 const Background = styled.div`
   height: 100vh;
@@ -96,12 +96,9 @@ export default function Brand() {
         <StyledDiv>
           <SideContainer>
             <Logo>
-              <img src={"https://via.placeholder.com/500"} alt="logo" />
+              <img src={'https://via.placeholder.com/500'} alt='logo' />
             </Logo>
-            <Search
-              type="text"
-              placeholder="찾고자 하는 차량을 입력해주세요."
-            />
+            <Search type='text' placeholder='찾고자 하는 차량을 입력해주세요.' />
             <BrandWrapper>
               <BrandList>
                 <BrandName>
@@ -112,7 +109,7 @@ export default function Brand() {
           </SideContainer>
           <CarContainer>
             <CarBox>
-              <img src={"https://via.placeholder.com/500"} alt={""} />
+              <img src={'https://via.placeholder.com/500'} alt={''} />
               <span>Model X</span>
             </CarBox>
           </CarContainer>
