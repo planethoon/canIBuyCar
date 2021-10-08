@@ -1,4 +1,5 @@
 const {User} = require('../../models');
+const {Users_car} = require('../../models');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
@@ -18,8 +19,8 @@ module.exports = async (req, res) => {
     const findBookmark = await User.sequelize.query(query)
 
     if (userInfo && findBookmark[0][0] !== undefined) {
-      User.destroy({
-        where: {carId: findBookmark[0][0].id}, 
+      Users_car.destroy({
+        where: {carId: findBookmark[0][0].carId}, 
       });
       res.status(204).send()
     } else {
