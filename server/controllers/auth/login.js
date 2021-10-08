@@ -1,5 +1,6 @@
 const {User} = require('../../models');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 module.exports = async (req, res) => {
   const {email, password} = req.body;
@@ -13,10 +14,10 @@ module.exports = async (req, res) => {
   const userInfo = user.dataValues;
   delete userInfo.password;
   console.log(process.env.ACCESS_SECRET); // 이거 왜 안찾아지지
-  const accessToken = jwt.sign(userInfo, 'abc', {
+  const accessToken = jwt.sign(userInfo, process.env.ACCESS_SECRET, {
     expiresIn: '3d',
   });
-  const refreshToken = jwt.sign(userInfo, 'def', {
+  const refreshToken = jwt.sign(userInfo, process.env.REFRESH_SECRET, {
     expiresIn: '4d',
   });
 

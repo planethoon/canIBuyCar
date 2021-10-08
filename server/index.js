@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const cors = require('cors');
 const authRouter = require('./routers/auth');
 // const carRouter = require('./routers/car');
@@ -7,7 +8,6 @@ const authRouter = require('./routers/auth');
 const sequelize = require('./models').sequelize;
 sequelize.sync();
 
-const app = express();
 
 app.use(express.json());
 app.use(cors());
@@ -22,3 +22,4 @@ app.use((req, res, next) => {
 });
 
 app.listen(8080);
+

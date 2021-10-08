@@ -1,5 +1,6 @@
 const {User} = require('../../models');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 module.exports = async (req, res) => {
   const authorization = req.headers.authorization;
@@ -7,7 +8,7 @@ module.exports = async (req, res) => {
     res.status(401).sned({message: '회원정보 수정 실패'});
   } else {
     const token = req.headers.authorization.split('Bearer ')[1];
-    const data = jwt.verify(token, 'abc');
+    const data = jwt.verify(token, process.env.ACCESS_SECRET);
     const userInfo = await User.findOne({
       where: {email: data.email},
     });
