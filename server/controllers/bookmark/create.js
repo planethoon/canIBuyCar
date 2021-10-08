@@ -17,8 +17,9 @@ module.exports = async (req, res) => {
     if (userInfo) {
       const carId = req.body.carId;
       const userId = userInfo.dataValues.id;
+      console.log(userId);
       const query = `INSERT INTO Users_cars (userId, carId, createdAt, updatedAt) 
-      VALUES ('${parseInt(userId)}', '${parseInt(carId)}', '${new Date()
+      VALUES ('${userId}', '${carId}', '${new Date()
         .toISOString()
         .replace(/T/, ' ')
         .replace(/\..+/, '')}','${new Date()
