@@ -16,9 +16,7 @@ module.exports = async (req, res) => {
       // User.update({
 
       // })
-      res
-        .status(200)
-        .send({data: {userId: userInfo.id}, message: '회원정보 수정 성공'});
+      res.status(200).send({data: {userId: userInfo.id}, message: '회원정보 수정 성공'});
     } else {
       res.status(401).send({message: '회원정보 수정 실패'});
     }

@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 module.exports = async (req, res) => {
   const authorization = req.headers.authorization;
   if (!authorization) {
-    res.status(401).sned({message: '회원탈퇴 실패'});
+    res.status(401).send({message: '회원탈퇴 실패'});
   } else {
     const token = req.headers.authorization.split('Bearer ')[1];
     const data = jwt.verify(token, 'abc');
@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
       User.destroy({
         where: {email: userInfo.email},
       });
-      res.status(204).send({message: '회원탈퇴 성공'});
+      res.status(204)
     } else {
       res.status(401).send({message: '회원탈퇴 실패'});
     }
