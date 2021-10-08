@@ -1,20 +1,20 @@
 const {User} = require('../../models');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 module.exports = async (req, res) => {
-  const authorization = req.headers.authorization
-  if(!authorization) {
-    res.status(401).sned({message: '로그아웃 실패'})
+  const authorization = req.headers.authorization;
+  if (!authorization) {
+    res.status(401).sned({message: '로그아웃 실패'});
   } else {
     const token = req.headers.authorization.split('Bearer ')[1];
-    const data = jwt.verify(token, process.env.ACCESS_SECRET)
+    const data = jwt.verify(token, 'abc');
     const userInfo = await User.findOne({
-      where: { email: data.email },
+      where: {email: data.email},
     });
-    if(userInfo) {
-      res.status(200).send({message: '로그아웃 성공'})
+    if (userInfo) {
+      res.status(200).send({message: '로그아웃 성공'});
     } else {
-      res.status(401).send({message: '로그아웃 실패'})
+      res.status(401).send({message: '로그아웃 실패'});
     }
   }
 };
