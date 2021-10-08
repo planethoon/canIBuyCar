@@ -1,4 +1,5 @@
 module.exports = {
+  sayhi: require('./sayhi'),
   signup: require('./signup'),
   login: require('./login'),
   logout: require('./logout'),
