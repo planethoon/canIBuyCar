@@ -13,7 +13,7 @@ module.exports = {
      */
     const testUser = [
       {
-        email: 'testA.gmail.com',
+        email: 'testA@gmail.com',
         username: 'testA',
         password: '1234',
         createdAt: new Date()
@@ -26,7 +26,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        email: 'testB.gmail.com',
+        email: 'testB@gmail.com',
         username: 'testB',
         password: '1234',
         createdAt: new Date()
@@ -39,7 +39,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        email: 'testC.gmail.com',
+        email: 'testC@gmail.com',
         username: 'testC',
         password: '1234',
         createdAt: new Date()
