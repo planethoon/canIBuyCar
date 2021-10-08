@@ -1,4 +1,4 @@
-const {User} = require('../../models');
+const {User, Users_comment} = require('../../models');
 const {Comment} = require('../../models');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
@@ -23,6 +23,9 @@ module.exports = async (req, res) => {
       console.log(userId);
       console.log(userInfo.dataValues.id);
       if (userId === userInfo.dataValues.id) {
+        await Users_comment.destroy({
+          where: {commentId: req.params.id},
+        });
         await Comment.destroy({
           where: {id: req.params.id},
         });
