@@ -40,7 +40,7 @@ const TextBox = styled.div`
   background-color: pink;
 `;
 
-const StartBtn = styled.div`
+const StartBtn = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,9 +49,9 @@ const StartBtn = styled.div`
   border: 0.1rem solid white;
   border-radius: 0.5rem;
   cursor: pointer;
-  color: white;
+  color: black;
   &:hover {
-    color: black;
+    color: white;
   }
 `;
 
