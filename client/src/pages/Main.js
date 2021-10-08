@@ -1,5 +1,7 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import Navbar from '../components/Navbar';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+=======
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -36,42 +38,42 @@ export default function Main() {
       <PageContainer>
         <LogoContainer>
           <LogoWrapper>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
           </LogoWrapper>
           <LogoWrapper>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
           </LogoWrapper>

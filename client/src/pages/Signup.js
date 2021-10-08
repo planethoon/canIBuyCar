@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import StyledButton from '../components/StyledButton';
 import StyledDiv from '../components/StyledDiv';
-import StyledLink from '../components/StyledLink';
 import StyledInput from '../components/StyledInput';
 
 const Background = styled(StyledDiv)`
@@ -22,7 +21,7 @@ const InnerContainer = styled(StyledDiv)`
   background-color: white;
 `;
 
-const LoginTextBox = styled(StyledDiv)`
+const SignupTextBox = styled(StyledDiv)`
   margin: 1rem;
   height: 5rem;
   width: 40rem;
@@ -31,13 +30,13 @@ const LoginTextBox = styled(StyledDiv)`
 
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
-  height: 10rem;
+  height: 20rem;
   width: 50rem;
   flex-direction: column;
 `;
 
 const InputEmailContainer = styled(StyledDiv)`
-  margin: 0.5rem;
+  margin: 1rem;
 `;
 
 const EmailBox = styled(StyledDiv)`
@@ -47,37 +46,44 @@ const EmailBox = styled(StyledDiv)`
 
 const InputEmailBox = styled(StyledInput)``;
 
+const InputNameContainer = styled(InputEmailContainer)``;
+
+const NameBox = styled(EmailBox)``;
+
+const InputNameBox = styled(StyledInput)``;
+
 const InputPWContainer = styled(InputEmailContainer)``;
 
 const PWBox = styled(EmailBox)``;
 
 const InputPWBox = styled(StyledInput)``;
 
-const SignupContainer = styled(StyledDiv)`
+const InputCheckPWContainer = styled(InputEmailContainer)``;
+
+const CheckPWBox = styled(EmailBox)``;
+
+const InputCheckPWBox = styled(StyledInput)``;
+
+const CapcharBox = styled(StyledDiv)`
   margin: 1rem;
-  height: 5rem;
-  width: 40rem;
+  height: 10rem;
+  width: 20em;
   background-color: gray;
 `;
 
-const SignupBox = styled(StyledDiv)`
-  height: 2rem;
-  width: 5rem;
-`;
+const SignupBtn = styled(StyledButton)``;
 
-const ButtonContainer = styled(StyledDiv)``;
-
-const LoginBtn = styled(StyledButton)``;
-
-const SocialLoginBtn = styled(StyledButton)``;
-
-export default function Login() {
+export default function Signup() {
   return (
     <Background>
       <OuterContainer>
         <InnerContainer>
-          <LoginTextBox>로그인</LoginTextBox>
+          <SignupTextBox>Sign up</SignupTextBox>
           <InfoBox>
+            <InputNameContainer>
+              <NameBox>Name</NameBox>
+              <InputNameBox />
+            </InputNameContainer>
             <InputEmailContainer>
               <EmailBox>Email</EmailBox>
               <InputEmailBox />
@@ -86,17 +92,13 @@ export default function Login() {
               <PWBox>PW</PWBox>
               <InputPWBox />
             </InputPWContainer>
+            <InputCheckPWContainer>
+              <CheckPWBox>Check</CheckPWBox>
+              <InputCheckPWBox />
+            </InputCheckPWContainer>
           </InfoBox>
-          <SignupContainer>
-            아이디가 없으신가요 ?
-            <SignupBox>
-              <StyledLink to='/signup'> 회원가입 </StyledLink>
-            </SignupBox>
-          </SignupContainer>
-          <ButtonContainer>
-            <LoginBtn>로그인</LoginBtn>
-            <SocialLoginBtn>소셜 로그인</SocialLoginBtn>
-          </ButtonContainer>
+          <CapcharBox>Capchar</CapcharBox>
+          <SignupBtn>Sign up </SignupBtn>
         </InnerContainer>
       </OuterContainer>
     </Background>
