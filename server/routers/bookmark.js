@@ -3,8 +3,8 @@ const router = express.Router();
 
 const {bookmarkController} = require('../controllers');
 
-router.post('/', bookmarkController.create.post);
-router.get('/:id', bookmarkController.getAll.get);
-router.delete('/:id', bookmarkController.remove.delete);
+// router.post('/', bookmarkController.create);
+router.get('/:id', bookmarkController.getAll);
+// router.delete('/:id', bookmarkController.remove);
 
 module.exports = router;

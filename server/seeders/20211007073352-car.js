@@ -1591,16 +1591,33 @@ module.exports = {
       },
     ];
 
-    return queryInterface.bulkInsert('Cars', carList, {});
+    await queryInterface.bulkInsert('Cars', carList, {});
+
+    const users = await queryInterface.sequelize.query(`SELECT id FROM Users;`)
+    const car = await queryInterface.sequelize.query(`SELECT id FROM Cars WHERE brand='TESLA';`)
+    const usersRows = users[0]
+    const carRows = car[0]
+
+    const userCar = []
+    for(let i = 0; i < usersRows.length; i++) {
+      let result = {
+        userId: usersRows[i].id,
+        carId: carRows[i].id,
+        createdAt: new Date()
+        .toISOString()
+        .replace(/T/, ' ')
+        .replace(/\..+/, ''),
+        updatedAt: new Date()
+        .toISOString()
+        .replace(/T/, ' ')
+        .replace(/\..+/, ''),
+      }
+      userCar.push(result)
+    }
+    await queryInterface.bulkInsert('Users_cars', userCar)
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Cars', null, {});
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('Cars', null, {});
   },
 };
