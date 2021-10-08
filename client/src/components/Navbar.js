@@ -1,9 +1,9 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import StyledLink from './StyledLink';
 
 const NaviBar = styled.div`
   box-sizing: border-box;
-  height: 3rem;
+  height: 7vh;
   background-color: skyblue;
   display: flex;
   flex-direction: row;
@@ -33,18 +33,18 @@ export default function Navbar() {
     <>
       <NaviBar>
         <TitleText>
-          <Link to="/main">canIBuyCar</Link>
+          <StyledLink to='/main'>canIBuyCar</StyledLink>
         </TitleText>
         <BtnContainer>
-          <Link to="/signin">
+          <StyledLink to='/signin'>
             <NaviBtn>Sign In</NaviBtn>
-          </Link>
-          <Link to="/signup">
+          </StyledLink>
+          <StyledLink to='/mypage'>
             <NaviBtn>Mypage</NaviBtn>
-          </Link>
-          <Link to="/signup">
+          </StyledLink>
+          <StyledLink to='/request'>
             <NaviBtn>Request</NaviBtn>
-          </Link>
+          </StyledLink>
         </BtnContainer>
       </NaviBar>
     </>
