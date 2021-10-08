@@ -37,10 +37,13 @@ export default function Navbar() {
         </TitleText>
         <BtnContainer>
           <Link to="/signin">
-            <NaviBtn>Sign in</NaviBtn>
+            <NaviBtn>Sign In</NaviBtn>
           </Link>
           <Link to="/signup">
-            <NaviBtn>Sign up</NaviBtn>
+            <NaviBtn>Mypage</NaviBtn>
+          </Link>
+          <Link to="/signup">
+            <NaviBtn>Request</NaviBtn>
           </Link>
         </BtnContainer>
       </NaviBar>
