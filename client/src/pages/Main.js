@@ -1,6 +1,6 @@
-import Navbar from "../components/Navbar";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import Navbar from '../components/Navbar';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const PageContainer = styled.div`
   background-color: grey;
@@ -34,42 +34,42 @@ export default function Main() {
       <PageContainer>
         <LogoContainer>
           <LogoWrapper>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
           </LogoWrapper>
           <LogoWrapper>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
-            <Link to="/">
+            <Link to='/'>
               <LogoBtn />
             </Link>
           </LogoWrapper>

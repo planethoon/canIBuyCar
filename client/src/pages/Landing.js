@@ -1,30 +1,28 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled from 'styled-components';
+import StyledLink from '../components/StyledLink';
+import StyledButton from '../components/StyledButton';
+import StyledDiv from '../components/StyledDiv';
 
-const Background = styled.div`
+const Background = styled(StyledDiv)`
   height: 100vh;
   width: 100vw;
   background-color: black;
-  display: flex;
-  align-items: center;
 `;
 
 const DummyContainer = styled.div`
   flex: 5 1 auto;
 `;
 
-const Container = styled.div`
+const Container = styled(StyledDiv)`
   margin: 3rem;
-  height: 46rem;
+  height: 50rem;
   width: 36rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   flex: 1 1 auto;
+  flex-direction: column;
   background-color: rgba(219, 219, 219, 0.4);
 `;
 
-const TitleBox = styled.div`
+const TitleBox = styled(StyledDiv)`
   margin: 3rem;
   height: 12rem;
   width: 30rem;
@@ -32,7 +30,7 @@ const TitleBox = styled.div`
   opacity: 1;
 `;
 
-const TextBox = styled.div`
+const TextBox = styled(StyledDiv)`
   margin: 3rem;
   margin-top: 0rem;
   height: 20rem;
@@ -40,31 +38,7 @@ const TextBox = styled.div`
   background-color: pink;
 `;
 
-const StartBtn = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 3rem;
-  width: 8rem;
-  border: 0.1rem solid white;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  color: black;
-  &:hover {
-    color: white;
-  }
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
-`;
+const StartBtn = styled(StyledButton)``;
 
 export default function Landing() {
   return (
@@ -73,7 +47,7 @@ export default function Landing() {
       <Container>
         <TitleBox>Title</TitleBox>
         <TextBox>내용</TextBox>
-        <StyledLink to="/main">
+        <StyledLink to='/main'>
           <StartBtn>시작하기</StartBtn>
         </StyledLink>
       </Container>
