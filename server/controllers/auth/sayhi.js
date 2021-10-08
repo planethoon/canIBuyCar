@@ -1,11 +1,10 @@
 const {Car} = require('../../models');
 
 module.exports = async (req, res) => {
-  console.log(Car);
-  const car = await Car.findAll({
+  const car = await Car.findOne({
     where: {brand: 'BMW'},
   });
-  console.log(car);
+  console.log(car.dataValues);
 
   res.send({message: 'a'});
 };

@@ -5,7 +5,7 @@ const {authController} = require('../controllers');
 
 router.get('/', authController.sayhi);
 // router.post('/signup', authController.signup.post);
-// router.post('/login', authController.login.post);
+router.post('/login', authController.login);
 // router.post('/logout', authController.logout.post);
 // router.put('/', authController.edit.put);
 // router.delete('/', authController.remove.delete);
