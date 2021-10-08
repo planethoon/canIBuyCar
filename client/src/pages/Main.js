@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import StyledDiv from '../components/StyledDiv';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import StyledDiv from "../components/StyledDiv";
 
 const Background = styled.div`
   background-color: grey;
@@ -23,9 +23,12 @@ const LogoWrapper = styled.ul`
   overflow: auto;
 `;
 
+const LogoOuter = styled.ul`
+  margin: 2rem;
+`;
+
 const LogoBtn = styled.li`
   border: 2px solid black;
-  margin: 2rem;
   height: 10rem;
   width: 10rem;
   flex: 1 1 auto;
@@ -59,42 +62,67 @@ export default function Main() {
                 </Link>
               )
             })} */}
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
-            <Link to='/brand'>
-              <LogoBtn />
-            </Link>
+
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
+            <LogoOuter>
+              <Link to="/brand">
+                <LogoBtn />
+              </Link>
+            </LogoOuter>
           </LogoWrapper>
         </LogoContainer>
       </Background>

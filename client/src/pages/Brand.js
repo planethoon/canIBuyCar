@@ -1,9 +1,10 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import StyledDiv from '../components/StyledDiv';
-import ContentContainer from '../components/ContentContainer';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import StyledDiv from "../components/StyledDiv";
+import ContentContainer from "../components/ContentContainer";
+import BookmarkButton from "../components/BookmarkButton";
 
 const Background = styled.div`
   height: 100vh;
@@ -86,9 +87,27 @@ const CarBox = styled.div`
   height: 15rem;
   width: 15rem;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
+  > span {
+    display: none;
+  }
+
+  > img {
+    max-width: 100%;
+  }
+
+  &:hover > span {
+    display: inline;
+  }
 `;
 
 export default function Brand() {
+  const backgroundimage = "https://via.placeholder.com/300x200";
+
   return (
     <>
       <Background>
@@ -96,9 +115,12 @@ export default function Brand() {
         <StyledDiv>
           <SideContainer>
             <Logo>
-              <img src={'https://via.placeholder.com/500'} alt='logo' />
+              <img src={"https://via.placeholder.com/500"} alt="logo" />
             </Logo>
-            <Search type='text' placeholder='찾고자 하는 차량을 입력해주세요.' />
+            <Search
+              type="text"
+              placeholder="찾고자 하는 차량을 입력해주세요."
+            />
             <BrandWrapper>
               <BrandList>
                 <BrandName>
@@ -108,10 +130,15 @@ export default function Brand() {
             </BrandWrapper>
           </SideContainer>
           <CarContainer>
-            <CarBox>
-              <img src={'https://via.placeholder.com/500'} alt={''} />
+            <CarBox
+              style={{
+                backgroundImage: `url(${backgroundimage})`,
+                backgroundSize: "cover",
+              }}
+            >
               <span>Model X</span>
             </CarBox>
+            <BookmarkButton />
           </CarContainer>
         </StyledDiv>
       </Background>
