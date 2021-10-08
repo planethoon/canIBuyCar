@@ -1,81 +1,103 @@
-import Navbar from '../components/Navbar';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Footer from '../components/Footer';
+// import { useEffect, useState } from "react";
 
-const PageContainer = styled.div`
-  background-color: gray;
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import StyledDiv from '../components/StyledDiv';
+
+const Background = styled.div`
+  background-color: grey;
   height: 100vh;
 `;
 
-const LogoContainer = styled.div`
+const LogoContainer = styled(StyledDiv)`
   height: 90vh;
-  display: flex;
   flex-direction: column;
-  display: flex;
-  justify-content: center;
 `;
 
 const LogoWrapper = styled.ul`
   display: flex;
-  justify-content: space-around;
-  margin-top: 5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: auto;
 `;
 
 const LogoBtn = styled.li`
   border: 2px solid black;
+  margin: 2rem;
   height: 10rem;
   width: 10rem;
+  flex: 1 1 auto;
 `;
 
+// const LogoImage = styled.img`
+//   max-width: 100%;
+// `
+
 export default function Main() {
+  // const [brandList, getBrandList] = useState();
+
+  // useEffect(() => {
+  //   axios.get("http://localhost:8080/brand").then((res) => {
+  //     res.data
+  //     getBrandList()
+  //   });
+  // });
   return (
     <>
-      <Navbar />
-      <PageContainer>
+      <Background>
+        <Navbar />
         <LogoContainer>
           <LogoWrapper>
-            <Link to='/'>
+            {/* {brandList.map((brand)=>{
+              return (
+                <Link to="/brand">
+                  <LogoBtn onClick={()=>{getSelectedBrand(brand.name)}}>
+                    <LogoImage alt={brand.name} src={brand.img} />
+                  </LogoBtn>
+                </Link>
+              )
+            })} */}
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-          </LogoWrapper>
-          <LogoWrapper>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
-            <Link to='/'>
+            <Link to='/brand'>
               <LogoBtn />
             </Link>
           </LogoWrapper>
         </LogoContainer>
-      </PageContainer>
+      </Background>
       <Footer />
     </>
   );

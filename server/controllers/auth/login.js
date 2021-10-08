@@ -13,7 +13,6 @@ module.exports = async (req, res) => {
   }
   const userInfo = user.dataValues;
   delete userInfo.password;
-  console.log(process.env.ACCESS_SECRET); // 이거 왜 안찾아지지
   const accessToken = jwt.sign(userInfo, process.env.ACCESS_SECRET, {
     expiresIn: '3d',
   });

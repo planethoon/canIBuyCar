@@ -3,30 +3,18 @@ import Navbar from '../components/Navbar';
 import MypageSideBar from '../components/MypageSideBar';
 import StyledDiv from '../components/StyledDiv';
 import Footer from '../components/Footer';
+import ContentContainer from '../components/ContentContainer';
 
 const Background = styled.div`
   height: 100vh;
+  background-color: grey;
 `;
 
-const PageContainer = styled(StyledDiv)`
-  width: 100&;
-  height: 100%;
-`;
-
-const SideBarBox = styled(StyledDiv)`
-  background-color: gray;
-  margin: 1rem;
-  height: 85vh;
-  width: 30vh;
-  flex: 1 1 auto;
-`;
-
-const ContentBox = styled(StyledDiv)`
-  background-color: gray;
-  margin: 1rem;
-  height: 30rem;
-  width: 50rem;
-  flex: 5 1 auto;
+const CarContainer = styled(ContentContainer)`
+  flex: 7 0 0;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  overflow: auto;
 `;
 
 export default function Mypage() {
@@ -34,12 +22,10 @@ export default function Mypage() {
     <>
       <Background>
         <Navbar />
-        <PageContainer>
-          <SideBarBox>
-            <MypageSideBar />
-          </SideBarBox>
-          <ContentBox>content</ContentBox>
-        </PageContainer>
+        <StyledDiv>
+          <MypageSideBar />
+          <CarContainer>content</CarContainer>
+        </StyledDiv>
       </Background>
       <Footer />
     </>
