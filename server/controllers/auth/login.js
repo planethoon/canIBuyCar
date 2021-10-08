@@ -23,5 +23,5 @@ module.exports = async (req, res) => {
   res
     .status(200)
     .cookie('refreshToken', refreshToken, {httpOnly: true})
-    .json({data: {accessToken}});
+    .json({data: {accessToken, userId: userInfo.id}});
 };
