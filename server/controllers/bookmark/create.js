@@ -15,12 +15,19 @@ module.exports = async (req, res) => {
     });
 
     if (userInfo) {
-      const carId = req.body;
+      const carId = req.body.carId;
       const userId = userInfo.dataValues.id;
-      const bookmark = await Users_car.create({userId, carId});
-      //생성하지만 userId, carId는 원래 스키마에 없어서인지 들어가지 않는다.
-      console.log(bookmark);
-      res.json({data: {bookmark}, message: '즐겨찾기 완료'});
+      const query = `INSERT INTO Users_cars (userId, carId, createdAt, updatedAt) 
+      VALUES ('${parseInt(userId)}', '${parseInt(carId)}', '${new Date()
+        .toISOString()
+        .replace(/T/, ' ')
+        .replace(/\..+/, '')}','${new Date()
+        .toISOString()
+        .replace(/T/, ' ')
+        .replace(/\..+/, '')}')`;
+      const bookmarkId = await Users_car.sequelize.query(query);
+
+      res.json({data: {bookmarkId: bookmarkId[0]}, message: '즐겨찾기 완료'});
     }
   }
 };
