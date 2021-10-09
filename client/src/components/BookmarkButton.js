@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import marked from "../img/marked.png";
-import unmarked from "../img/unmarked.png";
+import styled from 'styled-components';
+import marked from '../img/marked.png';
+import unmarked from '../img/unmarked.png';
 
 const BookmarkWrapper = styled.div`
   height: 2rem;
@@ -14,7 +14,7 @@ export default function BookmarkButton() {
   return (
     <>
       <BookmarkWrapper>
-        <img src={marked} alt="" />
+        <img src={marked} alt='' />
       </BookmarkWrapper>
     </>
   );

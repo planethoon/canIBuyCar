@@ -22,7 +22,7 @@ const InnerContainer = styled(StyledDiv)`
   background-color: white;
 `;
 
-const LoginTextBox = styled(StyledDiv)`
+const TextBox = styled(StyledDiv)`
   margin: 1rem;
   height: 5rem;
   width: 40rem;
@@ -37,12 +37,12 @@ const InfoBox = styled(StyledDiv)`
 `;
 
 const InputEmailContainer = styled(StyledDiv)`
-  margin: 0.5rem;
+  margin: 0.8rem;
 `;
 
 const EmailBox = styled(StyledDiv)`
   height: 2rem;
-  width: 3rem;
+  width: 3.5rem;
 `;
 
 const InputEmailBox = styled(StyledInput)``;
@@ -76,7 +76,9 @@ export default function Login() {
     <Background>
       <OuterContainer>
         <InnerContainer>
-          <LoginTextBox>로그인</LoginTextBox>
+          <StyledLink to='/main'>
+            <TextBox>로고</TextBox>
+          </StyledLink>
           <InfoBox>
             <InputEmailContainer>
               <EmailBox>Email</EmailBox>

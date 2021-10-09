@@ -6,9 +6,10 @@ module.exports = async (req, res) => {
   INNER JOIN Users ON (${req.params.id} = Users_cars.userId);`
 
   const findBookmark = await User.sequelize.query(query)
+  console.log(findBookmark[0])
   if(findBookmark[0][0] === undefined) {
     res.status(402).send({message: '권한이 없습니다'})
   } else {
-    res.status(200).send({data: findBookmark})
+    res.status(200).send({data: findBookmark[0]})
   }
 };

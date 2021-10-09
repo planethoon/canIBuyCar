@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import StyledInput from './StyledInput';
 import StyledButton from './StyledButton';
 import StyledDiv from './StyledDiv';
 import StyledLink from './StyledLink';
+import StyledInput from './StyledInput';
 
 const OuterContainer = styled(StyledDiv)`
   height: 85vh;
@@ -31,28 +31,16 @@ const InfoBox = styled(StyledDiv)`
   flex-direction: column;
 `;
 
-const InputNameContainer = styled(StyledDiv)`
-  margin: 0.8rem;
+const InputPWContainer = styled(StyledDiv)`
+  margin: 0.5rem;
 `;
 
-const NameBox = styled(StyledDiv)`
+const InputPWBox = styled(StyledInput)``;
+
+const PWBox = styled(StyledDiv)`
   height: 2rem;
   width: 3.5rem;
 `;
-
-const InputNameBox = styled(StyledInput)``;
-
-const InputEmailContainer = styled(InputNameContainer)``;
-
-const EmailBox = styled(NameBox)``;
-
-const InputEmailBox = styled(StyledInput)``;
-
-const InputPWContainer = styled(InputNameContainer)``;
-
-const PWBox = styled(NameBox)``;
-
-const InputPWBox = styled(StyledInput)``;
 
 const ButtonContainer = styled(StyledDiv)``;
 
@@ -60,20 +48,12 @@ const CancleBtn = styled(StyledButton)``;
 
 const EditBtn = styled(StyledButton)``;
 
-export default function EditUserInfo() {
+export default function CheckPW({ onClickHandler }) {
   return (
     <OuterContainer>
       <InnerContainer>
-        <TextBox>회원정보 수정</TextBox>
+        <TextBox>비밀번호 확인</TextBox>
         <InfoBox>
-          <InputNameContainer>
-            <NameBox>Name</NameBox>
-            <InputNameBox />
-          </InputNameContainer>
-          <InputEmailContainer>
-            <EmailBox>Email</EmailBox>
-            <InputEmailBox />
-          </InputEmailContainer>
           <InputPWContainer>
             <PWBox>PW</PWBox>
             <InputPWBox />
@@ -83,7 +63,9 @@ export default function EditUserInfo() {
           <StyledLink to='/mypage/car'>
             <CancleBtn>취소</CancleBtn>
           </StyledLink>
-          <EditBtn>수정하기</EditBtn>
+          <StyledLink to='/mypage/edit/userinfo'>
+            <EditBtn onClick={onClickHandler}>확인</EditBtn>
+          </StyledLink>
         </ButtonContainer>
       </InnerContainer>
     </OuterContainer>

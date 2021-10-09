@@ -39,7 +39,7 @@ export default function Navbar() {
           <StyledLink to='/signin'>
             <NaviBtn>Sign In</NaviBtn>
           </StyledLink>
-          <StyledLink to='/mypage'>
+          <StyledLink to='/mypage/car'>
             <NaviBtn>Mypage</NaviBtn>
           </StyledLink>
           <StyledLink to='/request'>
