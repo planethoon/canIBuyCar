@@ -5,6 +5,7 @@ const authRouter = require('./routers/auth');
 const carRouter = require('./routers/car');
 const boardRouter = require('./routers/board');
 const bookmarkRouter = require('./routers/bookmark');
+const commentRouter = require('./routers/comment');
 const sequelize = require('./models').sequelize;
 sequelize.sync();
 
@@ -15,6 +16,7 @@ app.use('/auth', authRouter);
 app.use('/car', carRouter);
 app.use('/board', boardRouter);
 app.use('/bookmark', bookmarkRouter);
+app.use('/comment', commentRouter);
 
 app.use((req, res, next) => {
   res.sendStatus(404);
