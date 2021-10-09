@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import StyledDiv from "../components/StyledDiv";
-import ContentContainer from "../components/ContentContainer";
-import BookmarkButton from "../components/BookmarkButton";
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import StyledDiv from '../components/StyledDiv';
+import ContentContainer from '../components/ContentContainer';
+import BookmarkButton from '../components/BookmarkButton';
 
 const Background = styled.div`
   height: 100vh;
@@ -106,7 +106,7 @@ const CarBox = styled.div`
 `;
 
 export default function Brand() {
-  const backgroundimage = "https://via.placeholder.com/300x200";
+  const backgroundimage = 'https://via.placeholder.com/300x200';
 
   return (
     <>
@@ -115,12 +115,9 @@ export default function Brand() {
         <StyledDiv>
           <SideContainer>
             <Logo>
-              <img src={"https://via.placeholder.com/500"} alt="logo" />
+              <img src={'https://via.placeholder.com/500'} alt='logo' />
             </Logo>
-            <Search
-              type="text"
-              placeholder="찾고자 하는 차량을 입력해주세요."
-            />
+            <Search type='text' placeholder='찾고자 하는 차량을 입력해주세요.' />
             <BrandWrapper>
               <BrandList>
                 <BrandName>
@@ -133,7 +130,7 @@ export default function Brand() {
             <CarBox
               style={{
                 backgroundImage: `url(${backgroundimage})`,
-                backgroundSize: "cover",
+                backgroundSize: 'cover',
               }}
             >
               <span>Model X</span>

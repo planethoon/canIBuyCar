@@ -4,6 +4,9 @@ import MypageSideBar from '../components/MypageSideBar';
 import StyledDiv from '../components/StyledDiv';
 import Footer from '../components/Footer';
 import ContentContainer from '../components/ContentContainer';
+import EditUserInfo from '../components/EditUserInfo';
+import Favorites from '../components/Favorites';
+import { Route, Switch } from 'react-router-dom';
 
 const Background = styled.div`
   height: 100vh;
@@ -24,7 +27,18 @@ export default function Mypage() {
         <Navbar />
         <StyledDiv>
           <MypageSideBar />
-          <CarContainer>content</CarContainer>
+          <Switch>
+            <Route path='/mypage/car'>
+              <CarContainer>
+                <Favorites />
+              </CarContainer>
+            </Route>
+            <Route path='/mypage/edit'>
+              <CarContainer>
+                <EditUserInfo />
+              </CarContainer>
+            </Route>
+          </Switch>
         </StyledDiv>
       </Background>
       <Footer />
