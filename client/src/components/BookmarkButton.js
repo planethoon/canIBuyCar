@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import marked from "../img/marked.png";
 import unmarked from "../img/unmarked.png";
@@ -11,10 +12,16 @@ const BookmarkWrapper = styled.div`
 `;
 
 export default function BookmarkButton() {
+  const [isMarked, getIsMarked] = useState(false);
+
+  const toggleHandler = () => {
+    getIsMarked(!isMarked);
+  };
+
   return (
     <>
-      <BookmarkWrapper>
-        <img src={marked} alt="" />
+      <BookmarkWrapper onClick={toggleHandler}>
+        {isMarked ? <img src={marked} alt="" /> : <img src={unmarked} alt="" />}
       </BookmarkWrapper>
     </>
   );
