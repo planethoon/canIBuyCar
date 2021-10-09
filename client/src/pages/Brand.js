@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 import Navbar from "../components/Navbar";
+import LoadingIndicator from "../components/LoadingIndicator";
 import Footer from "../components/Footer";
 import StyledDiv from "../components/StyledDiv";
 import ContentContainer from "../components/ContentContainer";
@@ -88,25 +90,41 @@ const CarBox = styled.div`
   width: 15rem;
   border: 1px solid black;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  transition: 1s;
 
-  > span {
+  > span,
+  div {
     display: none;
+  }
+
+  > div {
+    align-self: flex-start;
+    justify-self: center;
   }
 
   > img {
     max-width: 100%;
   }
 
-  &:hover > span {
+  &:hover > span,
+  &:hover > div {
     display: inline;
   }
 `;
 
 export default function Brand() {
-  const backgroundimage = "https://via.placeholder.com/300x200";
+  let backgroundimage = "https://via.placeholder.com/300x200";
+
+  const [isLoading, getIsLoading] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      getIsLoading(true);
+    }, 1000);
+  }, []);
 
   return (
     <>
@@ -130,15 +148,120 @@ export default function Brand() {
             </BrandWrapper>
           </SideContainer>
           <CarContainer>
-            <CarBox
-              style={{
-                backgroundImage: `url(${backgroundimage})`,
-                backgroundSize: "cover",
-              }}
-            >
-              <span>Model X</span>
-            </CarBox>
-            <BookmarkButton />
+            {isLoading ? (
+              <>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+                <CarBox
+                  style={{
+                    backgroundImage: `url(${backgroundimage})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <BookmarkButton />
+                  <span>CarName</span>
+                </CarBox>
+              </>
+            ) : (
+              <LoadingIndicator />
+            )}
           </CarContainer>
         </StyledDiv>
       </Background>
