@@ -41,7 +41,7 @@ const InputEmailContainer = styled(StyledDiv)`
 
 const EmailBox = styled(StyledDiv)`
   height: 2rem;
-  width: 3rem;
+  width: 3.5rem;
 `;
 
 const InputEmailBox = styled(StyledInput)``;

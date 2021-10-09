@@ -133,12 +133,9 @@ export default function Brand() {
         <StyledDiv>
           <SideContainer>
             <Logo>
-              <img src={"https://via.placeholder.com/500"} alt="logo" />
+              <img src={'https://via.placeholder.com/500'} alt='logo' />
             </Logo>
-            <Search
-              type="text"
-              placeholder="찾고자 하는 차량을 입력해주세요."
-            />
+            <Search type='text' placeholder='찾고자 하는 차량을 입력해주세요.' />
             <BrandWrapper>
               <BrandList>
                 <BrandName>

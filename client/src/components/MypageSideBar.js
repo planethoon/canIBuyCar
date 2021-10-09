@@ -28,14 +28,12 @@ export default function MypageSideBar() {
   return (
     <Navbar>
       <GreetingBox>환영합니다</GreetingBox>
+      <FavoriteBox>
+        <StyledLink to='/mypage/car'>Car List</StyledLink>
+      </FavoriteBox>
       <EditUserInfoBox>
         <StyledLink to='/mypage/edit'>Edit</StyledLink>
       </EditUserInfoBox>
-      <FavoriteBox>
-        <FavoriteBox>
-          <StyledLink to='/mypage/car'>Car List</StyledLink>
-        </FavoriteBox>
-      </FavoriteBox>
     </Navbar>
   );
 }
