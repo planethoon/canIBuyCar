@@ -26,7 +26,7 @@ const TextBox = styled(StyledDiv)`
 
 const InfoBox = styled(StyledDiv)`
   margin: 3rem;
-  height: 10rem;
+  height: 5rem;
   width: 50rem;
   flex-direction: column;
 `;

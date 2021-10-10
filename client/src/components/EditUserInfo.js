@@ -26,8 +26,8 @@ const TextBox = styled(StyledDiv)`
 
 const InfoBox = styled(StyledDiv)`
   margin: 3rem;
-  height: 10rem;
-  width: 50rem;
+  height: 15rem;
+  width: 60rem;
   flex-direction: column;
 `;
 
@@ -54,6 +54,12 @@ const PWBox = styled(NameBox)``;
 
 const InputPWBox = styled(StyledInput)``;
 
+const InputCheckPWContainer = styled(InputNameContainer)``;
+
+const CheckPWBox = styled(NameBox)``;
+
+const InputCheckPWBox = styled(StyledInput)``;
+
 const ButtonContainer = styled(StyledDiv)``;
 
 const CancleBtn = styled(StyledButton)``;
@@ -78,6 +84,10 @@ export default function EditUserInfo() {
             <PWBox>PW</PWBox>
             <InputPWBox />
           </InputPWContainer>
+          <InputCheckPWContainer>
+            <CheckPWBox>Check</CheckPWBox>
+            <InputCheckPWBox />
+          </InputCheckPWContainer>
         </InfoBox>
         <ButtonContainer>
           <StyledLink to='/mypage/car'>
