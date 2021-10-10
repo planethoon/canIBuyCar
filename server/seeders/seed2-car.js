@@ -279,7 +279,7 @@ module.exports = {
         name: 'R8',
         type: '스포츠카',
         price: 25569,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4029/20210201_R8_ex%20(6).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -294,7 +294,7 @@ module.exports = {
         name: 'A8',
         type: '대형 세단',
         price: 13696,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3719/20191128_A8L%20(45).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -309,7 +309,7 @@ module.exports = {
         name: 'A7',
         type: '준대형 세단',
         price: 8924,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3537/RS7_20210729%20(10).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -324,7 +324,7 @@ module.exports = {
         name: 'A6',
         type: '준대형 세단',
         price: 6457,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3713/RS6_20210729%20(48).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -339,7 +339,7 @@ module.exports = {
         name: 'A5',
         type: '중형 세단',
         price: 5701,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3900/210708_20210701%20(53).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -354,7 +354,7 @@ module.exports = {
         name: 'A4',
         type: '중형 세단',
         price: 4936,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3899/A195675_medium.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -369,7 +369,7 @@ module.exports = {
         name: 'e-tron',
         type: '대형 SUV',
         price: 9506,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3667/20190125_e-tron%20(32).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -384,7 +384,7 @@ module.exports = {
         name: 'Q8',
         type: '대형 SUV',
         price: 10244,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3715/20210611_RSQ8%20(63).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -399,7 +399,7 @@ module.exports = {
         name: 'Q7',
         type: '대형 SUV',
         price: 9129,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3739/20200515_Q7%20(9).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -414,7 +414,7 @@ module.exports = {
         name: 'Q5',
         type: '중형 SUV',
         price: 6410,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4074/210610_ex%20(18).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
