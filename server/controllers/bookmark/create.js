@@ -6,7 +6,7 @@ require('dotenv').config();
 module.exports = async (req, res) => {
   const authorization = req.headers.authorization;
   if (!authorization) {
-    res.status(403).send({message: '로그인이 필요합니다'});
+    res.status(403).json({message: '로그인이 필요합니다'});
   } else {
     const token = req.headers.authorization.split('Bearer ')[1];
     const data = jwt.verify(token, process.env.ACCESS_SECRET);
