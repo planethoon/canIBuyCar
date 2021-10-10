@@ -718,7 +718,7 @@ module.exports = {
         name: '소렌토',
         type: '중형 SUV',
         price: 2985,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3837/20210701%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -733,7 +733,7 @@ module.exports = {
         name: '스포티지',
         type: '중형 SUV',
         price: 2442,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4069/20210818%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -748,7 +748,7 @@ module.exports = {
         name: '카니발',
         type: '대형 MPV',
         price: 3180,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3910/20210712%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -763,7 +763,7 @@ module.exports = {
         name: 'k8',
         type: '준대형 세단',
         price: 2755,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4017/20210930_4017%20(21).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -778,7 +778,7 @@ module.exports = {
         name: 'k5',
         type: '중형 세단',
         price: 2100,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3742/20210624%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -793,7 +793,7 @@ module.exports = {
         name: 'ev6',
         type: '중형 Suv',
         price: 4630,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4022/20210604%20(41).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -808,7 +808,7 @@ module.exports = {
         name: '셀토스',
         type: '소형 SUV',
         price: 1944,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3699/20190626%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -823,7 +823,7 @@ module.exports = {
         name: 'k3',
         type: '준중형 세단',
         price: 1738,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4057/20210414%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -838,7 +838,7 @@ module.exports = {
         name: '스팅어',
         type: '중형 세단',
         price: 3853,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3985/20210906%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -853,7 +853,7 @@ module.exports = {
         name: '모닝',
         type: '경차',
         price: 1175,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3871/20200513%20(4).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
