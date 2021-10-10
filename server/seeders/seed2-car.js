@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const carList = [
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'Mybach GLS',
         type: '대형 SUV',
         price: 25660,
@@ -19,7 +19,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'The new Maybach',
         type: '대형 세단',
         price: 26060,
@@ -34,7 +34,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'S-Class',
         type: '대형 세단',
         price: 13460,
@@ -49,7 +49,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'GLS-Class',
         type: '대형 SUV',
         price: 13860,
@@ -64,7 +64,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'The New AMG GT',
         type: '스포츠카',
         price: 17960,
@@ -79,7 +79,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'G-Class',
         type: '대형 SUV',
         price: 16060,
@@ -94,7 +94,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'GLA-Class',
         type: '소형 SUV',
         price: 5260,
@@ -109,7 +109,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'AMG GT',
         type: '스포츠카',
         price: 13660,
@@ -124,7 +124,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'E-Class',
         type: '준대형 세단',
         price: 6920,
@@ -139,7 +139,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'CLS-Class',
         type: '준대형 세단',
         price: 8770,
@@ -154,7 +154,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'CLA-Class',
         type: '준준형 세단',
         price: 5450,
@@ -169,7 +169,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'The new S-Class',
         type: '준대형 세단',
         price: 13760,
@@ -184,7 +184,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'C-Class',
         type: '중형 세단',
         price: 5080,
@@ -199,7 +199,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'A-Class',
         type: '준중형 세단',
         price: 3940,
@@ -214,7 +214,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'GLE-Class',
         type: '대형 SUV',
         price: 9970,
@@ -229,7 +229,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'GLC-Class',
         type: '중형 SUV',
         price: 6900,
@@ -244,7 +244,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'GLB-Class',
         type: '소형 SUV',
         price: 5270,
@@ -259,7 +259,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '벤츠',
+        brand: 'BENZ',
         name: 'The New E-Class',
         type: '준대형 세단',
         price: 6450,
@@ -275,7 +275,7 @@ module.exports = {
       },
 
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'R8',
         type: '스포츠카',
         price: 25569,
@@ -290,7 +290,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'A8',
         type: '대형 세단',
         price: 13696,
@@ -305,7 +305,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'A7',
         type: '준대형 세단',
         price: 8924,
@@ -320,7 +320,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'A6',
         type: '준대형 세단',
         price: 6457,
@@ -335,7 +335,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'A5',
         type: '중형 세단',
         price: 5701,
@@ -350,7 +350,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'A4',
         type: '중형 세단',
         price: 4936,
@@ -365,7 +365,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'e-tron',
         type: '대형 SUV',
         price: 9506,
@@ -380,7 +380,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'Q8',
         type: '대형 SUV',
         price: 10244,
@@ -395,7 +395,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'Q7',
         type: '대형 SUV',
         price: 9129,
@@ -410,7 +410,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '아우디',
+        brand: 'AUDI',
         name: 'Q5',
         type: '중형 SUV',
         price: 6410,
@@ -426,7 +426,7 @@ module.exports = {
       },
 
       {
-        brand: '제네시스',
+        brand: 'GENESIS',
         name: 'g90',
         type: '대형 세단',
         price: 15757,
@@ -441,7 +441,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '제네시스',
+        brand: 'GENESIS',
         name: 'g80',
         type: '준대형 세단',
         price: 8281,
@@ -456,7 +456,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '제네시스',
+        brand: 'GENESIS',
         name: 'gv60',
         type: '소형 SUV',
         price: 6975,
@@ -471,7 +471,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '제네시스',
+        brand: 'GENESIS',
         name: 'gv80',
         type: '대형 SUV',
         price: 7284,
@@ -486,7 +486,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '제네시스',
+        brand: 'GENESIS',
         name: 'gv70',
         type: '중형 SUV',
         price: 6038,
@@ -501,7 +501,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '제네시스',
+        brand: 'GENESIS',
         name: 'g70',
         type: '중형 세단',
         price: 5105,
@@ -517,7 +517,7 @@ module.exports = {
       },
 
       {
-        brand: '포르쉐',
+        brand: 'PORSCHE',
         name: '파나메라',
         type: '스포츠카',
         price: 29520,
@@ -532,7 +532,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '포르쉐',
+        brand: 'PORSCHE',
         name: '911',
         type: '스포츠카',
         price: 29390,
@@ -547,7 +547,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '포르쉐',
+        brand: 'PORSCHE',
         name: '타이칸',
         type: '스포츠카',
         price: 23760,
@@ -562,7 +562,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '포르쉐',
+        brand: 'PORSCHE',
         name: '카이엔',
         type: '대형 SUV',
         price: 23410,
@@ -577,7 +577,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '포르쉐',
+        brand: 'PORSCHE',
         name: '박스터',
         type: '스포츠카',
         price: 13310,
@@ -592,7 +592,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '포르쉐',
+        brand: 'PORSCHE',
         name: '카이멘',
         type: '스포츠카',
         price: 11690,
@@ -607,7 +607,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '포르쉐',
+        brand: 'PORSCHE',
         name: '마칸',
         type: '대형 SUV',
         price: 10190,
@@ -623,7 +623,7 @@ module.exports = {
       },
 
       {
-        brand: '캐딜락',
+        brand: 'CADILLAC',
         name: '에스컬레이드',
         type: '대형 SUV',
         price: 15357,
@@ -638,7 +638,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '캐딜락',
+        brand: 'CADILLAC',
         name: 'xt6',
         type: '대형 SUV',
         price: 8391,
@@ -653,7 +653,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '캐딜락',
+        brand: 'CADILLAC',
         name: 'xt5',
         type: '대형 SUV',
         price: 7582,
@@ -668,7 +668,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '캐딜락',
+        brand: 'CADILLAC',
         name: 'ct5',
         type: '준대형 세단',
         price: 5921,
@@ -683,7 +683,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '캐딜락',
+        brand: 'CADILLAC',
         name: 'xt4',
         type: '중형 SUV',
         price: 5531,
@@ -698,7 +698,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '캐딜락',
+        brand: 'CADILLAC',
         name: 'ct4',
         type: '중형 세단',
         price: 4935,
@@ -714,7 +714,7 @@ module.exports = {
       },
 
       {
-        brand: '기아',
+        brand: 'KIA',
         name: '소렌토',
         type: '중형 SUV',
         price: 2985,
@@ -729,7 +729,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '기아',
+        brand: 'KIA',
         name: '스포티지',
         type: '중형 SUV',
         price: 2442,
@@ -744,7 +744,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '기아',
+        brand: 'KIA',
         name: '카니발',
         type: '대형 MPV',
         price: 3180,
@@ -759,7 +759,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '기아',
+        brand: 'KIA',
         name: 'k8',
         type: '준대형 세단',
         price: 2755,
@@ -774,7 +774,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '기아',
+        brand: 'KIA',
         name: 'k5',
         type: '중형 세단',
         price: 2100,
@@ -789,7 +789,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '기아',
+        brand: 'KIA',
         name: 'ev6',
         type: '중형 Suv',
         price: 4630,
@@ -804,7 +804,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '기아',
+        brand: 'KIA',
         name: '셀토스',
         type: '소형 SUV',
         price: 1944,
@@ -819,7 +819,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '기아',
+        brand: 'KIA',
         name: 'k3',
         type: '준중형 세단',
         price: 1738,
@@ -834,7 +834,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '기아',
+        brand: 'KIA',
         name: '스팅어',
         type: '중형 세단',
         price: 3853,
@@ -849,7 +849,7 @@ module.exports = {
           .replace(/\..+/, ''),
       },
       {
-        brand: '기아',
+        brand: 'KIA',
         name: '모닝',
         type: '경차',
         price: 1175,
@@ -1126,7 +1126,7 @@ module.exports = {
         name: '팰리세이드',
         type: '대형 SUV',
         price: 3606,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3563/200506_palisade1.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1141,7 +1141,7 @@ module.exports = {
         name: '그랜저',
         type: '준대형 세단',
         price: 2731,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3737/20210512_grandeur%20(4).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1156,7 +1156,7 @@ module.exports = {
         name: '소나타',
         type: '중형 세단',
         price: 2150,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3652/20210421%20(4).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1171,7 +1171,7 @@ module.exports = {
         name: '산타페',
         type: '중형 SUV',
         price: 2975,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3853/satafeHEV_210701%20(3).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1186,7 +1186,7 @@ module.exports = {
         name: '투싼',
         type: '중형 SUV',
         price: 2435,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3820/20200916_tucson_ex-(10).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1201,7 +1201,7 @@ module.exports = {
         name: '캐스퍼',
         type: '경차',
         price: 1385,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4086/210901_casper%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1216,7 +1216,7 @@ module.exports = {
         name: '베뉴',
         type: '소형 SUV',
         price: 1662,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3654/20201022_venue%20(3).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1231,7 +1231,7 @@ module.exports = {
         name: '코나',
         type: '소형 SUV',
         price: 1962,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3988/200902_kona%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1246,7 +1246,7 @@ module.exports = {
         name: '아이오닉5',
         type: '중형 SUV',
         price: 4695,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4013/210226_ioniq5.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1262,7 +1262,7 @@ module.exports = {
         name: 'XM3',
         type: '소형 SUV',
         price: 2641,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3701/20190408%20(3).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1277,22 +1277,7 @@ module.exports = {
         name: 'SM6',
         type: '중형 세단',
         price: 3387,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'RENAULTSAMSUNG',
-        name: 'QM5',
-        type: '중형 SUV',
-        price: 3320,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3979/20200716%20(5).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1307,7 +1292,7 @@ module.exports = {
         name: 'QM6',
         type: '중형 SUV',
         price: 3908,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4008/20201106%20(21).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1317,52 +1302,6 @@ module.exports = {
           .replace(/T/, ' ')
           .replace(/\..+/, ''),
       },
-      {
-        brand: 'RENAULTSAMSUNG',
-        name: 'SM5',
-        type: '중형 세단',
-        price: 2155,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'RENAULTSAMSUNG',
-        name: 'SM3 Z.E.',
-        type: '중형 세단',
-        price: 4090,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'RENAULTSAMSUNG',
-        name: 'SM7',
-        type: '대형 세단',
-        price: 3302,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-
       {
         brand: 'MASERATI',
         name: '르반떼',
