@@ -8,7 +8,7 @@ module.exports = {
         name: 'Mybach GLS',
         type: '대형 SUV',
         price: 25660,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3823/20210930_3823%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -23,7 +23,7 @@ module.exports = {
         name: 'The new Maybach',
         type: '대형 세단',
         price: 26060,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4011/20210930_4011%20(3).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -38,7 +38,7 @@ module.exports = {
         name: 'S-Class',
         type: '대형 세단',
         price: 13460,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3511/003.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -53,7 +53,7 @@ module.exports = {
         name: 'GLS-Class',
         type: '대형 SUV',
         price: 13860,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3693/20200219%20(8).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -68,7 +68,7 @@ module.exports = {
         name: 'The New AMG GT',
         type: '스포츠카',
         price: 17960,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3982/20210901%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -83,7 +83,7 @@ module.exports = {
         name: 'G-Class',
         type: '대형 SUV',
         price: 16060,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3753/20190816%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -98,7 +98,7 @@ module.exports = {
         name: 'GLA-Class',
         type: '소형 SUV',
         price: 5260,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3832/20200429%20(27).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -113,7 +113,7 @@ module.exports = {
         name: 'AMG GT',
         type: '스포츠카',
         price: 13660,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3211/20201111%20(6).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -128,7 +128,7 @@ module.exports = {
         name: 'E-Class',
         type: '준대형 세단',
         price: 6920,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3331/18C0338_003.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -143,7 +143,7 @@ module.exports = {
         name: 'CLS-Class',
         type: '준대형 세단',
         price: 8770,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3582/18C0160_041.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -158,7 +158,7 @@ module.exports = {
         name: 'CLA-Class',
         type: '준준형 세단',
         price: 5450,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3704/20201027%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -173,7 +173,7 @@ module.exports = {
         name: 'The new S-Class',
         type: '준대형 세단',
         price: 13760,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3992/20210806%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -188,7 +188,7 @@ module.exports = {
         name: 'C-Class',
         type: '중형 세단',
         price: 5080,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3636/20181120%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -203,7 +203,7 @@ module.exports = {
         name: 'A-Class',
         type: '준중형 세단',
         price: 3940,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3691/20190328_B_3.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -218,7 +218,7 @@ module.exports = {
         name: 'GLE-Class',
         type: '대형 SUV',
         price: 9970,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3693/20200219%20(5).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -233,7 +233,7 @@ module.exports = {
         name: 'GLC-Class',
         type: '중형 SUV',
         price: 6900,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3707/20190418_a_4.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -248,7 +248,7 @@ module.exports = {
         name: 'GLB-Class',
         type: '소형 SUV',
         price: 5270,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3733/20191127%20(53).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -263,7 +263,7 @@ module.exports = {
         name: 'The New E-Class',
         type: '준대형 세단',
         price: 6450,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3757/20200304%20(32).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1593,28 +1593,30 @@ module.exports = {
 
     await queryInterface.bulkInsert('Cars', carList, {});
 
-    const users = await queryInterface.sequelize.query(`SELECT id FROM Users;`)
-    const car = await queryInterface.sequelize.query(`SELECT id FROM Cars WHERE brand='TESLA';`)
-    const usersRows = users[0]
-    const carRows = car[0]
+    const users = await queryInterface.sequelize.query(`SELECT id FROM Users;`);
+    const car = await queryInterface.sequelize.query(
+      `SELECT id FROM Cars WHERE brand='TESLA';`
+    );
+    const usersRows = users[0];
+    const carRows = car[0];
 
-    const userCar = []
-    for(let i = 0; i < usersRows.length; i++) {
+    const userCar = [];
+    for (let i = 0; i < usersRows.length; i++) {
       let result = {
         userId: usersRows[i].id,
         carId: carRows[i].id,
         createdAt: new Date()
-        .toISOString()
-        .replace(/T/, ' ')
-        .replace(/\..+/, ''),
+          .toISOString()
+          .replace(/T/, ' ')
+          .replace(/\..+/, ''),
         updatedAt: new Date()
-        .toISOString()
-        .replace(/T/, ' ')
-        .replace(/\..+/, ''),
-      }
-      userCar.push(result)
+          .toISOString()
+          .replace(/T/, ' ')
+          .replace(/\..+/, ''),
+      };
+      userCar.push(result);
     }
-    await queryInterface.bulkInsert('Users_cars', userCar)
+    await queryInterface.bulkInsert('Users_cars', userCar);
   },
 
   down: async (queryInterface, Sequelize) => {
