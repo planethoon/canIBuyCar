@@ -4,10 +4,10 @@ import StyledLink from './StyledLink';
 const NaviBar = styled.div`
   box-sizing: border-box;
   height: 7vh;
-  background-color: skyblue;
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: white;
 `;
 
 const TitleText = styled.span`
