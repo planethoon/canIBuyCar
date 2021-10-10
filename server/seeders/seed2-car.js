@@ -866,10 +866,10 @@ module.exports = {
 
       {
         brand: 'BMW',
-        name: '2Series',
+        name: '2시리즈',
         type: '준중형 세단',
         price: 4200,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3803/20210707%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -881,10 +881,10 @@ module.exports = {
       },
       {
         brand: 'BMW',
-        name: '3Series',
+        name: '3시리즈',
         type: '중형 세단',
         price: 5170,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3520/20201209%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -896,10 +896,10 @@ module.exports = {
       },
       {
         brand: 'BMW',
-        name: '4Series',
+        name: '4시리즈',
         type: '중형 세단',
         price: 5930,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3905/20210609%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -911,10 +911,10 @@ module.exports = {
       },
       {
         brand: 'BMW',
-        name: '5Series',
+        name: '5시리즈',
         type: '준대형 세단',
         price: 6410,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3901/20201019%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -926,10 +926,10 @@ module.exports = {
       },
       {
         brand: 'BMW',
-        name: '6Series',
+        name: '6시리즈',
         type: '준대형 세단',
         price: 8210,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3902/20201019%20(3).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -941,10 +941,10 @@ module.exports = {
       },
       {
         brand: 'BMW',
-        name: '7Series',
+        name: '7시리즈',
         type: '대형 세단',
         price: 13870,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3663/20210420%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -959,7 +959,7 @@ module.exports = {
         name: 'x3',
         type: '중형 SUV',
         price: 6410,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3499/20200812%20(9).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -974,7 +974,7 @@ module.exports = {
         name: 'x5',
         type: '대형 SUV',
         price: 10140,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3577/20210714%20(4).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -989,7 +989,7 @@ module.exports = {
         name: 'x7',
         type: '대형 SUV',
         price: 12630,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3665/20210714%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1004,7 +1004,7 @@ module.exports = {
         name: 'm5',
         type: '스포츠카',
         price: 16180,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3914/20210419%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1019,7 +1019,7 @@ module.exports = {
         name: 'm3',
         type: '스포츠카',
         price: 12170,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3998/20210420.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1034,7 +1034,7 @@ module.exports = {
         name: 'm8',
         type: '스포츠카',
         price: 23670,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3800/20191113%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1050,7 +1050,7 @@ module.exports = {
         name: 'modelS',
         type: '준대형 세단',
         price: 1199,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4043/20210312%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1065,7 +1065,7 @@ module.exports = {
         name: 'model3',
         type: '준중형 세단',
         price: 5479,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3408/20160826(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1080,7 +1080,7 @@ module.exports = {
         name: 'modelX',
         type: '대형 SUV',
         price: 1299,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4027/20210312%20(14).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1095,7 +1095,7 @@ module.exports = {
         name: 'modelY',
         type: '중형 SUV',
         price: 5999,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3687/20190327%20(5).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1111,7 +1111,7 @@ module.exports = {
         name: '아반떼',
         type: '준중형 세단',
         price: 1570,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3821/200813_avante_hybrid-(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
