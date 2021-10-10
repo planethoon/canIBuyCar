@@ -4,6 +4,7 @@ import BrandPage from './pages/Brand';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Mypage from './pages/Mypage';
+import Request from './pages/Request';
 import './reset.css';
 import { Switch, Route } from 'react-router-dom';
 
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path='/mypage'>
           <Mypage />
+        </Route>
+        <Route path='/request'>
+          <Request />
         </Route>
       </Switch>
     </>
