@@ -430,7 +430,7 @@ module.exports = {
         name: 'g90',
         type: '대형 세단',
         price: 15757,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3602/20200626_G90-(1-2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -445,7 +445,7 @@ module.exports = {
         name: 'g80',
         type: '준대형 세단',
         price: 8281,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3656/20210611_g80ev%20(5).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -460,7 +460,7 @@ module.exports = {
         name: 'gv60',
         type: '소형 SUV',
         price: 6975,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4015/20210916_4015%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -475,7 +475,7 @@ module.exports = {
         name: 'gv80',
         type: '대형 SUV',
         price: 7284,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3657/200115_GV80-(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -490,7 +490,7 @@ module.exports = {
         name: 'gv70',
         type: '중형 SUV',
         price: 6038,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3849/gv70_20201208%20(3).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -505,7 +505,7 @@ module.exports = {
         name: 'g70',
         type: '중형 세단',
         price: 5105,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3995/4.jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
