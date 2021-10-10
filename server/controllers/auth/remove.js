@@ -5,7 +5,7 @@ require('dotenv').config();
 module.exports = async (req, res) => {
   const authorization = req.headers.authorization;
   if (!authorization) {
-    res.status(401).send({message: '회원탈퇴 실패'});
+    res.status(401).json({message: '회원탈퇴 실패'});
   } else {
     const token = req.headers.authorization.split('Bearer ')[1];
     const data = jwt.verify(token, process.env.ACCESS_SECRET);
@@ -13,13 +13,12 @@ module.exports = async (req, res) => {
       where: {email: data.email},
     });
     if (userInfo) {
-      // 데이터베이스 해당 정보 삭제
       User.destroy({
         where: {email: userInfo.email},
       });
-      res.status(204).send()
+      res.sendStatus(204);
     } else {
-      res.status(401).send({message: '회원탈퇴 실패'});
+      res.status(401).json({message: '회원탈퇴 실패'});
     }
   }
 };

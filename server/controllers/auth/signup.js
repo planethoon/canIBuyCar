@@ -11,7 +11,5 @@ module.exports = async (req, res) => {
   const userId = await User.create({email, password, username}).then(
     (data) => data.dataValues.id
   );
-  console.log(userId);
-
   res.json({data: {userId}});
 };
