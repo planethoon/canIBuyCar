@@ -627,7 +627,7 @@ module.exports = {
         name: '에스컬레이드',
         type: '대형 SUV',
         price: 15357,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3850/202106%20(1).JPG?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -642,7 +642,7 @@ module.exports = {
         name: 'xt6',
         type: '대형 SUV',
         price: 8391,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3860/20200317%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -657,7 +657,7 @@ module.exports = {
         name: 'xt5',
         type: '대형 SUV',
         price: 7582,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3866/20200401%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -672,7 +672,7 @@ module.exports = {
         name: 'ct5',
         type: '준대형 세단',
         price: 5921,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3709/20190419%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -687,7 +687,7 @@ module.exports = {
         name: 'xt4',
         type: '중형 SUV',
         price: 5531,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4036/210321%20(11).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -702,7 +702,7 @@ module.exports = {
         name: 'ct4',
         type: '중형 세단',
         price: 4935,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3774/20190916%20(12).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
