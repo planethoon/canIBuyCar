@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import StyledDiv from "../components/StyledDiv";
 import ContentContainer from "../components/ContentContainer";
 import BookmarkButton from "../components/BookmarkButton";
+import { Link } from "react-router-dom";
+import StyledLink from "../components/StyledLink";
 
 const Background = styled.div`
   height: 100vh;
@@ -31,15 +33,15 @@ const Logo = styled.div`
 
 const Search = styled.input`
   height: 2rem;
-  width: 15rem;
+  width: 80%;
   margin-bottom: 1rem;
   text-align: center;
 `;
 
 const BrandWrapper = styled.div`
   border: 3px solid black;
-  height: 20rem;
-  width: 15rem;
+  height: 55%;
+  width: 80%;
   overflow-y: auto;
   overflow-x: hidden;
 `;
@@ -89,29 +91,38 @@ const CarBox = styled.div`
   height: 15rem;
   width: 15rem;
   border: 1px solid black;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-  transition: 1s;
+  position: relative;
 
   > span,
   div {
-    display: none;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
   }
 
   > div {
-    align-self: flex-start;
-    justify-self: center;
+    top: 0;
+    left: 0;
   }
 
-  > img {
-    max-width: 100%;
+  > span {
+    bottom: 3px;
+    right: 5px;
+  }
+
+  > Link,
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
   }
 
   &:hover > span,
   &:hover > div {
-    display: inline;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s;
   }
 `;
 
@@ -150,113 +161,95 @@ export default function Brand() {
           <CarContainer>
             {isLoading ? (
               <>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
+                <CarBox>
+                  <Link to="/car">
+                    <img src={backgroundimage} alt="" />
+                  </Link>
                   <BookmarkButton />
-                  <span>CarName</span>
-                </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <BookmarkButton />
-                  <span>CarName</span>
-                </CarBox>
-                <CarBox
-                  style={{
-                    backgroundImage: `url(${backgroundimage})`,
-                    backgroundSize: "cover",
-                  }}
-                >
-                  <BookmarkButton />
-                  <span>CarName</span>
+                  <span>
+                    <StyledLink to="/car">CarName</StyledLink>
+                  </span>
                 </CarBox>
               </>
             ) : (

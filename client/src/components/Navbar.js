@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import StyledLink from './StyledLink';
+import styled from "styled-components";
+import StyledLink from "./StyledLink";
 
 const NaviBar = styled.div`
   box-sizing: border-box;
@@ -8,6 +8,10 @@ const NaviBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  /* 
+  @media only screen and (min-height: 900px) {
+    height: 3.5rem;
+  } */
 `;
 
 const TitleText = styled.span`
@@ -33,17 +37,17 @@ export default function Navbar() {
     <>
       <NaviBar>
         <TitleText>
-          <StyledLink to='/main'>canIBuyCar</StyledLink>
+          <StyledLink to="/main">canIBuyCar</StyledLink>
         </TitleText>
         <BtnContainer>
-          <StyledLink to='/signin'>
+          <StyledLink to="/signin">
             <NaviBtn>Sign In</NaviBtn>
           </StyledLink>
-          <StyledLink to='/mypage'>
+          <StyledLink to="/mypage">
             <NaviBtn>Mypage</NaviBtn>
           </StyledLink>
-          <StyledLink to='/request'>
-            <NaviBtn>Request</NaviBtn>
+          <StyledLink to="/comments">
+            <NaviBtn>Comments</NaviBtn>
           </StyledLink>
         </BtnContainer>
       </NaviBar>
