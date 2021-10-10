@@ -4,14 +4,17 @@ import StyledLink from "./StyledLink";
 const NaviBar = styled.div`
   box-sizing: border-box;
   height: 7vh;
-  background-color: skyblue;
   display: flex;
   flex-direction: row;
   align-items: center;
+<<<<<<< HEAD
   /* 
   @media only screen and (min-height: 900px) {
     height: 3.5rem;
   } */
+=======
+  background-color: white;
+>>>>>>> 4f6fa43e0a546d3dcfd9ca41a456bb2600ccdc8a
 `;
 
 const TitleText = styled.span`
@@ -43,7 +46,11 @@ export default function Navbar() {
           <StyledLink to="/signin">
             <NaviBtn>Sign In</NaviBtn>
           </StyledLink>
+<<<<<<< HEAD
           <StyledLink to="/mypage">
+=======
+          <StyledLink to='/mypage/car'>
+>>>>>>> 4f6fa43e0a546d3dcfd9ca41a456bb2600ccdc8a
             <NaviBtn>Mypage</NaviBtn>
           </StyledLink>
           <StyledLink to="/comments">

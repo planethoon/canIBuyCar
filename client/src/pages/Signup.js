@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import StyledButton from '../components/StyledButton';
 import StyledDiv from '../components/StyledDiv';
 import StyledInput from '../components/StyledInput';
+import StyledLink from '../components/StyledLink';
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -41,7 +42,7 @@ const InputEmailContainer = styled(StyledDiv)`
 
 const EmailBox = styled(StyledDiv)`
   height: 2rem;
-  width: 3rem;
+  width: 3.5rem;
 `;
 
 const InputEmailBox = styled(StyledInput)``;
@@ -71,6 +72,10 @@ const CapcharBox = styled(StyledDiv)`
   background-color: gray;
 `;
 
+const ButtonContainer = styled(StyledDiv)``;
+
+const BackBtn = styled(StyledButton)``;
+
 const SignupBtn = styled(StyledButton)``;
 
 export default function Signup() {
@@ -98,7 +103,12 @@ export default function Signup() {
             </InputCheckPWContainer>
           </InfoBox>
           <CapcharBox>Capchar</CapcharBox>
-          <SignupBtn>Sign up </SignupBtn>
+          <ButtonContainer>
+            <StyledLink to='/signin'>
+              <BackBtn>Back</BackBtn>
+            </StyledLink>
+            <SignupBtn>Sign up </SignupBtn>
+          </ButtonContainer>
         </InnerContainer>
       </OuterContainer>
     </Background>
