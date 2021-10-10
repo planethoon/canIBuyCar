@@ -1347,28 +1347,12 @@ module.exports = {
           .replace(/T/, ' ')
           .replace(/\..+/, ''),
       },
-
       {
         brand: 'BENTLEY',
         name: '벤테이가',
         type: '대형 SUV',
         price: 27800,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'BENTLEY',
-        name: '벤테이가 F/L',
-        type: '대형 SUV',
-        price: 30900,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/4024/20210121_bentayga%20(11).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1383,22 +1367,7 @@ module.exports = {
         name: '플라잉스퍼',
         type: '대형 세단',
         price: 32300,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'BENTLEY',
-        name: '뮬란',
-        type: '대형 세단',
-        price: 50500,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3857/20201110_flyingspur%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1413,52 +1382,7 @@ module.exports = {
         name: '컨티넨탈 세단',
         type: '대형 세단',
         price: 30600,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'BENTLEY',
-        name: '컨티넨탈 GT3-R 쿠페',
-        type: '대형 쿠페',
-        price: 38300,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'BENTLEY',
-        name: '컨티넨탈 쿠페',
-        type: '대형 쿠페',
-        price: 29000,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'BENTLEY',
-        name: '컨티넨탈 컨버터블',
-        type: '대형 컨버터블',
-        price: 31200,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3779/20190919_GT_V8%20(3).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
