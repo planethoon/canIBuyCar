@@ -1307,7 +1307,7 @@ module.exports = {
         name: '르반떼',
         type: '준대형 SUV',
         price: 23910,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3371/20210701%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1322,7 +1322,7 @@ module.exports = {
         name: '기블리',
         type: '준대형 세단',
         price: 18050,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3530/20210426%20(2).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
@@ -1337,67 +1337,7 @@ module.exports = {
         name: '콰트로포르테',
         type: '대형 세단',
         price: 24000,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'MASERATI',
-        name: '콰트로포르테 GTS',
-        type: '대형 세단',
-        price: 24550,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'MASERATI',
-        name: '그란투리스모 스포트',
-        type: '대형 쿠페',
-        price: 23630,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'MASERATI',
-        name: '그란투리스모',
-        type: '스포츠 쿠페',
-        price: 21770,
-        img: '#',
-        createdAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-        updatedAt: new Date()
-          .toISOString()
-          .replace(/T/, ' ')
-          .replace(/\..+/, ''),
-      },
-      {
-        brand: 'MASERATI',
-        name: '그란카브리오',
-        type: '스포츠 쿠페',
-        price: 25090,
-        img: '#',
+        img: 'https://autoimg.danawa.com/gallery/3420/20200507%20(1).jpg?resize=1200:*',
         createdAt: new Date()
           .toISOString()
           .replace(/T/, ' ')
