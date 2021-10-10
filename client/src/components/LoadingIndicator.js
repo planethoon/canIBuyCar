@@ -46,6 +46,7 @@ export default function LoadingIndicator() {
       <div />
       <div />
       <div />
+      <div />
     </Indicator>
   );
 }
