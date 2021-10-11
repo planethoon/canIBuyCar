@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import {useEffect, useState} from "react";
-import {useParams} from "react-router";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import axios from "axios";
 
 //redux
-import {useSelector, useDispatch} from "react-redux";
-import {getInfo as getBrandInfo} from "../modules/brand";
-import {getInfo as getUserInfo} from "../modules/userInfo";
-import {getInfo as getCarInfo} from "../modules/carInfo";
-import {logo} from "../img/brandLogo";
+import { useSelector, useDispatch } from "react-redux";
+import { getInfo as getBrandInfo } from "../modules/brand";
+import { getInfo as getUserInfo } from "../modules/userInfo";
+import { getInfo as getCarInfo } from "../modules/carInfo";
+import { logo } from "../img/brandLogo";
 
 import Navbar from "../components/Navbar";
 import LoadingIndicator from "../components/LoadingIndicator";
@@ -16,7 +16,7 @@ import Footer from "../components/Footer";
 import StyledDiv from "../components/StyledDiv";
 import ContentContainer from "../components/ContentContainer";
 import BookmarkButton from "../components/BookmarkButton";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import StyledLink from "../components/StyledLink";
 
 const Background = styled.div`
@@ -150,9 +150,9 @@ const LinkText = styled(StyledLink)`
 export default function Brand() {
   const [isLoading, getIsLoading] = useState(true);
 
-  const {selected} = useParams();
+  const { selected } = useParams();
 
-  const {isLogin, brand, userInfo, carInfo} = useSelector((state) => ({
+  const { isLogin, brand, userInfo, carInfo } = useSelector((state) => ({
     isLogin: state.loginReducer,
     brand: state.brandReducer,
     userInfo: state.userInfoReducer,
@@ -166,17 +166,21 @@ export default function Brand() {
   };
   // console.log(brand);
   useEffect(() => {
+    // 회원 정보 확인
+    axios.get(`http://localhost:8080/`);
+
+    // 데이터 표기
     axios
       .get(`http://localhost:8080/car?brand=${selected}`, {
         withCredentials: true,
       })
       .then((res) => {
-        const {carData, bookmarkData} = res.data.data;
+        const { carData, bookmarkData } = res.data.data;
         if (isLogin) {
           const filtered = bookmarkData.filter(
             (e) => e.userId === userInfo.userId
           );
-          dispatch(getUserInfo({bookmark: filtered}));
+          dispatch(getUserInfo({ bookmark: filtered }));
         }
         dispatch(getBrandInfo(carData));
       })
@@ -214,7 +218,7 @@ export default function Brand() {
                     <Link to={`/car/${selected}-${e.id}`}>
                       <img src={e.img} alt={e.name} />
                     </Link>
-                    <BookmarkButton />
+                    <BookmarkButton carId={e.id} bookmark={userInfo.bookmark} />
                     <span>
                       <LinkText to={`/car/${selected}-${e.id}`}>
                         {e.name}
