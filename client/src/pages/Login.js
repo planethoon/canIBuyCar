@@ -3,6 +3,8 @@ import StyledButton from '../components/StyledButton';
 import StyledDiv from '../components/StyledDiv';
 import StyledLink from '../components/StyledLink';
 import StyledInput from '../components/StyledInput';
+import { useState } from 'react';
+import axios from 'axios';
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -72,6 +74,25 @@ const LoginBtn = styled(StyledButton)``;
 const SocialLoginBtn = styled(StyledButton)``;
 
 export default function Login() {
+  const [loginInfo, setLoginInfo] = useState({
+    email: '',
+    password: '',
+  });
+  const handleInputValue = (key) => (e) => {
+    setLoginInfo({ ...loginInfo, [key]: e.target.value });
+  };
+  const handleLogin = () => {
+    const { email, password } = loginInfo;
+    axios
+      .post('http://localhost:8080/auth/login', { email, password }, { withCredentials: true })
+      .then((res) => {
+        console.log(email, password);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Background>
       <OuterContainer>
@@ -82,11 +103,11 @@ export default function Login() {
           <InfoBox>
             <InputEmailContainer>
               <EmailBox>Email</EmailBox>
-              <InputEmailBox />
+              <InputEmailBox type='email' onChange={handleInputValue('email')} />
             </InputEmailContainer>
             <InputPWContainer>
               <PWBox>PW</PWBox>
-              <InputPWBox />
+              <InputPWBox type='password' onChange={handleInputValue('password')} />
             </InputPWContainer>
           </InfoBox>
           <SignupContainer>
@@ -96,7 +117,7 @@ export default function Login() {
             </SignupBox>
           </SignupContainer>
           <ButtonContainer>
-            <LoginBtn>로그인</LoginBtn>
+            <LoginBtn onClick={handleLogin}>로그인</LoginBtn>
             <SocialLoginBtn>소셜 로그인</SocialLoginBtn>
           </ButtonContainer>
         </InnerContainer>
