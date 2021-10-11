@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 // import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 
-import { getInfo } from "../modules/userInfo";
-import { getInfo as BrandInfo } from "../modules/brand";
+import {logo} from "../img/brandLogo";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -36,6 +34,9 @@ const LogoBtn = styled.li`
   height: 10rem;
   width: 10rem;
   flex: 1 1 auto;
+  > img {
+    max-width: 100%;
+  }
 `;
 
 // const LogoImage = styled.img`
@@ -43,97 +44,23 @@ const LogoBtn = styled.li`
 // `
 
 export default function Main() {
-  const { brand, userInfo } = useSelector((state) => ({
-    brand: state.brandReducer,
-    userInfo: state.userInfoReducer,
-  }));
-  const dispatch = useDispatch();
-
-  // const [brandList, getBrandList] = useState();
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:8080/brand").then((res) => {
-  //     res.data
-  //     getBrandList()
-  //   });
-  // });
-
   return (
     <>
       <Background>
         <Navbar />
         <LogoContainer>
           <LogoWrapper>
-            {/* {brandList.map((brand)=>{
+            {logo.map((e) => {
               return (
-                <Link to="/brand">
-                  <LogoBtn onClick={()=>{getSelectedBrand(brand.name)}}>
-                    <LogoImage alt={brand.name} src={brand.img} />
-                  </LogoBtn>
-                </Link>
-              )
-            })} */}
-
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
-            <LogoOuter>
-              <Link to="/brand">
-                <LogoBtn />
-              </Link>
-            </LogoOuter>
+                <LogoOuter key={e[1]}>
+                  <Link to={`/brand/${e[0]}`}>
+                    <LogoBtn>
+                      <img src={e[1]} alt={e[0]} />
+                    </LogoBtn>
+                  </Link>
+                </LogoOuter>
+              );
+            })}
           </LogoWrapper>
         </LogoContainer>
       </Background>
