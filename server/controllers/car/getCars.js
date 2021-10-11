@@ -10,8 +10,6 @@ module.exports = async (req, res) => {
       res.status(404).json({message: '해당 제조사 차량을 찾을 수 없습니다'});
     } else {
       const carData = cars[0];
-      //carId: 805, carId: 806
-
       const query = `SELECT Users_cars.userId, Users_cars.carId from Users_cars
        INNER JOIN Cars ON Users_cars.carId = Cars.id
        WHERE brand='${brand}'`;
