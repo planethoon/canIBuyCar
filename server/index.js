@@ -11,11 +11,14 @@ sequelize.sync();
 
 app.use(express.json());
 
-const options = {
-  origin: '*',
-  Credential: true,
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: '*',
+  allowedHeaders: ['Content-type', 'Autorization'],
+  credentials: true,
 };
-app.use(cors(options));
+
+app.use(cors(corsOptions));
 
 app.use('/auth', authRouter);
 app.use('/car', carRouter);
