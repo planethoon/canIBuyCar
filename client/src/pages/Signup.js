@@ -5,6 +5,7 @@ import StyledInput from '../components/StyledInput';
 import StyledLink from '../components/StyledLink';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -63,6 +64,7 @@ export default function Signup() {
     var regExp = /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     return regExp.test(asValue);
   }
+
   function isPassword(asValue) {
     var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
     return regExp.test(asValue);
@@ -72,14 +74,15 @@ export default function Signup() {
     email: '',
     username: '',
     password: '',
-    check: '',
+    checkPW: '',
   });
 
   const [validation, setValidation] = useState({
-    email: false,
-    username: false,
-    password: false,
-    check: false,
+    email: true,
+    checkEmail: false,
+    username: true,
+    password: true,
+    checkPW: true,
   });
 
   useEffect(() => {
@@ -87,25 +90,37 @@ export default function Signup() {
       email: isEmail(signupInfo.email),
       username: true,
       password: isPassword(signupInfo.password),
-      check: signupInfo.password === signupInfo.check,
+      checkPW: signupInfo.password === signupInfo.checkPW && isPassword(signupInfo.password),
     });
+    console.log(signupInfo);
   }, [signupInfo]);
+
+  const handleOnblur = (key) => (e) => {
+    const email = signupInfo;
+    axios
+      .post('http://localhost:8080/auth/email', { email }) //
+      .then((res) => {
+        console.log(res.status);
+        if (res.status === 200) setValidation({ checkEmail: true });
+        if (res.status === 409) setValidation({ checkEmail: false });
+      })
+      .catch((err) => console.log(err));
+  };
 
   const handleInputValue = (key) => (e) => {
     setSignupInfo({ ...signupInfo, [key]: e.target.value });
   };
 
-  const isValid = validation.email && validation.username && validation.password && validation.check;
+  const isValid = validation.email && validation.username && validation.password && validation.checkPW && validation.checkEmail;
+
+  const history = useHistory();
 
   const handleSignup = () => {
     const { email, username, password } = signupInfo;
-    // if () { 유효성 검사
-    //   return;
-    // }
     axios
       .post('http://localhost:8080/auth/signup', { email, username, password }, { withCredentials: true })
       .then((res) => {
-        console.log(res.data);
+        history.push('/signup/complete');
       })
       .catch((err) => {
         console.log(err);
@@ -120,7 +135,7 @@ export default function Signup() {
             <InfoBox>
               <InputContainer>
                 <Box>Email</Box>
-                <StyledInput type='email' onChange={handleInputValue('email')} />
+                <StyledInput type='email' onBlur={handleOnblur('email')} onChange={handleInputValue('email')} />
                 {validation.email ? null : <ValidationBox>형식에 맞게 입력해주세요</ValidationBox>}
               </InputContainer>
               <InputContainer>
@@ -135,8 +150,8 @@ export default function Signup() {
               </InputContainer>
               <InputContainer>
                 <Box>Check</Box>
-                <StyledInput type='password' onChange={handleInputValue('check')} />
-                {validation.check ? <ValidationBox>비밀번호가 일치합니다</ValidationBox> : <ValidationBox>일치하지 않는 비밀번호 입니다</ValidationBox>}
+                <StyledInput type='password' onChange={handleInputValue('checkPW')} />
+                {validation.checkPW ? <ValidationBox>비밀번호가 일치합니다</ValidationBox> : <ValidationBox>일치하지 않는 비밀번호 입니다</ValidationBox>}
               </InputContainer>
             </InfoBox>
             {/* <CapcharBox>Capchar</CapcharBox> */}
@@ -148,9 +163,7 @@ export default function Signup() {
                 <StyledButton type='submit' onClick={handleSignup}>
                   회원가입
                 </StyledButton>
-              ) : (
-                <StyledButton>회원가입</StyledButton>
-              )}
+              ) : null}
             </StyledDiv>
           </form>
         </InnerContainer>

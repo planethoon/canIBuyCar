@@ -4,6 +4,7 @@ import BrandPage from "./pages/Brand";
 import CarPage from "./pages/Car";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import SignupComplete from "./pages/SignupComplete";
 import Mypage from "./pages/Mypage";
 import Comments from "./pages/Comments";
 import "./reset.css";
@@ -28,8 +29,11 @@ function App() {
         <Route path="/signin">
           <Login />
         </Route>
-        <Route path="/signup">
+        <Route exact path="/signup">
           <Signup />
+        </Route>
+        <Route path="/signup/complete">
+          <SignupComplete />
         </Route>
         <Route path="/mypage">
           <Mypage />
