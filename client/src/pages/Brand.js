@@ -1,5 +1,11 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import axios from "axios";
+
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import { getInfo as getBrandInfo } from "../modules/brand";
+import { getInfo as getUserInfo } from "../modules/userInfo";
 
 import Navbar from "../components/Navbar";
 import LoadingIndicator from "../components/LoadingIndicator";
@@ -128,13 +134,28 @@ const CarBox = styled.div`
 
 export default function Brand() {
   let backgroundimage = "https://via.placeholder.com/300x200";
+  const { isLogin, brand, userInfo } = useSelector((state) => ({
+    isLogin: state.loginReducer,
+    brand: state.brandReducer,
+    userInfo: state.userInfoReducer,
+  }));
+  console.log(isLogin, brand, userInfo);
+  const dispatch = useDispatch();
 
-  const [isLoading, getIsLoading] = useState(false);
+  const [isLoading, getIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      getIsLoading(true);
-    }, 1000);
+    axios.get("http://localhost:8080/car?brand=hyundai").then((res) => {
+      const { carData, bookmarkData } = res.data.data;
+      console.log(carData, bookmarkData);
+      dispatch(getBrandInfo({ carList: carData }));
+      if (isLogin) {
+        const filtered = bookmarkData.filter(
+          (e) => e.userId === userInfo.userId
+        );
+        dispatch(getUserInfo({ bookmark: filtered }));
+      }
+    });
   }, []);
 
   return (
@@ -144,9 +165,12 @@ export default function Brand() {
         <StyledDiv>
           <SideContainer>
             <Logo>
-              <img src={'https://via.placeholder.com/500'} alt='logo' />
+              <img src={"https://via.placeholder.com/500"} alt="logo" />
             </Logo>
-            <Search type='text' placeholder='찾고자 하는 차량을 입력해주세요.' />
+            <Search
+              type="text"
+              placeholder="찾고자 하는 차량을 입력해주세요."
+            />
             <BrandWrapper>
               <BrandList>
                 <BrandName>

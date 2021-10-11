@@ -7,7 +7,11 @@ const NaviBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+<<<<<<< HEAD
+  background-color: skyblue;
+=======
   background-color: white;
+>>>>>>> 55adea7005c96a6e20aadd97a884e3a697c8843e
   /* 
   @media only screen and (min-height: 900px) {
     height: 3.5rem;
@@ -43,7 +47,11 @@ export default function Navbar() {
           <StyledLink to='/signin'>
             <NaviBtn>Sign In</NaviBtn>
           </StyledLink>
+<<<<<<< HEAD
+          <StyledLink to="/mypage/car">
+=======
           <StyledLink to='/mypage'>
+>>>>>>> 55adea7005c96a6e20aadd97a884e3a697c8843e
             <NaviBtn>Mypage</NaviBtn>
           </StyledLink>
           <StyledLink to='/comments'>
