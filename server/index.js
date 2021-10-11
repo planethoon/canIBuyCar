@@ -22,4 +22,9 @@ app.use((req, res, next) => {
   res.sendStatus(404);
 });
 
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.sendStatus(500);
+});
+
 app.listen(8080);
