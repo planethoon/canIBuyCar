@@ -93,7 +93,6 @@ export default function Signup() {
       checkPW: signupInfo.password === signupInfo.checkPW && isPassword(signupInfo.password),
     });
     console.log(signupInfo);
-    console.log('와이러노');
   }, [signupInfo]);
 
   const handleOnblur = (key) => (e) => {
