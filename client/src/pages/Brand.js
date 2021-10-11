@@ -176,10 +176,11 @@ export default function Brand() {
       })
       .then((res) => {
         const { carData, bookmarkData } = res.data.data;
-        if (isLogin) {
+        if (!isLogin) {
           const filtered = bookmarkData.filter(
             (e) => e.userId === userInfo.userId
           );
+          console.log(filtered);
           dispatch(getUserInfo({ bookmark: filtered }));
         }
         dispatch(getBrandInfo(carData));
@@ -218,7 +219,11 @@ export default function Brand() {
                     <Link to={`/car/${selected}-${e.id}`}>
                       <img src={e.img} alt={e.name} />
                     </Link>
-                    <BookmarkButton carId={e.id} bookmark={userInfo.bookmark} />
+                    <BookmarkButton
+                      carId={e.id}
+                      bookmark={userInfo.bookmark}
+                      accessToken={userInfo.token}
+                    />
                     <span>
                       <LinkText to={`/car/${selected}-${e.id}`}>
                         {e.name}
