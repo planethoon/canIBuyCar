@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
       const comment = await Comment.findOne({
         where: {id: commentId},
       });
-      res.status(201).json({data: {comment}, message: '글 생성 성공'});
+      res.status(201).json({data: {comment}});
     } else {
       res.satus(400).json({message: '잘못된 요청입니다'});
     }

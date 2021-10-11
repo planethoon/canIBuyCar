@@ -13,6 +13,7 @@ module.exports = async (req, res) => {
     const userInfo = await User.findOne({
       where: {email: data.email},
     });
+
     const query = `SELECT Users_cars.carId FROM Users_cars 
     INNER JOIN Users ON (${userInfo.id} = Users_cars.userId)
     INNER JOIN Cars ON (${req.params.id} = Users_cars.carId);`;
@@ -20,7 +21,7 @@ module.exports = async (req, res) => {
 
     if (userInfo && findBookmark[0][0] !== undefined) {
       Users_car.destroy({
-        where: {carId: findBookmark[0][0].carId},
+        where: {carId: findBookmark[0][0].carId, userId: userInfo.id},
       });
       res.sendStatus(204);
     } else {
