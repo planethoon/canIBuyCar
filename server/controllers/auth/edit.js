@@ -13,13 +13,20 @@ module.exports = async (req, res) => {
       where: {email: data.email},
     });
     if (userInfo) {
-      // 데이터베이스 정보 수정
-      // User.update({
+      const query = `UPDATE Users SET username='${req.body.username}', password='${req.body.password}'
+      WHERE email='${userInfo.dataValues.email}';`
+      const editUser = await User.sequelize.query(query);
+      const user = userInfo.dataValues;
+      delete user.password;
 
-      // })
-      res
-        .status(200)
-        .json({data: {userId: userInfo.id}, message: '회원정보 수정 성공'});
+      const accessToken = jwt.sign(user, process.env.ACCESS_SECRET, {
+        expiresIn: '3d',
+      });
+      const refreshToken = jwt.sign(user, process.env.REFRESH_SECRET, {
+        expiresIn: '4d',
+      });
+      res.status(200).cookie('refreshToken', refreshToken, {httpOnly: true})
+      .json({data: {accessToken, userId: user.id, userName: user.username, message: '회원정보 수정 성공'}});
     } else {
       res.status(401).json({message: '회원정보 수정 실패'});
     }

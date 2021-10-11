@@ -10,7 +10,15 @@ const sequelize = require('./models').sequelize;
 sequelize.sync();
 
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: '*',
+  allowedHeaders: ['Content-type', 'Autorization'],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use('/auth', authRouter);
 app.use('/car', carRouter);
@@ -20,6 +28,11 @@ app.use('/comment', commentRouter);
 
 app.use((req, res, next) => {
   res.sendStatus(404);
+});
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.sendStatus(500);
 });
 
 app.listen(8080);

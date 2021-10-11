@@ -5,7 +5,7 @@ import CarPage from "./pages/Car";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Mypage from "./pages/Mypage";
-import Request from "./pages/Request";
+import Comments from "./pages/Comments";
 import "./reset.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -34,8 +34,8 @@ function App() {
         <Route path="/mypage">
           <Mypage />
         </Route>
-        <Route path="/request">
-          <Request />
+        <Route path="/comments">
+          <Comments />
         </Route>
       </Switch>
     </Router>

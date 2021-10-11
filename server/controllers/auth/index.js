@@ -4,4 +4,5 @@ module.exports = {
   logout: require('./logout'),
   remove: require('./remove'),
   edit: require('./edit'),
+  password: require('./password'),
 };
