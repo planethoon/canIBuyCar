@@ -176,7 +176,7 @@ export default function Brand() {
       })
       .then((res) => {
         const { carData, bookmarkData } = res.data.data;
-        if (!isLogin) {
+        if (isLogin) {
           const filtered = bookmarkData.filter(
             (e) => e.userId === userInfo.userId
           );
