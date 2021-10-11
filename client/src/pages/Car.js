@@ -1,16 +1,17 @@
 import styled from "styled-components";
-import {useEffect, useState} from "react";
-import {useParams} from "react-router";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
-import {useSelector, useDispatch} from "react-redux";
-import {getInfo as getCarInfo} from "../modules/carInfo";
+import { useSelector, useDispatch } from "react-redux";
+import { getInfo as getCarInfo } from "../modules/carInfo";
+import { getInfo as getUserInfo } from "../modules/userInfo";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import StyledDiv from "../components/StyledDiv";
 import ContentContainer from "../components/ContentContainer";
 import BookmarkButton from "../components/BookmarkButton";
-import {getGukbab, getYear, getTimesForApt} from "../components/Calculations";
+import { getGukbab, getYear, getTimesForApt } from "../components/Calculations";
 import axios from "axios";
 
 const Background = styled.div`
@@ -97,25 +98,34 @@ const Share = styled(StyledDiv)`
 `;
 
 export default function Car() {
-  const carInfo = useSelector((state) => state.carInfoReducer);
+  const { carInfo, userInfo, isLogin } = useSelector((state) => ({
+    carInfo: state.carInfoReducer,
+    userInfo: state.userInfoReducer,
+    isLogin: state.loginReducer,
+  }));
   const dispatch = useDispatch();
 
   const [saving, getSaving] = useState(10);
   const [isShared, getIsShared] = useState(false);
 
-  const {carId} = useParams();
+  const { carId } = useParams();
   const brand = carId.split("-")[0];
   const id = carId.split("-")[1];
-  console.log(brand, id);
 
   useEffect(() => {
     axios.get(`http://localhost:8080/car?brand=${brand}`).then((res) => {
-      console.log(res.data.data.carData);
       const carData = res.data.data.carData.filter((e) => {
-        console.log(e.id);
         return e.id === Number(id);
       });
-      console.log(carData[0]);
+
+      const bookmarkData = res.data.data.bookmarkData;
+
+      if (isLogin) {
+        const filtered = bookmarkData.filter(
+          (e) => e.userId === userInfo.userId
+        );
+        dispatch(getUserInfo({ bookmark: filtered }));
+      }
       dispatch(getCarInfo(carData[0]));
     });
   }, []);

@@ -1,4 +1,4 @@
-import {createAction, createReducer} from "@reduxjs/toolkit";
+import { createAction, createReducer } from "@reduxjs/toolkit";
 
 export const getInfo = createAction("userInfo/getInfo");
 export const deleteInfo = createAction("userInfo/deleteInfo");
@@ -12,7 +12,7 @@ const initialState = {
 
 const userInfoReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(getInfo, (state, action) => ({...state, ...action.payload}))
+    .addCase(getInfo, (state, action) => ({ ...state, ...action.payload }))
     .addCase(deleteInfo, (state, action) => initialState);
 });
 

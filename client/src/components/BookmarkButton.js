@@ -1,8 +1,8 @@
-
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import marked from "../img/marked.png";
-import unmarked from "../img/unmarked.png";
+import markedIcon from "../img/marked.png";
+import unmarkedIcon from "../img/unmarked.png";
 
 const BookmarkWrapper = styled.div`
   height: 2rem;
@@ -13,16 +13,53 @@ const BookmarkWrapper = styled.div`
   }
 `;
 
-export default function BookmarkButton() {
+export default function BookmarkButton({ carId, bookmark, accessToken }) {
+  // console.log("북마크", carId);
   const [isMarked, getIsMarked] = useState(false);
+  // console.log(bookmark);
+  const marked = bookmark.filter((e) => e.carId === carId);
+  // console.log(marked);
+  useEffect(() => {
+    if (marked.length) {
+      getIsMarked(true);
+    }
+  }, []);
 
   const toggleHandler = () => {
-    getIsMarked(!isMarked);
+    const token = `Bearer ${accessToken}`;
+    if (!isMarked) {
+      axios
+        .post(
+          "http://localhost:8080/bookmark",
+          { carId },
+          { withCredentials: true, headers: { Authorization: token } }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            getIsMarked(true);
+          }
+        });
+    } else {
+      axios
+        .delete(`http://localhost:8080/bookmark/${carId}`, {
+          withCredentials: true,
+          headers: { Authorization: token },
+        })
+        .then((res) => {
+          if (res.status === 204) {
+            getIsMarked(false);
+          }
+        });
+    }
   };
 
   return (
     <BookmarkWrapper onClick={toggleHandler}>
-      {isMarked ? <img src={marked} alt="" /> : <img src={unmarked} alt="" />}
+      {isMarked ? (
+        <img src={markedIcon} alt="" />
+      ) : (
+        <img src={unmarkedIcon} alt="" />
+      )}
     </BookmarkWrapper>
   );
 }
