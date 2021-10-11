@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { getInfo } from "../modules/userInfo";
+import { getInfo as BrandInfo } from "../modules/brand";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -39,6 +43,12 @@ const LogoBtn = styled.li`
 // `
 
 export default function Main() {
+  const { brand, userInfo } = useSelector((state) => ({
+    brand: state.brandReducer,
+    userInfo: state.userInfoReducer,
+  }));
+  const dispatch = useDispatch();
+
   // const [brandList, getBrandList] = useState();
 
   // useEffect(() => {
@@ -47,6 +57,7 @@ export default function Main() {
   //     getBrandList()
   //   });
   // });
+
   return (
     <>
       <Background>

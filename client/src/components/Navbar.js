@@ -7,14 +7,11 @@ const NaviBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-<<<<<<< HEAD
+  background-color: skyblue;
   /* 
   @media only screen and (min-height: 900px) {
     height: 3.5rem;
   } */
-=======
-  background-color: white;
->>>>>>> 4f6fa43e0a546d3dcfd9ca41a456bb2600ccdc8a
 `;
 
 const TitleText = styled.span`
@@ -46,11 +43,7 @@ export default function Navbar() {
           <StyledLink to="/signin">
             <NaviBtn>Sign In</NaviBtn>
           </StyledLink>
-<<<<<<< HEAD
-          <StyledLink to="/mypage">
-=======
-          <StyledLink to='/mypage/car'>
->>>>>>> 4f6fa43e0a546d3dcfd9ca41a456bb2600ccdc8a
+          <StyledLink to="/mypage/car">
             <NaviBtn>Mypage</NaviBtn>
           </StyledLink>
           <StyledLink to="/comments">
