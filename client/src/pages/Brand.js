@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router";
 import axios from "axios";
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
-import { getInfo as getBrandInfo } from "../modules/brand";
-import { getInfo as getUserInfo } from "../modules/userInfo";
+import {useSelector, useDispatch} from "react-redux";
+import {getInfo as getBrandInfo} from "../modules/brand";
+import {getInfo as getUserInfo} from "../modules/userInfo";
+import {getInfo as getCarInfo} from "../modules/carInfo";
+import {logo} from "../img/brandLogo";
 
 import Navbar from "../components/Navbar";
 import LoadingIndicator from "../components/LoadingIndicator";
@@ -13,7 +16,7 @@ import Footer from "../components/Footer";
 import StyledDiv from "../components/StyledDiv";
 import ContentContainer from "../components/ContentContainer";
 import BookmarkButton from "../components/BookmarkButton";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import StyledLink from "../components/StyledLink";
 
 const Background = styled.div`
@@ -98,6 +101,7 @@ const CarBox = styled.div`
   width: 15rem;
   border: 1px solid black;
   position: relative;
+  overflow: hidden;
 
   > span,
   div {
@@ -113,8 +117,13 @@ const CarBox = styled.div`
   }
 
   > span {
-    bottom: 3px;
-    right: 5px;
+    display: block;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    padding: 5px;
+    background-color: #00000050;
+    text-align: center;
   }
 
   > Link,
@@ -132,35 +141,47 @@ const CarBox = styled.div`
   }
 `;
 
+const LinkText = styled(StyledLink)`
+  color: white;
+  font-size: 1.3rem;
+  text-shadow: 0 0 5px #000000;
+`;
+
 export default function Brand() {
-  let backgroundimage = "https://via.placeholder.com/300x200";
-  const { isLogin, brand, userInfo } = useSelector((state) => ({
+  const [isLoading, getIsLoading] = useState(true);
+
+  const {selected} = useParams();
+
+  const {isLogin, brand, userInfo, carInfo} = useSelector((state) => ({
     isLogin: state.loginReducer,
     brand: state.brandReducer,
     userInfo: state.userInfoReducer,
+    carInfo: state.carInfoReducer,
   }));
+
   const dispatch = useDispatch();
 
-  const [isLoading, getIsLoading] = useState(true);
-
+  const setLogo = (brand) => {
+    return logo.filter((e) => e[0] === brand)[0][1];
+  };
+  // console.log(brand);
   useEffect(() => {
-    console.log("axios test code starts here.");
     axios
-      .get("http://localhost:8080/car?brand=hyundai", { withCredentials: true })
+      .get(`http://localhost:8080/car?brand=${selected}`, {
+        withCredentials: true,
+      })
       .then((res) => {
-        const { carData, bookmarkData } = res.data.data;
-
-        console.log("패치 데이터 ---> ", carData, bookmarkData);
-
+        const {carData, bookmarkData} = res.data.data;
         if (isLogin) {
           const filtered = bookmarkData.filter(
             (e) => e.userId === userInfo.userId
           );
-          dispatch(getUserInfo({ bookmark: filtered }));
+          dispatch(getUserInfo({bookmark: filtered}));
         }
-        dispatch(getBrandInfo({ carList: carData }));
-
-        console.log("전역 상태 데이터 --->", brand, userInfo);
+        dispatch(getBrandInfo(carData));
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
@@ -171,7 +192,7 @@ export default function Brand() {
         <StyledDiv>
           <SideContainer>
             <Logo>
-              <img src={"https://via.placeholder.com/500"} alt="logo" />
+              <img src={setLogo(selected)} alt="logo" />
             </Logo>
             <Search
               type="text"
@@ -180,105 +201,28 @@ export default function Brand() {
             <BrandWrapper>
               <BrandList>
                 <BrandName>
-                  <span>현대</span>
+                  <span>Hyundai</span>
                 </BrandName>
               </BrandList>
             </BrandWrapper>
           </SideContainer>
           <CarContainer>
             {isLoading ? (
-              <>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-                <CarBox>
-                  <Link to="/car">
-                    <img src={backgroundimage} alt="" />
-                  </Link>
-                  <BookmarkButton />
-                  <span>
-                    <StyledLink to="/car">CarName</StyledLink>
-                  </span>
-                </CarBox>
-              </>
+              brand.map((e) => {
+                return (
+                  <CarBox key={e.id}>
+                    <Link to={`/car/${selected}-${e.id}`}>
+                      <img src={e.img} alt={e.name} />
+                    </Link>
+                    <BookmarkButton />
+                    <span>
+                      <LinkText to={`/car/${selected}-${e.id}`}>
+                        {e.name}
+                      </LinkText>
+                    </span>
+                  </CarBox>
+                );
+              })
             ) : (
               <LoadingIndicator />
             )}

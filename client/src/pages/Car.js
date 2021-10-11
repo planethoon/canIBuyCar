@@ -1,12 +1,17 @@
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import styled from "styled-components";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router";
 
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import StyledDiv from '../components/StyledDiv';
-import ContentContainer from '../components/ContentContainer';
-import BookmarkButton from '../components/BookmarkButton';
-import { getGukbab, getYear, getTimesForApt } from '../components/Calculations';
+import {useSelector, useDispatch} from "react-redux";
+import {getInfo as getCarInfo} from "../modules/carInfo";
+
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import StyledDiv from "../components/StyledDiv";
+import ContentContainer from "../components/ContentContainer";
+import BookmarkButton from "../components/BookmarkButton";
+import {getGukbab, getYear, getTimesForApt} from "../components/Calculations";
+import axios from "axios";
 
 const Background = styled.div`
   height: 100vh;
@@ -92,31 +97,39 @@ const Share = styled(StyledDiv)`
 `;
 
 export default function Car() {
-  const dummy = {
-    id: 1,
-    brand: 'benz',
-    name: 'S Class',
-    type: '대형',
-    price: 13990,
-    img: 'https://autoimg.danawa.com/gallery/4011/20210930_4011%20(3).jpg',
-  };
+  const carInfo = useSelector((state) => state.carInfoReducer);
+  const dispatch = useDispatch();
 
-  const [carInfo, getCarInfo] = useState({});
   const [saving, getSaving] = useState(10);
   const [isShared, getIsShared] = useState(false);
 
-  // useEffect(() => {
-  //   getCarInfo(dummy);
-  // }, []);
+  const {carId} = useParams();
+  const brand = carId.split("-")[0];
+  const id = carId.split("-")[1];
+  console.log(brand, id);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/car?brand=${brand}`).then((res) => {
+      console.log(res.data.data.carData);
+      const carData = res.data.data.carData.filter((e) => {
+        console.log(e.id);
+        return e.id === Number(id);
+      });
+      console.log(carData[0]);
+      dispatch(getCarInfo(carData[0]));
+    });
+  }, []);
 
   const getPrice = (price) => {
-    return String(price).length > 4 ? `${String(price).slice(0, -4)}억 ${String(price).slice(-4)}만원` : `${String(price)}만원`;
+    return String(price).length > 4
+      ? `${String(price).slice(0, -4)}억 ${String(price).slice(-4)}만원`
+      : `${String(price)}만원`;
   };
 
   const bookmarkHandler = () => {};
 
   const savingHandler = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       if (e.target.value <= 0) {
         e.target.value = 0;
       } else if (e.target.value >= carInfo.price) {
@@ -139,23 +152,23 @@ export default function Car() {
         <StyledDiv>
           <Wrapper>
             <CarImg>
-              <img src={carInfo.img} alt='' />
+              <img src={carInfo.img} alt="" />
               <BookmarkButton onClick={bookmarkHandler} />
             </CarImg>
             <InfoContainer>
-              <div className='header'>차량명</div>
-              <div className='body'>{carInfo.name}</div>
-              <div className='header'>차종</div>
-              <div className='body'>{carInfo.type}</div>
-              <div className='header'>가격</div>
-              <div className='body'>{getPrice(carInfo.price)}</div>
+              <div className="header">차량명</div>
+              <div className="body">{carInfo.name}</div>
+              <div className="header">차종</div>
+              <div className="body">{carInfo.type}</div>
+              <div className="header">가격</div>
+              <div className="body">{getPrice(carInfo.price)}</div>
             </InfoContainer>
           </Wrapper>
 
           <ResultContainer>
             <Result>
               <input
-                type='number'
+                type="number"
                 onKeyUp={(e) => {
                   savingHandler(e);
                 }}
@@ -163,7 +176,9 @@ export default function Car() {
               />
               매 달 저축액을 입력하고 Enter를 입력해주세요.
               {saving === 0 ? (
-                <div>저축하지 않고 차 살 생각을 하시다니, 집이 좀 사시나봅니다.</div>
+                <div>
+                  저축하지 않고 차 살 생각을 하시다니, 집이 좀 사시나봅니다.
+                </div>
               ) : saving === carInfo.price ? (
                 <div>
                   저축하실 필요가 없으시네요. <br />
@@ -171,9 +186,18 @@ export default function Car() {
                 </div>
               ) : (
                 <>
-                  <div>당신은 {getYear(carInfo.price, saving)}년부터 돈을 모아야 했습니다.</div>
-                  <div>그 돈으로 국밥을 먹었을때 {getGukbab(carInfo.price)}번은 먹을 수 있습니다.</div>
-                  <div>하지만 그 큰 돈도 서울 아파트 평균 매매가의 {getTimesForApt(carInfo.price)}% 밖에 되지 않는군요.</div>
+                  <div>
+                    당신은 {getYear(carInfo.price, saving)}년부터 돈을 모아야
+                    했습니다.
+                  </div>
+                  <div>
+                    그 돈으로 국밥을 먹었을때 {getGukbab(carInfo.price)}번은
+                    먹을 수 있습니다.
+                  </div>
+                  <div>
+                    하지만 그 큰 돈도 서울 아파트 평균 매매가의{" "}
+                    {getTimesForApt(carInfo.price)}% 밖에 되지 않는군요.
+                  </div>
                 </>
               )}
             </Result>

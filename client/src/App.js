@@ -7,7 +7,7 @@ import Signup from "./pages/Signup";
 import Mypage from "./pages/Mypage";
 import Comments from "./pages/Comments";
 import "./reset.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 function App() {
   return (
@@ -19,10 +19,10 @@ function App() {
         <Route path="/main">
           <MainPage />
         </Route>
-        <Route path="/brand">
+        <Route path="/brand/:selected">
           <BrandPage />
         </Route>
-        <Route path="/car">
+        <Route path="/car/:carId">
           <CarPage />
         </Route>
         <Route path="/signin">
