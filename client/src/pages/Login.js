@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import StyledButton from '../components/StyledButton';
-import StyledDiv from '../components/StyledDiv';
-import StyledLink from '../components/StyledLink';
-import StyledInput from '../components/StyledInput';
-import { useState } from 'react';
-import axios from 'axios';
+import styled from "styled-components";
+import StyledButton from "../components/StyledButton";
+import StyledDiv from "../components/StyledDiv";
+import StyledLink from "../components/StyledLink";
+import StyledInput from "../components/StyledInput";
+import { useState } from "react";
+import axios from "axios";
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -33,27 +33,25 @@ const TextBox = styled(StyledDiv)`
 
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
-  height: 10rem;
+  height: 15rem;
   width: 50rem;
   flex-direction: column;
 `;
 
-const InputEmailContainer = styled(StyledDiv)`
-  margin: 0.8rem;
+const InputContainer = styled(StyledDiv)`
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0.2rem;
 `;
 
-const EmailBox = styled(StyledDiv)`
+const Box = styled(StyledDiv)`
   height: 2rem;
-  width: 3.5rem;
 `;
 
-const InputEmailBox = styled(StyledInput)``;
-
-const InputPWContainer = styled(InputEmailContainer)``;
-
-const PWBox = styled(EmailBox)``;
-
-const InputPWBox = styled(StyledInput)``;
+const ValidationBox = styled(StyledDiv)`
+  margin-top: 2rem;
+  height: 1rem;
+`;
 
 const SignupContainer = styled(StyledDiv)`
   margin: 1rem;
@@ -67,58 +65,65 @@ const SignupBox = styled(StyledDiv)`
   width: 5rem;
 `;
 
-const ButtonContainer = styled(StyledDiv)``;
-
-const LoginBtn = styled(StyledButton)``;
-
-const SocialLoginBtn = styled(StyledButton)``;
-
 export default function Login() {
   const [loginInfo, setLoginInfo] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleInputValue = (key) => (e) => {
     setLoginInfo({ ...loginInfo, [key]: e.target.value });
+    setErrorMessage("");
   };
+
   const handleLogin = () => {
     const { email, password } = loginInfo;
     axios
-      .post('http://localhost:8080/auth/login', { email, password }, { withCredentials: true })
+      .post(
+        "http://localhost:8080/auth/login",
+        { email, password },
+        { withCredentials: true }
+      )
       .then((res) => {
         console.log(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        setErrorMessage("이메일 또는 비밀번호를 확인해주세요");
       });
   };
   return (
     <Background>
       <OuterContainer>
         <InnerContainer>
-          <StyledLink to='/main'>
+          <StyledLink to="/main">
             <TextBox>로고</TextBox>
           </StyledLink>
           <InfoBox>
-            <InputEmailContainer>
-              <EmailBox>Email</EmailBox>
-              <InputEmailBox type='email' onChange={handleInputValue('email')} />
-            </InputEmailContainer>
-            <InputPWContainer>
-              <PWBox>PW</PWBox>
-              <InputPWBox type='password' onChange={handleInputValue('password')} />
-            </InputPWContainer>
+            <InputContainer>
+              <Box>Email</Box>
+              <StyledInput type="email" onChange={handleInputValue("email")} />
+            </InputContainer>
+            <InputContainer>
+              <Box>PW</Box>
+              <StyledInput
+                type="password"
+                onChange={handleInputValue("password")}
+              />
+            </InputContainer>
+            <ValidationBox>{errorMessage}</ValidationBox>
           </InfoBox>
           <SignupContainer>
             아이디가 없으신가요 ?
             <SignupBox>
-              <StyledLink to='/signup'> 회원가입 </StyledLink>
+              <StyledLink to="/signup"> 회원가입 </StyledLink>
             </SignupBox>
           </SignupContainer>
-          <ButtonContainer>
-            <LoginBtn onClick={handleLogin}>로그인</LoginBtn>
-            <SocialLoginBtn>소셜 로그인</SocialLoginBtn>
-          </ButtonContainer>
+          <StyledDiv>
+            <StyledButton onClick={handleLogin}>로그인</StyledButton>
+            <StyledButton>소셜 로그인</StyledButton>
+          </StyledDiv>
         </InnerContainer>
       </OuterContainer>
     </Background>

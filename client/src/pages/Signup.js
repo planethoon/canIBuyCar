@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-import StyledButton from '../components/StyledButton';
-import StyledDiv from '../components/StyledDiv';
-import StyledInput from '../components/StyledInput';
-import StyledLink from '../components/StyledLink';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import styled from "styled-components";
+import StyledButton from "../components/StyledButton";
+import StyledDiv from "../components/StyledDiv";
+import StyledInput from "../components/StyledInput";
+import StyledLink from "../components/StyledLink";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -56,7 +56,8 @@ const ValidationBox = styled(StyledDiv)`
 
 export default function Signup() {
   function isEmail(asValue) {
-    var regExp = /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+    var regExp =
+      /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     return regExp.test(asValue);
   }
 
@@ -66,15 +67,16 @@ export default function Signup() {
   }
 
   function isPassword(asValue) {
-    var regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    var regExp =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     return regExp.test(asValue);
   }
 
   const [signupInfo, setSignupInfo] = useState({
-    email: '',
-    username: '',
-    password: '',
-    checkPW: '',
+    email: "",
+    username: "",
+    password: "",
+    checkPW: "",
   });
 
   const [validation, setValidation] = useState({
@@ -86,56 +88,50 @@ export default function Signup() {
   });
 
   const [message, setMessage] = useState({
-    email: '이메일 주소를 입력해주세요',
-    username: '이름을 입력해주세요',
-    password: '비밀번호는 8자리 이상, 숫자, 문자, 특수문자가 포함되어야 합니다',
-    checkPW: '비밀번호를 입력해주세요',
+    email: "이메일 주소를 입력해주세요",
+    username: "이름을 입력해주세요",
+    password: "비밀번호는 8자리 이상, 숫자, 문자, 특수문자가 포함되어야 합니다",
+    checkPW: "비밀번호를 입력해주세요",
   });
 
   useEffect(() => {
     if (signupInfo.username.length >= 2) {
-      if (isUsername(signupInfo.username)) {
-        setMessage({ ...message, username: '사용 가능한 닉네임입니다' });
-      } else {
-        setMessage({ ...message, username: '닉네임에는 숫자와 문자만 입력할 수 있습니다' });
-      }
+      setMessage({
+        ...message,
+        username: isUsername(signupInfo.username)
+          ? "사용 가능한 닉네임입니다"
+          : "닉네임에는 숫자와 문자만 입력할 수 있습니다",
+      });
     }
 
     if (signupInfo.password.length >= 8) {
-      if (isPassword(signupInfo.password)) {
-        setMessage({
-          ...message,
-          password: '사용할 수 있는 비밀번호 입니다',
-        });
-      } else {
-        setMessage({
-          ...message,
-          password: '비밀번호는 숫자, 문자, 특수문자가 포함되어야합니다',
-        });
-      }
+      console.log("왔니 ?");
+      setMessage({
+        ...message,
+        password: isPassword(signupInfo.password)
+          ? "사용할 수 있는 비밀번호 입니다"
+          : "비밀번호는 숫자, 문자, 특수문자가 포함되어야합니다",
+      });
     } else {
       setMessage({
         ...message,
-        password: '비밀번호는 8자리 이상, 숫자, 문자, 특수문자가 포함되어야 합니다',
+        password:
+          "비밀번호는 8자리 이상, 숫자, 문자, 특수문자가 포함되어야 합니다",
       });
     }
 
     if (signupInfo.checkPW.length >= 8) {
-      if (signupInfo.checkPW === signupInfo.password) {
-        setMessage({
-          ...message,
-          checkPW: '비밀번호가 일치합니다',
-        });
-      } else {
-        setMessage({
-          ...message,
-          checkPW: '비밀번호가 불일치합니다',
-        });
-      }
+      setMessage({
+        ...message,
+        checkPW:
+          signupInfo.checkPW === signupInfo.password
+            ? "비밀번호가 일치합니다"
+            : "비밀번호가 불일치합니다",
+      });
     } else {
       setMessage({
         ...message,
-        checkPW: '비밀번호를 입력해주세요',
+        checkPW: "비밀번호를 입력해주세요",
       });
     }
 
@@ -150,19 +146,19 @@ export default function Signup() {
 
   const handleOnblur = (key) => (e) => {
     if (!isEmail(signupInfo.email)) {
-      setMessage({ ...message, email: '올바른 이메일 주소가 아닙니다' });
+      setMessage({ ...message, email: "올바른 이메일 주소가 아닙니다" });
       return;
     }
     axios
-      .post('http://localhost:8080/auth/email', { [key]: e.target.value }) //
+      .post("http://localhost:8080/auth/email", { [key]: e.target.value }) //
       .then((res) => {
         console.log(res.status);
         setValidation({ ...validation, checkEmail: true });
-        setMessage({ ...message, email: '사용 가능한 이메일입니다' });
+        setMessage({ ...message, email: "사용 가능한 이메일입니다" });
       })
       .catch((err) => {
         setValidation({ ...validation, checkEmail: false });
-        setMessage({ ...message, email: '이미 가입된 이메일입니다' });
+        setMessage({ ...message, email: "이미 가입된 이메일입니다" });
       });
   };
 
@@ -173,16 +169,25 @@ export default function Signup() {
   const handleSignup = () => {
     const { email, username, password } = signupInfo;
     axios
-      .post('http://localhost:8080/auth/signup', { email, username, password }, { withCredentials: true })
+      .post(
+        "http://localhost:8080/auth/signup",
+        { email, username, password },
+        { withCredentials: true }
+      )
       .then((res) => {
-        history.push('/signup/complete');
+        history.push("/signup/complete");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const isValid = validation.email && validation.username && validation.password && validation.checkPW && validation.checkEmail;
+  const isValid =
+    validation.email &&
+    validation.username &&
+    validation.password &&
+    validation.checkPW &&
+    validation.checkEmail;
 
   const history = useHistory();
 
@@ -195,35 +200,48 @@ export default function Signup() {
             <InfoBox>
               <InputContainer>
                 <Box>E-mail</Box>
-                <StyledInput type='email' onBlur={handleOnblur('email')} onChange={handleInputValue('email')} />
+                <StyledInput
+                  type="email"
+                  onBlur={handleOnblur("email")}
+                  onChange={handleInputValue("email")}
+                />
                 <ValidationBox>{message.email}</ValidationBox>
               </InputContainer>
               <InputContainer>
                 <Box>이름</Box>
-                <StyledInput type='username' onChange={handleInputValue('username')} />
+                <StyledInput
+                  type="username"
+                  onChange={handleInputValue("username")}
+                />
                 <ValidationBox>{message.username}</ValidationBox>
               </InputContainer>
               <InputContainer>
                 <Box>비밀번호</Box>
-                <StyledInput type='password' onChange={handleInputValue('password')} />
+                <StyledInput
+                  type="password"
+                  onChange={handleInputValue("password")}
+                />
                 <ValidationBox>{message.password}</ValidationBox>
               </InputContainer>
               <InputContainer>
                 <Box>비밀번호 확인</Box>
-                <StyledInput type='password' onChange={handleInputValue('checkPW')} />
+                <StyledInput
+                  type="password"
+                  onChange={handleInputValue("checkPW")}
+                />
                 <ValidationBox>{message.checkPW}</ValidationBox>
               </InputContainer>
             </InfoBox>
             <StyledDiv>
-              <StyledLink to='/signin'>
+              <StyledLink to="/signin">
                 <StyledButton>돌아가기</StyledButton>
               </StyledLink>
               {isValid ? (
-                <StyledButton type='submit' onClick={handleSignup}>
+                <StyledButton type="submit" onClick={handleSignup}>
                   회원가입
                 </StyledButton>
               ) : (
-                <StyledButton type='submit'>회원가입</StyledButton>
+                <StyledButton type="submit">회원가입</StyledButton>
               )}
             </StyledDiv>
           </form>
