@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import StyledLink from "./StyledLink";
+import styled from 'styled-components';
+import StyledLink from './StyledLink';
 
 const NaviBar = styled.div`
   box-sizing: border-box;
@@ -7,14 +7,10 @@ const NaviBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-<<<<<<< HEAD
   /* 
   @media only screen and (min-height: 900px) {
     height: 3.5rem;
   } */
-=======
-  background-color: white;
->>>>>>> 4f6fa43e0a546d3dcfd9ca41a456bb2600ccdc8a
 `;
 
 const TitleText = styled.span`
@@ -40,20 +36,16 @@ export default function Navbar() {
     <>
       <NaviBar>
         <TitleText>
-          <StyledLink to="/main">canIBuyCar</StyledLink>
+          <StyledLink to='/main'>canIBuyCar</StyledLink>
         </TitleText>
         <BtnContainer>
-          <StyledLink to="/signin">
+          <StyledLink to='/signin'>
             <NaviBtn>Sign In</NaviBtn>
           </StyledLink>
-<<<<<<< HEAD
-          <StyledLink to="/mypage">
-=======
-          <StyledLink to='/mypage/car'>
->>>>>>> 4f6fa43e0a546d3dcfd9ca41a456bb2600ccdc8a
+          <StyledLink to='/mypage'>
             <NaviBtn>Mypage</NaviBtn>
           </StyledLink>
-          <StyledLink to="/comments">
+          <StyledLink to='/comments'>
             <NaviBtn>Comments</NaviBtn>
           </StyledLink>
         </BtnContainer>
