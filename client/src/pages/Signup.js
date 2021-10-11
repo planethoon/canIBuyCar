@@ -98,11 +98,13 @@ export default function Signup() {
   const handleOnblur = (key) => (e) => {
     const email = signupInfo;
     axios
-      .get('http://localhost:8080/auth/signup', { email }) //
+      .post('http://localhost:8080/auth/email', { email }) //
       .then((res) => {
-        setValidation({ checkEmail: true });
+        console.log(res.status);
+        if (res.status === 200) setValidation({ checkEmail: true });
+        if (res.status === 409) setValidation({ checkEmail: false });
       })
-      .catch((err) => setValidation({ checkEmail: false }));
+      .catch((err) => console.log(err));
   };
 
   const handleInputValue = (key) => (e) => {
