@@ -5,6 +5,7 @@ import StyledInput from '../components/StyledInput';
 import StyledLink from '../components/StyledLink';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -87,7 +88,7 @@ export default function Signup() {
       email: isEmail(signupInfo.email),
       username: true,
       password: isPassword(signupInfo.password),
-      check: signupInfo.password === signupInfo.check,
+      check: signupInfo.password === signupInfo.check && isPassword(signupInfo.password),
     });
   }, [signupInfo]);
 
@@ -97,15 +98,15 @@ export default function Signup() {
 
   const isValid = validation.email && validation.username && validation.password && validation.check;
 
+  const history = useHistory();
+
   const handleSignup = () => {
+    console.log('가입');
     const { email, username, password } = signupInfo;
-    // if () { 유효성 검사
-    //   return;
-    // }
     axios
       .post('http://localhost:8080/auth/signup', { email, username, password }, { withCredentials: true })
       .then((res) => {
-        console.log(res.data);
+        history.push('/signup/complete');
       })
       .catch((err) => {
         console.log(err);
@@ -148,9 +149,7 @@ export default function Signup() {
                 <StyledButton type='submit' onClick={handleSignup}>
                   회원가입
                 </StyledButton>
-              ) : (
-                <StyledButton>회원가입</StyledButton>
-              )}
+              ) : null}
             </StyledDiv>
           </form>
         </InnerContainer>
