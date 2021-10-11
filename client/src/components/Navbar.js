@@ -7,6 +7,7 @@ const NaviBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  background-color: white;
   /* 
   @media only screen and (min-height: 900px) {
     height: 3.5rem;
