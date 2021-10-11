@@ -139,23 +139,29 @@ export default function Brand() {
     brand: state.brandReducer,
     userInfo: state.userInfoReducer,
   }));
-  console.log(isLogin, brand, userInfo);
   const dispatch = useDispatch();
 
   const [isLoading, getIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/car?brand=hyundai").then((res) => {
-      const { carData, bookmarkData } = res.data.data;
-      console.log(carData, bookmarkData);
-      dispatch(getBrandInfo({ carList: carData }));
-      if (isLogin) {
-        const filtered = bookmarkData.filter(
-          (e) => e.userId === userInfo.userId
-        );
-        dispatch(getUserInfo({ bookmark: filtered }));
-      }
-    });
+    console.log("axios test code starts here.");
+    axios
+      .get("http://localhost:8080/car?brand=hyundai", { withCredentials: true })
+      .then((res) => {
+        const { carData, bookmarkData } = res.data.data;
+
+        console.log("패치 데이터 ---> ", carData, bookmarkData);
+
+        if (isLogin) {
+          const filtered = bookmarkData.filter(
+            (e) => e.userId === userInfo.userId
+          );
+          dispatch(getUserInfo({ bookmark: filtered }));
+        }
+        dispatch(getBrandInfo({ carList: carData }));
+
+        console.log("전역 상태 데이터 --->", brand, userInfo);
+      });
   }, []);
 
   return (
