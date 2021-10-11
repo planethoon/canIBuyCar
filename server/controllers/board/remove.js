@@ -19,6 +19,9 @@ module.exports = async (req, res) => {
     } else {
       const query = `SELECT userId FROM Comments WHERE id='${req.params.id}'`;
       const comment = await Comment.sequelize.query(query);
+      if (!comment[0][0]) {
+        res.status(404).json({message: '해당 글이 존재하지 않습니다'});
+      }
       const userId = comment[0][0].userId;
       if (userId === userInfo.dataValues.id) {
         await Users_comment.destroy({
