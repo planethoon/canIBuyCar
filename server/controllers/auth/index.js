@@ -1,5 +1,6 @@
 module.exports = {
-  signup: require('./signup'),
+  signup: require('./signup').create,
+  emailvalidate: require('./signup').emailValidate,
   login: require('./login'),
   logout: require('./logout'),
   remove: require('./remove'),
