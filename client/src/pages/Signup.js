@@ -92,6 +92,7 @@ export default function Signup() {
       password: isPassword(signupInfo.password),
       checkPW: signupInfo.password === signupInfo.checkPW && isPassword(signupInfo.password),
     });
+    console.log(signupInfo);
   }, [signupInfo]);
 
   const handleOnblur = (key) => (e) => {
