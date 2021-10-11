@@ -10,7 +10,12 @@ const sequelize = require('./models').sequelize;
 sequelize.sync();
 
 app.use(express.json());
-app.use(cors());
+
+const options = {
+  origin: '*',
+  Credential: true,
+};
+app.use(cors(options));
 
 app.use('/auth', authRouter);
 app.use('/car', carRouter);
