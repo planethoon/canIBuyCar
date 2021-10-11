@@ -1,16 +1,10 @@
 const {User} = require('../../models');
 
 module.exports = async (req, res) => {
-  console.log('aaaaaa', req.body);
   const email = req.body.email;
-  try {
-    const user = await User.findOne({
-      where: {email},
-    });
-  } catch {
-    return res.status(400).json({message: '뭔가 문제가 있어'});
-  }
-
+  const user = await User.findOne({
+    where: {email},
+  });
   if (user) {
     return res.status(409).json({message: '이미 존재하는 이메일입니다.'});
   } else {
