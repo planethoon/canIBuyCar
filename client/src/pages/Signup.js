@@ -64,6 +64,7 @@ export default function Signup() {
     var regExp = /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
     return regExp.test(asValue);
   }
+
   function isPassword(asValue) {
     var regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/;
     return regExp.test(asValue);
@@ -73,14 +74,15 @@ export default function Signup() {
     email: '',
     username: '',
     password: '',
-    check: '',
+    checkPW: '',
   });
 
   const [validation, setValidation] = useState({
-    email: false,
-    username: false,
-    password: false,
-    check: false,
+    email: true,
+    checkEmail: false,
+    username: true,
+    password: true,
+    checkPW: true,
   });
 
   useEffect(() => {
@@ -88,20 +90,29 @@ export default function Signup() {
       email: isEmail(signupInfo.email),
       username: true,
       password: isPassword(signupInfo.password),
-      check: signupInfo.password === signupInfo.check && isPassword(signupInfo.password),
+      checkPW: signupInfo.password === signupInfo.checkPW && isPassword(signupInfo.password),
     });
   }, [signupInfo]);
+
+  const handleOnblur = (key) => (e) => {
+    const email = signupInfo;
+    axios
+      .get('http://localhost:8080/auth/signup', { email }) //
+      .then((res) => {
+        setValidation({ checkEmail: true });
+      })
+      .catch((err) => setValidation({ checkEmail: false }));
+  };
 
   const handleInputValue = (key) => (e) => {
     setSignupInfo({ ...signupInfo, [key]: e.target.value });
   };
 
-  const isValid = validation.email && validation.username && validation.password && validation.check;
+  const isValid = validation.email && validation.username && validation.password && validation.checkPW && validation.checkEmail;
 
   const history = useHistory();
 
   const handleSignup = () => {
-    console.log('가입');
     const { email, username, password } = signupInfo;
     axios
       .post('http://localhost:8080/auth/signup', { email, username, password }, { withCredentials: true })
@@ -121,7 +132,7 @@ export default function Signup() {
             <InfoBox>
               <InputContainer>
                 <Box>Email</Box>
-                <StyledInput type='email' onChange={handleInputValue('email')} />
+                <StyledInput type='email' onBlur={handleOnblur('email')} onChange={handleInputValue('email')} />
                 {validation.email ? null : <ValidationBox>형식에 맞게 입력해주세요</ValidationBox>}
               </InputContainer>
               <InputContainer>
@@ -136,8 +147,8 @@ export default function Signup() {
               </InputContainer>
               <InputContainer>
                 <Box>Check</Box>
-                <StyledInput type='password' onChange={handleInputValue('check')} />
-                {validation.check ? <ValidationBox>비밀번호가 일치합니다</ValidationBox> : <ValidationBox>일치하지 않는 비밀번호 입니다</ValidationBox>}
+                <StyledInput type='password' onChange={handleInputValue('checkPW')} />
+                {validation.checkPW ? <ValidationBox>비밀번호가 일치합니다</ValidationBox> : <ValidationBox>일치하지 않는 비밀번호 입니다</ValidationBox>}
               </InputContainer>
             </InfoBox>
             {/* <CapcharBox>Capchar</CapcharBox> */}

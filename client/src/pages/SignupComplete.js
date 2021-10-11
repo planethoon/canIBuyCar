@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 import StyledButton from '../components/StyledButton';
 import StyledDiv from '../components/StyledDiv';
-import StyledInput from '../components/StyledInput';
 import StyledLink from '../components/StyledLink';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router';
 
 const Background = styled(StyledDiv)`
   height: 100vh;
