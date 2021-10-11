@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {authController} = require('../controllers');
 
-router.get('/signup', authController.emailvalidate);
+router.post('/emailvalidate', authController.emailvalidate);
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 router.post('/logout', authController.logout);
