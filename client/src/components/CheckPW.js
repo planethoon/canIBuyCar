@@ -66,8 +66,13 @@ export default function CheckPW() {
   };
 
   const handleOnclick = () => {
+    const accessToken = "";
     axios
-      .post("", password, { withCredentials: true }) //
+      .post(
+        "http://localhost:8080/auth/password",
+        { password },
+        { headers: { authorization: accessToken }, withCredentials: true }
+      )
       .then((res) => {
         history.push("/mypage/edit/userinfo");
       })

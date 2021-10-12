@@ -68,6 +68,8 @@ export default function EditUserInfo() {
     checkPW: "비밀번호를 입력해주세요",
   });
 
+  const history = useHistory();
+
   function isUsername(asValue) {
     var regExp = /^[가-힣]+$/;
     return regExp.test(asValue);
@@ -88,21 +90,21 @@ export default function EditUserInfo() {
     axios
       .put("http://localhost:8080/auth", { username, password })
       .then((res) => {
-        history.push("");
+        history.push("/mypage/edit/complete");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const isValid =
-    validation.email &&
-    validation.username &&
-    validation.password &&
-    validation.checkPW &&
-    validation.checkEmail;
+  const handleKeyPress = (e) => {
+    if (e.type === "keypress" && e.code === "Enter" && isValid) {
+      handleEdit();
+    }
+  };
 
-  const history = useHistory();
+  const isValid =
+    validation.username && validation.password && validation.checkPW;
 
   useEffect(() => {
     setMessage({
@@ -140,46 +142,47 @@ export default function EditUserInfo() {
     <OuterContainer>
       <InnerContainer>
         <TextBox>회원정보 수정</TextBox>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <InfoBox>
-            <InputContainer>
-              <Box>이름</Box>
-              <StyledInput
-                type="username"
-                onChange={handleInputValue("username")}
-              />
-              <ValidationBox>{message.username}</ValidationBox>
-            </InputContainer>
-            <InputContainer>
-              <Box>비밀번호</Box>
-              <StyledInput
-                type="password"
-                onChange={handleInputValue("password")}
-              />
-              <ValidationBox>{message.password}</ValidationBox>
-            </InputContainer>
-            <InputContainer>
-              <Box>비밀번호 확인</Box>
-              <StyledInput
-                type="password"
-                onChange={handleInputValue("checkPW")}
-              />
-              <ValidationBox>{message.checkPW}</ValidationBox>
-            </InputContainer>
-          </InfoBox>
-          <StyledDiv>
-            <StyledLink to="/mypage/car">
-              <StyledButton>돌아가기</StyledButton>
-            </StyledLink>
-            {isValid ? (
-              <StyledButton type="submit" onClick={handleEdit}>
-                회원가입
-              </StyledButton>
-            ) : (
-              <StyledButton type="submit">회원가입</StyledButton>
-            )}
-          </StyledDiv>
-        </form>
+        <InfoBox>
+          <InputContainer>
+            <Box>이름</Box>
+            <StyledInput
+              type="username"
+              onChange={handleInputValue("username")}
+              onKeyPress={handleKeyPress}
+            />
+            <ValidationBox>{message.username}</ValidationBox>
+          </InputContainer>
+          <InputContainer>
+            <Box>비밀번호</Box>
+            <StyledInput
+              type="password"
+              onChange={handleInputValue("password")}
+              onKeyPress={handleKeyPress}
+            />
+            <ValidationBox>{message.password}</ValidationBox>
+          </InputContainer>
+          <InputContainer>
+            <Box>비밀번호 확인</Box>
+            <StyledInput
+              type="password"
+              onChange={handleInputValue("checkPW")}
+              onKeyPress={handleKeyPress}
+            />
+            <ValidationBox>{message.checkPW}</ValidationBox>
+          </InputContainer>
+        </InfoBox>
+        <StyledDiv>
+          <StyledLink to="/mypage/car">
+            <StyledButton>돌아가기</StyledButton>
+          </StyledLink>
+          {isValid ? (
+            <StyledButton type="submit" onClick={handleEdit}>
+              회원가입
+            </StyledButton>
+          ) : (
+            <StyledButton type="submit">회원가입</StyledButton>
+          )}
+        </StyledDiv>
       </InnerContainer>
     </OuterContainer>
   );
