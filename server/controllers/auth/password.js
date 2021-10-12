@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     const userInfo = await User.findOne({
       where: {email: data.email},
     });
-    if (userInfo) {
+    if (userInfo && req.body.password === userInfo.dataValues.password) {
       res.status(200).json({message: '개인정보 수정 가능'})
     } else {
       res.status(401).json({message: '권한 없음'});
