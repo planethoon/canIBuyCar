@@ -17,6 +17,7 @@ import StyledDiv from "../components/StyledDiv";
 import ContentContainer from "../components/ContentContainer";
 import BookmarkButton from "../components/BookmarkButton";
 import SideMenu from "../components/brand/SideMenu";
+import Search from "../components/brand/Search";
 
 import { Link } from "react-router-dom";
 import StyledLink from "../components/StyledLink";
@@ -40,13 +41,6 @@ const Logo = styled.div`
   > img {
     max-width: 100%;
   }
-`;
-
-const Search = styled.input`
-  height: 2rem;
-  width: 80%;
-  margin-bottom: 1rem;
-  text-align: center;
 `;
 
 // 카 리스트
@@ -127,12 +121,8 @@ export default function Brand() {
     return logo.filter((e) => e[0] === brand)[0][1];
   };
   // console.log(brand);
-  useEffect(() => {
-    setIsLoading(true);
-    // 회원 정보 확인
-    axios.get(`http://localhost:8080/`);
 
-    // 데이터 표기
+  const getData = (selected) => {
     axios
       .get(`http://localhost:8080/car?brand=${selected}`, {
         withCredentials: true,
@@ -152,7 +142,20 @@ export default function Brand() {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
+    // 회원 정보 확인
+    axios.get(`http://localhost:8080/`);
+
+    // 데이터 표기
+    getData(selected);
   }, [selected]);
+
+  const logoClickHandler = () => {
+    getData(selected);
+  };
 
   return (
     <>
@@ -160,13 +163,10 @@ export default function Brand() {
         <Navbar />
         <StyledDiv>
           <SideContainer>
-            <Logo>
+            <Logo onClick={logoClickHandler}>
               <img src={setLogo(selected)} alt="logo" />
             </Logo>
-            <Search
-              type="text"
-              placeholder="찾고자 하는 차량을 입력해주세요."
-            />
+            <Search />
             <SideMenu selected={selected} logo={logo} />
           </SideContainer>
           <CarContainer>
