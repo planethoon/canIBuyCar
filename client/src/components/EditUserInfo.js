@@ -131,7 +131,7 @@ export default function EditUserInfo() {
     });
     setValidation({
       ...validation,
-      username: isUsername(editInfo.username),
+      username: isUsername(editInfo.username) && editInfo.username.length >= 2,
       password: isPassword(editInfo.password),
       checkPW: editInfo.password === editInfo.checkPW,
     });
@@ -177,7 +177,7 @@ export default function EditUserInfo() {
           </StyledLink>
           {isValid ? (
             <StyledButton type="submit" onClick={handleEdit}>
-              회원가입
+              수정하기
             </StyledButton>
           ) : (
             <StyledButton type="submit">회원가입</StyledButton>

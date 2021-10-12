@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import ContentContainer from "../components/ContentContainer";
 import CheckPW from "../components/CheckPW";
 import EditUserInfo from "../components/EditUserInfo";
+import EditComplete from "../components/EditComplete";
 import Favorites from "../components/Favorites";
 import { Route, Switch } from "react-router-dom";
 
@@ -34,9 +35,14 @@ export default function Mypage() {
                 <CheckPW />
               </CarContainer>
             </Route>
-            <Route path="/mypage/edit/userinfo">
+            <Route exact path="/mypage/edit/userinfo">
               <CarContainer>
                 <EditUserInfo />
+              </CarContainer>
+            </Route>
+            <Route exact path="/mypage/edit/complete">
+              <CarContainer>
+                <EditComplete />
               </CarContainer>
             </Route>
             <Route path="/mypage/">

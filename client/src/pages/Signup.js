@@ -169,7 +169,8 @@ export default function Signup() {
     setValidation({
       ...validation,
       email: isEmail(signupInfo.email),
-      username: isUsername(signupInfo.username),
+      username:
+        isUsername(signupInfo.username) && signupInfo.username.length >= 2,
       password: isPassword(signupInfo.password),
       checkPW: signupInfo.password === signupInfo.checkPW,
     });
