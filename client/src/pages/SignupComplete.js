@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import StyledButton from '../components/StyledButton';
-import StyledDiv from '../components/StyledDiv';
-import StyledLink from '../components/StyledLink';
+import styled from "styled-components";
+import StyledButton from "../components/StyledButton";
+import StyledDiv from "../components/StyledDiv";
+import StyledLink from "../components/StyledLink";
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -63,7 +63,7 @@ export default function SignupComplete() {
             </InputContainer>
           </InfoBox>
           <StyledDiv>
-            <StyledLink to='/signin'>
+            <StyledLink to="/signin">
               <StyledButton>로그인</StyledButton>
             </StyledLink>
           </StyledDiv>
