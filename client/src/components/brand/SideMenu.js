@@ -2,6 +2,7 @@ import styled from "styled-components";
 import StyledLink from "../StyledLink";
 
 const BrandWrapper = styled.div`
+  margin-top: 1rem;
   border: 3px solid black;
   height: 55%;
   width: 80%;
@@ -51,9 +52,7 @@ const BrandName = styled.li`
 `;
 
 export default function SideMenu({ selected, logo }) {
-  console.log(selected, logo);
   const filtered = logo.filter((e) => e !== selected);
-  console.log(filtered);
 
   return (
     <BrandWrapper>
