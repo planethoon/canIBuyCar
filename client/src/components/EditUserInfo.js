@@ -88,9 +88,22 @@ export default function EditUserInfo() {
   const handleEdit = () => {
     const { username, password } = editInfo;
     axios
-      .put("http://localhost:8080/auth", { username, password })
+      .put(
+        "http://localhost:8080/auth",
+        { username, password },
+        { headers: { authorization: `Bearer ${token}` } }
+      )
       .then((res) => {
-        history.push("/mypage/edit/complete");
+        const { userId, userName, accessToken } = res.data.data;
+        localStorage.setItem("token", accessToken);
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("userName", userName);
+
+        const token = localStorage.getItem("token");
+        if (token) {
+          dispatch(setUserInfo({ token, userId, userName }));
+          history.push("/mypage/edit/complete");
+        }
       })
       .catch((err) => {
         console.log(err);

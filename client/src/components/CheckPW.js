@@ -66,14 +66,17 @@ export default function CheckPW() {
   };
 
   const handleOnclick = () => {
-    const accessToken = "";
+    const token = localStorage.getItem("token");
+    console.log(token);
+    console.log(password);
     axios
       .post(
         "http://localhost:8080/auth/password",
         { password },
-        { headers: { authorization: accessToken }, withCredentials: true }
+        { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => {
+        console.log(res.data);
         history.push("/mypage/edit/userinfo");
       })
       .catch((err) => {
