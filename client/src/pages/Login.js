@@ -5,6 +5,14 @@ import StyledLink from "../components/StyledLink";
 import StyledInput from "../components/StyledInput";
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router";
+
+import { useDispatch } from "react-redux";
+
+import { login } from "../modules/isLogin";
+import { setInfo as setUserInfo } from "../modules/userInfo";
+
+// import CheckLogin from "../components/CheckLogin";
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -66,6 +74,9 @@ const SignupBox = styled(StyledDiv)`
 `;
 
 export default function Login() {
+  const dispatch = useDispatch();
+
+  const history = useHistory();
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
@@ -88,7 +99,14 @@ export default function Login() {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res.data);
+        localStorage.setItem("token", `${res.data.data.accessToken}`);
+        const token = localStorage.getItem("token");
+        if (token) {
+          dispatch(login());
+          dispatch(setUserInfo({ token }));
+        }
+
+        history.push("/main");
       })
       .catch((err) => {
         setErrorMessage("이메일 또는 비밀번호를 확인해주세요");

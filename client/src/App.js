@@ -26,7 +26,7 @@ function App() {
         <Route path="/car/:carId">
           <CarPage />
         </Route>
-        <Route path="/signin">
+        <Route path="/login">
           <Login />
         </Route>
         <Route exact path="/signup">

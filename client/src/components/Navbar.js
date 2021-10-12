@@ -1,4 +1,7 @@
 import styled from "styled-components";
+
+import { useSelector } from "react-redux";
+
 import StyledLink from "./StyledLink";
 
 const NaviBar = styled.div`
@@ -33,6 +36,7 @@ const NaviBtn = styled.li`
 `;
 
 export default function Navbar() {
+  const isLogin = useSelector((state) => state.loginReducer);
   return (
     <>
       <NaviBar>
@@ -40,9 +44,16 @@ export default function Navbar() {
           <StyledLink to="/main">canIBuyCar</StyledLink>
         </TitleText>
         <BtnContainer>
-          <StyledLink to="/signin">
-            <NaviBtn>Sign In</NaviBtn>
-          </StyledLink>
+          {isLogin ? (
+            <StyledLink to="/logout">
+              <NaviBtn>Logout</NaviBtn>
+            </StyledLink>
+          ) : (
+            <StyledLink to="/login">
+              <NaviBtn>Login</NaviBtn>
+            </StyledLink>
+          )}
+
           <StyledLink to="/mypage">
             <NaviBtn>Mypage</NaviBtn>
           </StyledLink>
