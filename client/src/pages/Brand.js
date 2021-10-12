@@ -7,7 +7,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setInfo as setBrandInfo } from "../modules/brand";
 import { setInfo as setUserInfo } from "../modules/userInfo";
-import { setInfo as setCarInfo } from "../modules/carInfo";
+import { login } from "../modules/isLogin";
 import { logo } from "../img/brandLogo";
 
 import Navbar from "../components/Navbar";
@@ -105,14 +105,12 @@ const LinkText = styled(StyledLink)`
 
 export default function Brand() {
   const [isLoading, setIsLoading] = useState(true);
-
   const { selected } = useParams();
 
-  const { isLogin, brand, userInfo, carInfo } = useSelector((state) => ({
+  const { isLogin, brand, userInfo } = useSelector((state) => ({
     isLogin: state.loginReducer,
     brand: state.brandReducer,
     userInfo: state.userInfoReducer,
-    carInfo: state.carInfoReducer,
   }));
 
   const dispatch = useDispatch();
@@ -120,7 +118,7 @@ export default function Brand() {
   const setLogo = (brand) => {
     return logo.filter((e) => e[0] === brand)[0][1];
   };
-  // console.log(brand);
+  console.log(userInfo);
 
   const getData = (selected) => {
     axios
@@ -128,16 +126,32 @@ export default function Brand() {
         withCredentials: true,
       })
       .then((res) => {
-        const { carData, bookmarkData } = res.data.data;
-        if (isLogin) {
-          const filtered = bookmarkData.filter(
-            (e) => e.userId === userInfo.userId
-          );
-          console.log(filtered);
-          dispatch(setUserInfo({ bookmark: filtered }));
+        const { token, userId, userName } = {
+          token: localStorage.getItem("token"),
+          userId: localStorage.getItem("userId"),
+          userName: localStorage.getItem("userName"),
+        };
+        if (token) {
+          dispatch(login());
+          dispatch(setUserInfo({ token, userId, userName }));
         }
-        dispatch(setBrandInfo(carData));
-        setIsLoading(false);
+        return res;
+      })
+      .then((res) => {
+        setTimeout(() => {
+          const { carData, bookmarkData } = res.data.data;
+          console.log("필터 전 북마크", bookmarkData);
+          console.log("로그인 여부", isLogin);
+          if (isLogin) {
+            const filtered = bookmarkData.filter(
+              (e) => e.userId === Number(userInfo.userId)
+            );
+            console.log("필터된 북마크", filtered);
+            dispatch(setUserInfo({ bookmark: filtered }));
+          }
+          dispatch(setBrandInfo(carData));
+          setIsLoading(false);
+        }, 0);
       })
       .catch((error) => {
         console.log(error);
@@ -146,12 +160,9 @@ export default function Brand() {
 
   useEffect(() => {
     setIsLoading(true);
-    // 회원 정보 확인
-    axios.get(`http://localhost:8080/`);
-
     // 데이터 표기
     getData(selected);
-  }, [selected]);
+  }, [isLogin]);
 
   const logoClickHandler = () => {
     getData(selected);

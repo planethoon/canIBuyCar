@@ -90,7 +90,6 @@ export default function Login() {
   };
 
   const handleLogin = () => {
-    console.log("로그인 시도");
     const { email, password } = loginInfo;
     axios
       .post(
@@ -99,14 +98,17 @@ export default function Login() {
         { withCredentials: true }
       )
       .then((res) => {
-        localStorage.setItem("token", `${res.data.data.accessToken}`);
+        const { userId, userName, accessToken } = res.data.data;
+        localStorage.setItem("token", accessToken);
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("userName", userName);
+
         const token = localStorage.getItem("token");
         if (token) {
           dispatch(login());
-          dispatch(setUserInfo({ token }));
+          dispatch(setUserInfo({ token, userId, userName }));
+          history.push("/main");
         }
-
-        history.push("/main");
       })
       .catch((err) => {
         setErrorMessage("이메일 또는 비밀번호를 확인해주세요");
