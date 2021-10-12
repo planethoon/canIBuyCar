@@ -87,6 +87,8 @@ export default function EditUserInfo() {
 
   const handleEdit = () => {
     const { username, password } = editInfo;
+    const token = localStorage.getItem("token");
+    console.log("요청 전", token);
     axios
       .put(
         "http://localhost:8080/auth",
@@ -98,10 +100,9 @@ export default function EditUserInfo() {
         localStorage.setItem("token", accessToken);
         localStorage.setItem("userId", userId);
         localStorage.setItem("userName", userName);
-
-        const token = localStorage.getItem("token");
         if (token) {
           dispatch(setUserInfo({ token, userId, userName }));
+          console.log("요청 후", token);
           history.push("/mypage/edit/complete");
         }
       })
