@@ -131,7 +131,7 @@ export default function EditUserInfo() {
     });
     setValidation({
       ...validation,
-      username: isUsername(editInfo.username),
+      username: isUsername(editInfo.username) && editInfo.username.length >= 2,
       password: isPassword(editInfo.password),
       checkPW: editInfo.password === editInfo.checkPW,
     });
