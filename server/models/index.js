@@ -3,9 +3,14 @@
 const path = require('path');
 const Sequelize = require('sequelize');
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
-
+console.log(
+  'bbbbbbbbbbbbbbbbb',
+  config.username,
+  config.database,
+  config.password
+);
 const sequelize = new Sequelize(
   config.database,
   config.username,
