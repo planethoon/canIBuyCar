@@ -5,9 +5,9 @@ import axios from "axios";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import { getInfo as getBrandInfo } from "../modules/brand";
-import { getInfo as getUserInfo } from "../modules/userInfo";
-import { getInfo as getCarInfo } from "../modules/carInfo";
+import { setInfo as setBrandInfo } from "../modules/brand";
+import { setInfo as setUserInfo } from "../modules/userInfo";
+import { setInfo as setCarInfo } from "../modules/carInfo";
 import { logo } from "../img/brandLogo";
 
 import Navbar from "../components/Navbar";
@@ -16,6 +16,8 @@ import Footer from "../components/Footer";
 import StyledDiv from "../components/StyledDiv";
 import ContentContainer from "../components/ContentContainer";
 import BookmarkButton from "../components/BookmarkButton";
+import SideMenu from "../components/brand/SideMenu";
+
 import { Link } from "react-router-dom";
 import StyledLink from "../components/StyledLink";
 
@@ -45,46 +47,6 @@ const Search = styled.input`
   width: 80%;
   margin-bottom: 1rem;
   text-align: center;
-`;
-
-const BrandWrapper = styled.div`
-  border: 3px solid black;
-  height: 55%;
-  width: 80%;
-  overflow-y: auto;
-  overflow-x: hidden;
-`;
-
-const BrandList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const BrandName = styled.li`
-  background-color: white;
-  border: 1px solid black;
-  width: 100%;
-  height: 1.5rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &:hover {
-    background-color: grey;
-  }
-  > span {
-    padding-top: 0.2rem;
-  }
-  > div {
-    height: 1.2rem;
-    width: 1.2rem;
-    border: 1px solid black;
-  }
-  > div > img {
-    max-width: 100%;
-  }
 `;
 
 // 카 리스트
@@ -148,7 +110,7 @@ const LinkText = styled(StyledLink)`
 `;
 
 export default function Brand() {
-  const [isLoading, getIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { selected } = useParams();
 
@@ -166,6 +128,7 @@ export default function Brand() {
   };
   // console.log(brand);
   useEffect(() => {
+    setIsLoading(true);
     // 회원 정보 확인
     axios.get(`http://localhost:8080/`);
 
@@ -181,14 +144,15 @@ export default function Brand() {
             (e) => e.userId === userInfo.userId
           );
           console.log(filtered);
-          dispatch(getUserInfo({ bookmark: filtered }));
+          dispatch(setUserInfo({ bookmark: filtered }));
         }
-        dispatch(getBrandInfo(carData));
+        dispatch(setBrandInfo(carData));
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [selected]);
 
   return (
     <>
@@ -203,16 +167,10 @@ export default function Brand() {
               type="text"
               placeholder="찾고자 하는 차량을 입력해주세요."
             />
-            <BrandWrapper>
-              <BrandList>
-                <BrandName>
-                  <span>Hyundai</span>
-                </BrandName>
-              </BrandList>
-            </BrandWrapper>
+            <SideMenu selected={selected} logo={logo} />
           </SideContainer>
           <CarContainer>
-            {isLoading ? (
+            {!isLoading ? (
               brand.map((e) => {
                 return (
                   <CarBox key={e.id}>

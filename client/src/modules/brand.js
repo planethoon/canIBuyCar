@@ -1,13 +1,13 @@
-import {createAction, createReducer} from "@reduxjs/toolkit";
+import { createAction, createReducer } from "@reduxjs/toolkit";
 
-export const getInfo = createAction("brand/getInfo");
+export const setInfo = createAction("brand/setInfo");
 export const deleteInfo = createAction("brand/deleteInfo");
 
 const initialState = [];
 
 const brandReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(getInfo, (state, action) => [...action.payload])
+    .addCase(setInfo, (state, action) => [...action.payload])
     .addCase(deleteInfo, (state, action) => initialState);
 });
 

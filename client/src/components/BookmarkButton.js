@@ -10,15 +10,16 @@ const BookmarkWrapper = styled.div`
 
   > img {
     max-width: 100%;
+    filter: drop-shadow(0 0 3px #fff);
   }
 `;
 
 export default function BookmarkButton({ carId, bookmark, accessToken }) {
   // console.log("북마크", carId);
   const [isMarked, getIsMarked] = useState(false);
-  // console.log(bookmark);
+  // console.log("프롭스 받은 것", bookmark);
   const marked = bookmark.filter((e) => e.carId === carId);
-  // console.log(marked);
+
   useEffect(() => {
     if (marked.length) {
       getIsMarked(true);
@@ -38,6 +39,9 @@ export default function BookmarkButton({ carId, bookmark, accessToken }) {
           if (res.status === 200) {
             getIsMarked(true);
           }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     } else {
       axios
@@ -49,6 +53,9 @@ export default function BookmarkButton({ carId, bookmark, accessToken }) {
           if (res.status === 204) {
             getIsMarked(false);
           }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
   };

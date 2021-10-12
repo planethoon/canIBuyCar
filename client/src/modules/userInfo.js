@@ -1,6 +1,6 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
-export const getInfo = createAction("userInfo/getInfo");
+export const setInfo = createAction("userInfo/setInfo");
 export const deleteInfo = createAction("userInfo/deleteInfo");
 
 const initialState = {
@@ -12,12 +12,12 @@ const initialState = {
 
 const userInfoReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(getInfo, (state, action) => ({ ...state, ...action.payload }))
+    .addCase(setInfo, (state, action) => ({ ...state, ...action.payload }))
     .addCase(deleteInfo, (state, action) => initialState);
 });
 
 // const userInfoReducer = createReducer(initialState, {
-//   [getInfo]: (state, action) => ({ ...state, ...action.payload }),
+//   [setInfo]: (state, action) => ({ ...state, ...action.payload }),
 //   [deleteInfo]: (state, action) => initialState,
 // });
 
