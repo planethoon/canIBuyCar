@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { setInfo as setCarInfo } from "../modules/carInfo";
 import { setInfo as setUserInfo } from "../modules/userInfo";
+import { login } from "../modules/isLogin";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -103,6 +104,7 @@ export default function Car() {
     userInfo: state.userInfoReducer,
     isLogin: state.loginReducer,
   }));
+  console.log("북마크", userInfo.bookmark);
   const dispatch = useDispatch();
 
   const [saving, setSaving] = useState(10);
@@ -113,6 +115,16 @@ export default function Car() {
   const id = carId.split("-")[1];
 
   useEffect(() => {
+    const { token, userId, userName } = {
+      token: localStorage.getItem("token"),
+      userId: localStorage.getItem("userId"),
+      userName: localStorage.getItem("userName"),
+    };
+    if (token) {
+      dispatch(login());
+      dispatch(setUserInfo({ token, userId, userName }));
+    }
+
     axios.get(`http://localhost:8080/car?brand=${brand}`).then((res) => {
       const carData = res.data.data.carData.filter((e) => {
         return e.id === Number(id);

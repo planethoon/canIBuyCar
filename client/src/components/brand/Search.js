@@ -88,7 +88,6 @@ export default function Search() {
       setFocused("");
     }
   };
-  console.log(text, focused, index);
 
   useEffect(() => {
     setFocused(options[index]);

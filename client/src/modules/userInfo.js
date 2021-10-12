@@ -16,9 +16,4 @@ const userInfoReducer = createReducer(initialState, (builder) => {
     .addCase(deleteInfo, (state, action) => initialState);
 });
 
-// const userInfoReducer = createReducer(initialState, {
-//   [setInfo]: (state, action) => ({ ...state, ...action.payload }),
-//   [deleteInfo]: (state, action) => initialState,
-// });
-
 export default userInfoReducer;
