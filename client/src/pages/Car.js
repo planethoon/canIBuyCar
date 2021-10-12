@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import { useSelector, useDispatch } from "react-redux";
-import { getInfo as getCarInfo } from "../modules/carInfo";
-import { getInfo as getUserInfo } from "../modules/userInfo";
+import { setInfo as setCarInfo } from "../modules/carInfo";
+import { setInfo as setUserInfo } from "../modules/userInfo";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -105,8 +105,8 @@ export default function Car() {
   }));
   const dispatch = useDispatch();
 
-  const [saving, getSaving] = useState(10);
-  const [isShared, getIsShared] = useState(false);
+  const [saving, setSaving] = useState(10);
+  const [isShared, setIsShared] = useState(false);
 
   const { carId } = useParams();
   const brand = carId.split("-")[0];
@@ -124,9 +124,9 @@ export default function Car() {
         const filtered = bookmarkData.filter(
           (e) => e.userId === userInfo.userId
         );
-        dispatch(getUserInfo({ bookmark: filtered }));
+        dispatch(setUserInfo({ bookmark: filtered }));
       }
-      dispatch(getCarInfo(carData[0]));
+      dispatch(setCarInfo(carData[0]));
     });
   }, []);
 
@@ -136,8 +136,6 @@ export default function Car() {
       : `${String(price)}만원`;
   };
 
-  const bookmarkHandler = () => {};
-
   const savingHandler = (e) => {
     if (e.key === "Enter") {
       if (e.target.value <= 0) {
@@ -145,14 +143,14 @@ export default function Car() {
       } else if (e.target.value >= carInfo.price) {
         e.target.value = carInfo.price;
       }
-      getSaving(Number(e.target.value));
+      setSaving(Number(e.target.value));
     }
   };
 
   const shareHandler = () => {
     const text = `클립보드 테스트`;
     navigator.clipboard.writeText(text);
-    getIsShared(true);
+    setIsShared(true);
   };
 
   return (
@@ -163,7 +161,11 @@ export default function Car() {
           <Wrapper>
             <CarImg>
               <img src={carInfo.img} alt="" />
-              <BookmarkButton onClick={bookmarkHandler} />
+              <BookmarkButton
+                carId={carInfo.id}
+                bookmark={userInfo.bookmark}
+                accessToken={userInfo.token}
+              />
             </CarImg>
             <InfoContainer>
               <div className="header">차량명</div>
@@ -217,7 +219,7 @@ export default function Car() {
                   <div>클립보드에 복사되었습니다.</div>
                   <div
                     onClick={() => {
-                      getIsShared(false);
+                      setIsShared(false);
                     }}
                   >
                     다시 복사하기

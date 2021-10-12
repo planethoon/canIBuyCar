@@ -1,6 +1,6 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
-export const getInfo = createAction("carInfo/getInfo");
+export const setInfo = createAction("carInfo/setInfo");
 export const deleteInfo = createAction("carInfo/deleteInfo");
 
 const initialState = {
@@ -14,7 +14,7 @@ const initialState = {
 
 const carInfoReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(getInfo, (state, action) => ({ ...state, ...action.payload }))
+    .addCase(setInfo, (state, action) => ({ ...state, ...action.payload }))
     .addCase(deleteInfo, (state, action) => initialState);
 });
 
