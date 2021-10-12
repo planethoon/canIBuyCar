@@ -61,7 +61,7 @@ export default function CheckPW() {
   const history = useHistory();
 
   const handleInputValue = (key) => (e) => {
-    setPassword(`${e.target.value}`);
+    setPassword(`${e.target.value.toLowerCase()}`);
     setMessage("");
   };
 

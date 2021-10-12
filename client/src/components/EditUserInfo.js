@@ -196,7 +196,7 @@ export default function EditUserInfo() {
               수정하기
             </StyledButton>
           ) : (
-            <StyledButton type="submit">회원가입</StyledButton>
+            <StyledButton type="submit">수정하기</StyledButton>
           )}
         </StyledDiv>
       </InnerContainer>

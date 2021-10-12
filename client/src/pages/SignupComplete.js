@@ -44,13 +44,6 @@ const Box = styled(StyledDiv)`
   height: 2rem;
 `;
 
-// const CapcharBox = styled(StyledDiv)`
-//   margin: 1rem;
-//   height: 10rem;
-//   width: 20em;
-//   background-color: gray;
-// `;
-
 export default function SignupComplete() {
   return (
     <Background>
@@ -63,7 +56,7 @@ export default function SignupComplete() {
             </InputContainer>
           </InfoBox>
           <StyledDiv>
-            <StyledLink to="/signin">
+            <StyledLink to="/login">
               <StyledButton>로그인</StyledButton>
             </StyledLink>
           </StyledDiv>

@@ -1,8 +1,9 @@
 import styled from "styled-components";
-
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import StyledLink from "./StyledLink";
+import { useHistory } from "react-router";
+import { logout } from "../modules/isLogin";
 
 const NaviBar = styled.div`
   box-sizing: border-box;
@@ -33,10 +34,23 @@ const NaviBtn = styled.li`
   border: 2px solid black;
   padding: 0.4rem;
   margin-right: 10px;
+  cursor: pointer;
+  color: black;
+  &:hover {
+    color: gainsboro;
+  }
 `;
 
 export default function Navbar() {
   const isLogin = useSelector((state) => state.loginReducer);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleOnclick = () => {
+    localStorage.clear();
+    dispatch(logout());
+    history.push("/");
+  };
   return (
     <>
       <NaviBar>
@@ -45,9 +59,7 @@ export default function Navbar() {
         </TitleText>
         <BtnContainer>
           {isLogin ? (
-            <StyledLink to="/logout">
-              <NaviBtn>Logout</NaviBtn>
-            </StyledLink>
+            <NaviBtn onClick={handleOnclick}>Logout</NaviBtn>
           ) : (
             <StyledLink to="/login">
               <NaviBtn>Login</NaviBtn>
