@@ -79,6 +79,7 @@ export default function Login() {
   };
 
   const handleLogin = () => {
+    console.log("로그인 시도");
     const { email, password } = loginInfo;
     axios
       .post(
@@ -93,6 +94,12 @@ export default function Login() {
         setErrorMessage("이메일 또는 비밀번호를 확인해주세요");
       });
   };
+
+  const handleKeyPress = (e) => {
+    if (e.type === "keypress" && e.code === "Enter") {
+      handleLogin();
+    }
+  };
   return (
     <Background>
       <OuterContainer>
@@ -103,13 +110,18 @@ export default function Login() {
           <InfoBox>
             <InputContainer>
               <Box>Email</Box>
-              <StyledInput type="email" onChange={handleInputValue("email")} />
+              <StyledInput
+                type="email"
+                onChange={handleInputValue("email")}
+                onKeyPress={handleKeyPress}
+              />
             </InputContainer>
             <InputContainer>
               <Box>PW</Box>
               <StyledInput
                 type="password"
                 onChange={handleInputValue("password")}
+                onKeyPress={handleKeyPress}
               />
             </InputContainer>
             <ValidationBox>{errorMessage}</ValidationBox>

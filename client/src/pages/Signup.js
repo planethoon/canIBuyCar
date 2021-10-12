@@ -77,6 +77,8 @@ export default function Signup() {
     checkPW: "비밀번호를 입력해주세요",
   });
 
+  const history = useHistory();
+
   function isEmail(asValue) {
     var regExp =
       /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -116,6 +118,7 @@ export default function Signup() {
   };
 
   const handleSignup = () => {
+    console.log("가입요청");
     const { email, username, password } = signupInfo;
     axios
       .post("http://localhost:8080/auth/signup", { email, username, password })
@@ -127,14 +130,18 @@ export default function Signup() {
       });
   };
 
+  const handleKeyPress = (e) => {
+    if (e.type === "keypress" && e.code === "Enter" && isValid) {
+      handleSignup();
+    }
+  };
+
   const isValid =
     validation.email &&
     validation.username &&
     validation.password &&
     validation.checkPW &&
     validation.checkEmail;
-
-  const history = useHistory();
 
   useEffect(() => {
     setMessage({
@@ -174,55 +181,57 @@ export default function Signup() {
       <OuterContainer>
         <InnerContainer>
           <TextBox>회원가입</TextBox>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <InfoBox>
-              <InputContainer>
-                <Box>E-mail</Box>
-                <StyledInput
-                  type="email"
-                  onBlur={handleOnblurEmail("email")}
-                  onChange={handleInputValue("email")}
-                />
-                <ValidationBox>{message.email}</ValidationBox>
-              </InputContainer>
-              <InputContainer>
-                <Box>이름</Box>
-                <StyledInput
-                  type="username"
-                  onChange={handleInputValue("username")}
-                />
-                <ValidationBox>{message.username}</ValidationBox>
-              </InputContainer>
-              <InputContainer>
-                <Box>비밀번호</Box>
-                <StyledInput
-                  type="password"
-                  onChange={handleInputValue("password")}
-                />
-                <ValidationBox>{message.password}</ValidationBox>
-              </InputContainer>
-              <InputContainer>
-                <Box>비밀번호 확인</Box>
-                <StyledInput
-                  type="password"
-                  onChange={handleInputValue("checkPW")}
-                />
-                <ValidationBox>{message.checkPW}</ValidationBox>
-              </InputContainer>
-            </InfoBox>
-            <StyledDiv>
-              <StyledLink to="/signin">
-                <StyledButton>돌아가기</StyledButton>
-              </StyledLink>
-              {isValid ? (
-                <StyledButton type="submit" onClick={handleSignup}>
-                  회원가입
-                </StyledButton>
-              ) : (
-                <StyledButton type="submit">회원가입</StyledButton>
-              )}
-            </StyledDiv>
-          </form>
+          <InfoBox>
+            <InputContainer>
+              <Box>E-mail</Box>
+              <StyledInput
+                type="email"
+                onBlur={handleOnblurEmail("email")}
+                onChange={handleInputValue("email")}
+                onKeyPress={handleKeyPress}
+              />
+              <ValidationBox>{message.email}</ValidationBox>
+            </InputContainer>
+            <InputContainer>
+              <Box>이름</Box>
+              <StyledInput
+                type="username"
+                onChange={handleInputValue("username")}
+                onKeyPress={handleKeyPress}
+              />
+              <ValidationBox>{message.username}</ValidationBox>
+            </InputContainer>
+            <InputContainer>
+              <Box>비밀번호</Box>
+              <StyledInput
+                type="password"
+                onChange={handleInputValue("password")}
+                onKeyPress={handleKeyPress}
+              />
+              <ValidationBox>{message.password}</ValidationBox>
+            </InputContainer>
+            <InputContainer>
+              <Box>비밀번호 확인</Box>
+              <StyledInput
+                type="password"
+                onChange={handleInputValue("checkPW")}
+                onKeyPress={handleKeyPress}
+              />
+              <ValidationBox>{message.checkPW}</ValidationBox>
+            </InputContainer>
+          </InfoBox>
+          <StyledDiv>
+            <StyledLink to="/signin">
+              <StyledButton>돌아가기</StyledButton>
+            </StyledLink>
+            {isValid ? (
+              <StyledButton type="submit" onClick={handleSignup}>
+                회원가입
+              </StyledButton>
+            ) : (
+              <StyledButton type="submit">회원가입</StyledButton>
+            )}
+          </StyledDiv>
         </InnerContainer>
       </OuterContainer>
     </Background>
