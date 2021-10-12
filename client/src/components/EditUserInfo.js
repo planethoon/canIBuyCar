@@ -177,7 +177,7 @@ export default function EditUserInfo() {
           </StyledLink>
           {isValid ? (
             <StyledButton type="submit" onClick={handleEdit}>
-              회원가입
+              수정하기
             </StyledButton>
           ) : (
             <StyledButton type="submit">회원가입</StyledButton>
