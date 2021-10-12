@@ -1,8 +1,11 @@
-import styled from 'styled-components';
-import StyledInput from './StyledInput';
-import StyledButton from './StyledButton';
-import StyledDiv from './StyledDiv';
-import StyledLink from './StyledLink';
+import styled from "styled-components";
+import StyledInput from "./StyledInput";
+import StyledButton from "./StyledButton";
+import StyledDiv from "./StyledDiv";
+import StyledLink from "./StyledLink";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import axios from "axios";
 
 const OuterContainer = styled(StyledDiv)`
   height: 85vh;
@@ -31,70 +34,152 @@ const InfoBox = styled(StyledDiv)`
   flex-direction: column;
 `;
 
-const InputNameContainer = styled(StyledDiv)`
-  margin: 0.8rem;
+const InputContainer = styled(StyledDiv)`
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0.2rem;
 `;
 
-const NameBox = styled(StyledDiv)`
+const Box = styled(StyledDiv)`
   height: 2rem;
-  width: 3.5rem;
 `;
 
-const InputNameBox = styled(StyledInput)``;
-
-const InputEmailContainer = styled(InputNameContainer)``;
-
-const EmailBox = styled(NameBox)``;
-
-const InputEmailBox = styled(StyledInput)``;
-
-const InputPWContainer = styled(InputNameContainer)``;
-
-const PWBox = styled(NameBox)``;
-
-const InputPWBox = styled(StyledInput)``;
-
-const InputCheckPWContainer = styled(InputNameContainer)``;
-
-const CheckPWBox = styled(NameBox)``;
-
-const InputCheckPWBox = styled(StyledInput)``;
-
-const ButtonContainer = styled(StyledDiv)``;
-
-const CancleBtn = styled(StyledButton)``;
-
-const EditBtn = styled(StyledButton)``;
+const ValidationBox = styled(StyledDiv)`
+  margin-top: 0.5rem;
+  height: 1rem;
+`;
 
 export default function EditUserInfo() {
+  const [editInfo, setEditInfo] = useState({
+    username: "",
+    password: "",
+    checkPW: "",
+  });
+
+  const [validation, setValidation] = useState({
+    username: false,
+    password: false,
+    checkPW: false,
+  });
+
+  const [message, setMessage] = useState({
+    username: "이름을 입력해주세요",
+    password: "비밀번호는 8자리 이상, 숫자, 문자, 특수문자가 포함되어야 합니다",
+    checkPW: "비밀번호를 입력해주세요",
+  });
+
+  function isUsername(asValue) {
+    var regExp = /^[가-힣]+$/;
+    return regExp.test(asValue);
+  }
+
+  function isPassword(asValue) {
+    var regExp =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+    return regExp.test(asValue);
+  }
+
+  const handleInputValue = (key) => (e) => {
+    setEditInfo({ ...editInfo, [key]: e.target.value });
+  };
+
+  const handleEdit = () => {
+    const { username, password } = editInfo;
+    axios
+      .put("http://localhost:8080/auth", { username, password })
+      .then((res) => {
+        history.push("");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const isValid =
+    validation.email &&
+    validation.username &&
+    validation.password &&
+    validation.checkPW &&
+    validation.checkEmail;
+
+  const history = useHistory();
+
+  useEffect(() => {
+    setMessage({
+      ...message,
+      password:
+        editInfo.password.length >= 8
+          ? isPassword(editInfo.password)
+            ? "사용할 수 있는 비밀번호 입니다"
+            : "비밀번호는 숫자, 문자, 특수문자가 포함되어야합니다"
+          : "비밀번호는 8자리 이상, 숫자, 문자, 특수문자가 포함되어야 합니다",
+      checkPW:
+        editInfo.checkPW.length >= editInfo.password.length &&
+        editInfo.password.length
+          ? editInfo.checkPW === editInfo.password
+            ? "비밀번호가 일치합니다"
+            : "비밀번호가 불일치합니다"
+          : "비밀번호를 입력해주세요",
+      username:
+        editInfo.username.length >= 2
+          ? isUsername(editInfo.username)
+            ? "멋진 이름이네요 :)"
+            : "한글만 입력해주세요"
+          : "이름은 2자리 이상의 한글로 입력해주세요",
+    });
+    setValidation({
+      ...validation,
+      username: isUsername(editInfo.username),
+      password: isPassword(editInfo.password),
+      checkPW: editInfo.password === editInfo.checkPW,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editInfo]);
+
   return (
     <OuterContainer>
       <InnerContainer>
         <TextBox>회원정보 수정</TextBox>
-        <InfoBox>
-          <InputNameContainer>
-            <NameBox>Name</NameBox>
-            <InputNameBox />
-          </InputNameContainer>
-          <InputEmailContainer>
-            <EmailBox>Email</EmailBox>
-            <InputEmailBox />
-          </InputEmailContainer>
-          <InputPWContainer>
-            <PWBox>PW</PWBox>
-            <InputPWBox />
-          </InputPWContainer>
-          <InputCheckPWContainer>
-            <CheckPWBox>Check</CheckPWBox>
-            <InputCheckPWBox />
-          </InputCheckPWContainer>
-        </InfoBox>
-        <ButtonContainer>
-          <StyledLink to='/mypage/car'>
-            <CancleBtn>취소</CancleBtn>
-          </StyledLink>
-          <EditBtn>수정하기</EditBtn>
-        </ButtonContainer>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <InfoBox>
+            <InputContainer>
+              <Box>이름</Box>
+              <StyledInput
+                type="username"
+                onChange={handleInputValue("username")}
+              />
+              <ValidationBox>{message.username}</ValidationBox>
+            </InputContainer>
+            <InputContainer>
+              <Box>비밀번호</Box>
+              <StyledInput
+                type="password"
+                onChange={handleInputValue("password")}
+              />
+              <ValidationBox>{message.password}</ValidationBox>
+            </InputContainer>
+            <InputContainer>
+              <Box>비밀번호 확인</Box>
+              <StyledInput
+                type="password"
+                onChange={handleInputValue("checkPW")}
+              />
+              <ValidationBox>{message.checkPW}</ValidationBox>
+            </InputContainer>
+          </InfoBox>
+          <StyledDiv>
+            <StyledLink to="/mypage/car">
+              <StyledButton>돌아가기</StyledButton>
+            </StyledLink>
+            {isValid ? (
+              <StyledButton type="submit" onClick={handleEdit}>
+                회원가입
+              </StyledButton>
+            ) : (
+              <StyledButton type="submit">회원가입</StyledButton>
+            )}
+          </StyledDiv>
+        </form>
       </InnerContainer>
     </OuterContainer>
   );
