@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 `;
 const InputContainer = styled.div`
   width: 100%;
+  overflow: hidden;
 `;
 
 const DropdownContainer = styled.ul`
@@ -21,10 +22,10 @@ const DropdownContainer = styled.ul`
     text-align: center;
     font-size: 0.9rem;
     &.focused {
-      background-color: skyblue;
+      background-color: yellowgreen;
     }
     &:hover {
-      background-color: skyblue;
+      background-color: yellowgreen;
     }
   }
 `;
@@ -71,6 +72,10 @@ export default function Search() {
     );
   }, [text]);
 
+  useEffect(() => {
+    setFocused(options[0]);
+  }, [options]);
+
   const handleDropdownMoves = (e) => {
     if (e.key === "ArrowUp" && index !== 0) {
       setIndex(index - 1);
@@ -83,6 +88,7 @@ export default function Search() {
       setFocused("");
     }
   };
+  console.log(text, focused, index);
 
   useEffect(() => {
     setFocused(options[index]);
