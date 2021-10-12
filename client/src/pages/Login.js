@@ -4,15 +4,11 @@ import StyledDiv from "../components/StyledDiv";
 import StyledLink from "../components/StyledLink";
 import StyledInput from "../components/StyledInput";
 import { useState } from "react";
-import axios from "axios";
 import { useHistory } from "react-router";
-
 import { useDispatch } from "react-redux";
-
 import { login } from "../modules/isLogin";
 import { setInfo as setUserInfo } from "../modules/userInfo";
-
-// import CheckLogin from "../components/CheckLogin";
+import axios from "axios";
 
 const Background = styled(StyledDiv)`
   height: 100vh;

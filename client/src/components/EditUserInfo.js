@@ -5,6 +5,8 @@ import StyledDiv from "./StyledDiv";
 import StyledLink from "./StyledLink";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { setInfo as setUserInfo } from "../modules/userInfo";
 import axios from "axios";
 
 const OuterContainer = styled(StyledDiv)`
@@ -69,6 +71,7 @@ export default function EditUserInfo() {
   });
 
   const history = useHistory();
+  const dispatch = useDispatch();
 
   function isUsername(asValue) {
     var regExp = /^[가-힣]+$/;
@@ -88,7 +91,6 @@ export default function EditUserInfo() {
   const handleEdit = () => {
     const { username, password } = editInfo;
     const token = localStorage.getItem("token");
-    console.log("요청 전", token);
     axios
       .put(
         "http://localhost:8080/auth",
@@ -96,13 +98,13 @@ export default function EditUserInfo() {
         { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => {
+        console.log(res.data);
         const { userId, userName, accessToken } = res.data.data;
         localStorage.setItem("token", accessToken);
         localStorage.setItem("userId", userId);
         localStorage.setItem("userName", userName);
         if (token) {
           dispatch(setUserInfo({ token, userId, userName }));
-          console.log("요청 후", token);
           history.push("/mypage/edit/complete");
         }
       })

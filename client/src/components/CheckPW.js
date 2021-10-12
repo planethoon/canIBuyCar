@@ -76,12 +76,17 @@ export default function CheckPW() {
         { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => {
-        console.log(res.data);
         history.push("/mypage/edit/userinfo");
       })
       .catch((err) => {
         setMessage("비밀번호를 확인해주세요");
       });
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.type === "keypress" && e.code === "Enter") {
+      handleOnclick();
+    }
   };
 
   useEffect(() => {
@@ -98,6 +103,7 @@ export default function CheckPW() {
             <StyledInput
               type="password"
               onChange={handleInputValue("password")}
+              onKeyPress={handleKeyPress}
             />
           </InputContainer>
           <ValidationBox>{message}</ValidationBox>
