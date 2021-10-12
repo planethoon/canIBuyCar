@@ -1,6 +1,12 @@
 require('dotenv').config();
 const env = process.env;
-console.log('aaaaaa', env);
+console.log(
+  'aaaaaa',
+  env.DATABASE_USER,
+  env.DATABASE_PASSWORD,
+  env.DATABASE_HOST,
+  env.DATABASE_PORT
+);
 
 const development = {
   username: env.DATABASE_USER,
