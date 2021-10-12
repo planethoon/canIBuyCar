@@ -16,7 +16,10 @@ module.exports = async (req, res) => {
       const query = `UPDATE Users SET username='${req.body.username}', password='${req.body.password}'
       WHERE email='${userInfo.dataValues.email}';`;
       const editUser = await User.sequelize.query(query);
-      const user = userInfo.dataValues;
+      const information = await User.findOne({
+        where: {email: data.email},
+      });
+      const user = information.dataValues;
       delete user.password;
 
       const accessToken = jwt.sign(user, process.env.ACCESS_SECRET, {
