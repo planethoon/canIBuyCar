@@ -114,11 +114,10 @@ export default function Signup() {
   };
 
   const handleInputValue = (key) => (e) => {
-    setSignupInfo({ ...signupInfo, [key]: e.target.value });
+    setSignupInfo({ ...signupInfo, [key]: e.target.value.toLowerCase() });
   };
 
   const handleSignup = () => {
-    console.log("가입요청");
     const { email, username, password } = signupInfo;
     axios
       .post("http://localhost:8080/auth/signup", { email, username, password })
@@ -222,7 +221,7 @@ export default function Signup() {
             </InputContainer>
           </InfoBox>
           <StyledDiv>
-            <StyledLink to="/signin">
+            <StyledLink to="/login">
               <StyledButton>돌아가기</StyledButton>
             </StyledLink>
             {isValid ? (

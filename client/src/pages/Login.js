@@ -71,7 +71,6 @@ const SignupBox = styled(StyledDiv)`
 
 export default function Login() {
   const dispatch = useDispatch();
-
   const history = useHistory();
   const [loginInfo, setLoginInfo] = useState({
     email: "",
@@ -81,7 +80,7 @@ export default function Login() {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputValue = (key) => (e) => {
-    setLoginInfo({ ...loginInfo, [key]: e.target.value });
+    setLoginInfo({ ...loginInfo, [key]: e.target.value.toLowerCase() });
     setErrorMessage("");
   };
 
