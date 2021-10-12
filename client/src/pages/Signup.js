@@ -118,11 +118,7 @@ export default function Signup() {
   const handleSignup = () => {
     const { email, username, password } = signupInfo;
     axios
-      .post(
-        "http://localhost:8080/auth/signup",
-        { email, username, password },
-        { withCredentials: true }
-      )
+      .post("http://localhost:8080/auth/signup", { email, username, password })
       .then((res) => {
         history.push("/signup/complete");
       })
