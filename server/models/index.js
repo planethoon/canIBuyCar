@@ -21,5 +21,6 @@ db.Comment = require('./comment')(sequelize, Sequelize);
 db.Car = require('./car')(sequelize, Sequelize);
 db.Users_car = require('./users_car')(sequelize, Sequelize);
 db.Users_comment = require('./users_comment')(sequelize, Sequelize);
+db.Result = require('./result')(sequelize, Sequelize);
 
 module.exports = db;
