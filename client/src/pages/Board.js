@@ -52,9 +52,20 @@ export default function Board() {
     "차 정보 추가요청, 사용후기 등 한줄 의견을 남겨주세요!"
   );
 
+  const [likeData, setLikeData] = useState([]);
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const isLogin = useSelector((state) => state.loginReducer);
+  const userId = localStorage.getItem("userId");
+
+  const check = (arr) => {
+    for (let el of arr) {
+      for (let e of el) {
+        if (e.userId === +userId) return true;
+      }
+    }
+    return false;
+  };
 
   const handleInputValue = (e) => {
     setText(e.target.value);
@@ -82,15 +93,13 @@ export default function Board() {
     }
   };
 
-  const [like, setLike] = useState([]);
-
   const handleComments = () => {
     axios
       .get(
         "http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/board"
       )
       .then((res) => {
-        setLike(res.data.data.likeData);
+        setLikeData(res.data.data.likeData.filter((e) => e.length));
         setComments(res.data.data.commentsData[0]);
       })
       .catch((err) => {
@@ -135,6 +144,10 @@ export default function Board() {
                 userId={e.userId}
                 postId={e.id}
                 handleComments={handleComments}
+                likes={likeData.filter((el) => el[0].commentId === e.id).length}
+                isChecked={check(
+                  likeData.filter((el) => el[0].commentId === e.id)
+                )}
               />
             ))}
           </CommentsContainer>
