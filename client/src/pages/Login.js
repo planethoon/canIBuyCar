@@ -82,6 +82,7 @@ export default function Login() {
   const handleInputValue = (key) => (e) => {
     setLoginInfo({ ...loginInfo, [key]: e.target.value.toLowerCase() });
     setErrorMessage("");
+    console.log(loginInfo.password);
   };
 
   const handleLogin = () => {

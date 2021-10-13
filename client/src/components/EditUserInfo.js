@@ -105,11 +105,13 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
       )
       .then((res) => {
         const { userId, userName, accessToken } = res.data.data;
-        console.log(res.data);
+        console.log(accessToken);
+        localStorage.removeItem("token");
         localStorage.setItem("token", accessToken);
         localStorage.setItem("userId", userId);
         localStorage.setItem("userName", userName);
         if (token) {
+          console.log("수정 후", token);
           dispatch(setUserInfo({ token, userId, userName }));
           handleEditInfo();
         }
