@@ -18,7 +18,7 @@ const BookmarkWrapper = styled.div`
   }
 `;
 
-export default function BookmarkButton({ brand, carId }) {
+export default function BookmarkButton({ brand, carId, page }) {
   const userInfo = useSelector((state) => state.userInfoReducer);
   const dispatch = useDispatch();
 
@@ -40,7 +40,8 @@ export default function BookmarkButton({ brand, carId }) {
       .then((res) => {
         const { bookmarkData } = res.data.data;
         const carUser = Number(localStorage.getItem("userId"));
-        const carIdWatching = Number(localStorage.getItem("watching"));
+        const carIdWatching =
+          page === "car" ? Number(localStorage.getItem("watching")) : carId;
         const filtered = bookmarkData
           .filter((bookmark) => bookmark.userId === carUser)
           .filter((bookmark) => bookmark.carId === carIdWatching);

@@ -204,11 +204,7 @@ export default function Car() {
           <Wrapper>
             <CarImg>
               <img src={carInfo.img} alt="" />
-              <BookmarkButton
-                brand={brand}
-                changed={changed}
-                carId={carInfo.id}
-              />
+              <BookmarkButton brand={brand} page={"car"} carId={carInfo.id} />
             </CarImg>
             <InfoContainer>
               <div className="header">차량명</div>
