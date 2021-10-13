@@ -58,18 +58,18 @@ const Button = styled(StyledButton)`
 export default function CheckPW({ handleCheckPW }) {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const history = useHistory();
 
   const handleInputValue = (key) => (e) => {
     setPassword(`${e.target.value.toLowerCase()}`);
     setMessage("");
+    console.log(password);
   };
 
   const handleOnclick = () => {
     const token = localStorage.getItem("token");
     axios
       .post(
-        "http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/auth/password",
+        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth/password",
         { password },
         { headers: { authorization: `Bearer ${token}` } }
       )

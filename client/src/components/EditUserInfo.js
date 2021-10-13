@@ -99,17 +99,19 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
     const token = localStorage.getItem("token");
     axios
       .put(
-        "http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/auth",
+        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth",
         { username, password },
         { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => {
         const { userId, userName, accessToken } = res.data.data;
-        console.log(res.data);
+        console.log(accessToken);
+        localStorage.removeItem("token");
         localStorage.setItem("token", accessToken);
         localStorage.setItem("userId", userId);
         localStorage.setItem("userName", userName);
         if (token) {
+          console.log("수정 후", token);
           dispatch(setUserInfo({ token, userId, userName }));
           handleEditInfo();
         }

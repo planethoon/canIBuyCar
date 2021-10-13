@@ -33,7 +33,7 @@ export default function BookmarkButton({ brand, carId, page }) {
   const checkMarked = () => {
     axios
       .get(
-        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`,
+        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`,
         {
           withCredentials: true,
         }
@@ -62,7 +62,7 @@ export default function BookmarkButton({ brand, carId, page }) {
   const updateInfo = () => {
     axios
       .get(
-        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`,
+        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`,
         {
           withCredentials: true,
         }
@@ -82,7 +82,7 @@ export default function BookmarkButton({ brand, carId, page }) {
     if (!isMarked) {
       axios
         .post(
-          "http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/bookmark",
+          "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/bookmark",
           { carId },
           { withCredentials: true, headers: { authorization: token } }
         )
@@ -98,7 +98,7 @@ export default function BookmarkButton({ brand, carId, page }) {
     } else {
       axios
         .delete(
-          `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${carId}`,
+          `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${carId}`,
           {
             withCredentials: true,
             headers: { authorization: token },

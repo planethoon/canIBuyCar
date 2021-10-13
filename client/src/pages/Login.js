@@ -82,13 +82,14 @@ export default function Login() {
   const handleInputValue = (key) => (e) => {
     setLoginInfo({ ...loginInfo, [key]: e.target.value.toLowerCase() });
     setErrorMessage("");
+    console.log(loginInfo.password);
   };
 
   const handleLogin = () => {
     const { email, password } = loginInfo;
     axios
       .post(
-        "http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/auth/login",
+        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth/login",
         { email, password },
         { withCredentials: true }
       )
