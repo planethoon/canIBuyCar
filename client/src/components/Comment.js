@@ -38,8 +38,6 @@ export default function Comment({ content, userId, postId, handleComments }) {
     axios
       .delete(
         `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/board/${postId}`,
-<<<<<<< HEAD
-=======
         { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => handleComments())
@@ -65,7 +63,6 @@ export default function Comment({ content, userId, postId, handleComments }) {
     axios
       .delete(
         `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/comment/:${postId}`,
->>>>>>> 057afaa415297c41612c690c9e02b574eb8aa112
         { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => console.log(res))
