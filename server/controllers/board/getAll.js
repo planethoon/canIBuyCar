@@ -13,5 +13,5 @@ module.exports = async (req, res) => {
   }
   res
     .status(200)
-    .json({data: {commentsData: comments, likeData: likeUserList}});
+    .json({data: {commentsData: comments[0], likeData: likeUserList}});
 };

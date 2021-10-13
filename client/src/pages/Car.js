@@ -178,7 +178,11 @@ export default function Car() {
     console.log("호출됌 ?");
     axios
       .get(
+<<<<<<< HEAD
         `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`,
+=======
+        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${carInfo.brand}`,
+>>>>>>> 057afaa415297c41612c690c9e02b574eb8aa112
         {
           withCredentials: true,
         }
