@@ -150,6 +150,7 @@ export default function Brand() {
           const filtered = bookmarkData.filter(
             (e) => e.userId === Number(userInfo.userId)
           );
+          const filteredId = filtered.map((e) => e.carId);
           dispatch(setUserInfo({ bookmark: filtered }));
           localStorage.setItem("bookmark", JSON.stringify(filtered));
         }
@@ -171,28 +172,6 @@ export default function Brand() {
   const logoClickHandler = () => {
     getData(selected);
   };
-
-  useEffect(() => {
-    setTimeout(() => {
-      axios
-        .get(
-          `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
-          {
-            withCredentials: true,
-          }
-        )
-        .then((res) => {
-          const { bookmarkData } = res.data.data;
-          if (isLogin) {
-            const filtered = bookmarkData.filter(
-              (e) => e.userId === Number(userInfo.userId)
-            );
-            dispatch(setUserInfo({ bookmark: filtered }));
-            localStorage.setItem("bookmark", JSON.stringify(filtered));
-          }
-        });
-    }, 100);
-  }, [isChanged]);
 
   return (
     <>
@@ -222,7 +201,7 @@ export default function Brand() {
                     <BookmarkButton
                       brand={selected}
                       carId={e.id}
-                      changed={changed}
+                      page={"brand"}
                     />
                     <span>
                       <LinkText to={`/car/${selected}-${e.id}`}>
