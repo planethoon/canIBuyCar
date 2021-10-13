@@ -1,7 +1,7 @@
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import StyledButton from "../components/StyledButton";
 import StyledDiv from "../components/StyledDiv";
-import StyledLink from "../components/StyledLink";
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -44,7 +44,12 @@ const Box = styled(StyledDiv)`
   height: 2rem;
 `;
 
-export default function SignupComplete({ goLogin }) {
+export default function SignupComplete({ signupClear }) {
+  const history = useHistory();
+  const goLogin = () => {
+    history.push("/login");
+    signupClear();
+  };
   return (
     <Background>
       <OuterContainer>
@@ -56,9 +61,7 @@ export default function SignupComplete({ goLogin }) {
             </InputContainer>
           </InfoBox>
           <StyledDiv>
-            <StyledLink onClick={goLogin}>
-              <StyledButton>로그인</StyledButton>
-            </StyledLink>
+            <StyledButton onClick={goLogin}>로그인</StyledButton>
           </StyledDiv>
         </InnerContainer>
       </OuterContainer>

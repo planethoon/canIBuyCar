@@ -51,7 +51,13 @@ const ValidationBox = styled(StyledDiv)`
   height: 1rem;
 `;
 
-export default function EditUserInfo({ handleEditInfo }) {
+const DeleteBtn = styled(StyledButton)`
+  margin-top: 0;
+  width: 32rem;
+  color: red;
+`;
+
+export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
   const [editInfo, setEditInfo] = useState({
     username: "",
     password: "",
@@ -98,8 +104,8 @@ export default function EditUserInfo({ handleEditInfo }) {
         { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => {
-        console.log(res.data);
         const { userId, userName, accessToken } = res.data.data;
+        console.log(res.data);
         localStorage.setItem("token", accessToken);
         localStorage.setItem("userId", userId);
         localStorage.setItem("userName", userName);
@@ -188,9 +194,9 @@ export default function EditUserInfo({ handleEditInfo }) {
           </InputContainer>
         </InfoBox>
         <StyledDiv>
-          <StyledLink to="/mypage/car">
-            <StyledButton>돌아가기</StyledButton>
-          </StyledLink>
+          <StyledButton onClick={() => history.push("mypage/")}>
+            돌아가기
+          </StyledButton>
           {isValid ? (
             <StyledButton type="submit" onClick={handleEdit}>
               수정하기
@@ -199,6 +205,7 @@ export default function EditUserInfo({ handleEditInfo }) {
             <StyledButton type="submit">수정하기</StyledButton>
           )}
         </StyledDiv>
+        <DeleteBtn onClick={handleDeleteInfo}>회원탈퇴</DeleteBtn>
       </InnerContainer>
     </OuterContainer>
   );

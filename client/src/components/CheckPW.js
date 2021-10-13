@@ -67,8 +67,6 @@ export default function CheckPW({ handleCheckPW }) {
 
   const handleOnclick = () => {
     const token = localStorage.getItem("token");
-    console.log(token);
-    console.log(password);
     axios
       .post(
         "http://localhost:8080/auth/password",
@@ -88,10 +86,6 @@ export default function CheckPW({ handleCheckPW }) {
       handleOnclick();
     }
   };
-
-  useEffect(() => {
-    console.log(password);
-  }, [password]);
 
   return (
     <OuterContainer>

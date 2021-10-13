@@ -1,7 +1,11 @@
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import StyledButton from "../components/StyledButton";
 import StyledDiv from "../components/StyledDiv";
 import StyledLink from "../components/StyledLink";
+import { logout } from "../modules/isLogin";
 
 const OuterContainer = styled(StyledDiv)`
   height: 85vh;
@@ -25,7 +29,7 @@ const TextBox = styled(StyledDiv)`
 
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
-  height: 10rem;
+  height: 8rem;
   width: 30rem;
   flex-direction: column;
 `;
@@ -39,20 +43,38 @@ const Box = styled(StyledDiv)`
   height: 2rem;
 `;
 
-export default function EditComplete() {
+export default function DeleteUserinfo() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    const token = localStorage.getItem("token");
+    axios
+      .delete("http://localhost:8080/auth/", {
+        headers: { authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        localStorage.clear();
+        dispatch(logout());
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <OuterContainer>
       <InnerContainer>
         <TextBox>로고</TextBox>
         <InfoBox>
           <InputContainer>
-            <Box>회원정보가 수정되었습니다!</Box>
+            <Box>정말로 탈퇴하시겠습니까? 회원정보는 복구할 수 없습니다</Box>
+            <Box>버튼을 누르면 회원정보가 삭제되고 랜딩페이지로 이동합니다</Box>
           </InputContainer>
         </InfoBox>
         <StyledDiv>
-          <StyledLink to="/mypage">
-            <StyledButton>확인</StyledButton>
-          </StyledLink>
+          <StyledButton onClick={handleDelete}>탈퇴</StyledButton>
         </StyledDiv>
       </InnerContainer>
     </OuterContainer>

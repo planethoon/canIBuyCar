@@ -17,7 +17,7 @@ function App() {
     setIsComplete(true);
   };
 
-  const goLogin = () => {
+  const signupClear = () => {
     setIsComplete(false);
   };
 
@@ -41,7 +41,7 @@ function App() {
         </Route>
         <Route exact path="/signup">
           {isComplete ? (
-            <SignupComplete goLogin={goLogin} />
+            <SignupComplete signupClear={signupClear} />
           ) : (
             <Signup signupComplete={signupComplete} />
           )}
