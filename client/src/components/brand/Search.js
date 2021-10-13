@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setInfo as setBrandInfo } from "../../modules/brand";
+import { setBrand } from "../../modules/brand";
 
 const Wrapper = styled.div`
   width: 80%;
@@ -95,7 +95,7 @@ export default function Search() {
 
   const infoHandler = (carName) => {
     const carInfo = state.filter((e) => e.name === carName);
-    dispatch(setBrandInfo(carInfo));
+    dispatch(setBrand(carInfo));
   };
 
   return (

@@ -14,10 +14,13 @@ const BookmarkWrapper = styled.div`
   }
 `;
 
-export default function BookmarkButton({ carId, bookmark, accessToken }) {
-  // console.log("북마크", carId);
+export default function BookmarkButton({
+  carId,
+  bookmark,
+  accessToken,
+  changed,
+}) {
   const [isMarked, getIsMarked] = useState(false);
-  // console.log("프롭스 받은 것", bookmark);
   const marked = bookmark.filter((e) => e.carId === carId);
 
   useEffect(() => {
@@ -31,7 +34,7 @@ export default function BookmarkButton({ carId, bookmark, accessToken }) {
     if (!isMarked) {
       axios
         .post(
-          "http://localhost:8080/bookmark",
+          "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/bookmark",
           { carId },
           { withCredentials: true, headers: { Authorization: token } }
         )
@@ -45,10 +48,13 @@ export default function BookmarkButton({ carId, bookmark, accessToken }) {
         });
     } else {
       axios
-        .delete(`http://localhost:8080/bookmark/${carId}`, {
-          withCredentials: true,
-          headers: { Authorization: token },
-        })
+        .delete(
+          `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${carId}`,
+          {
+            withCredentials: true,
+            headers: { Authorization: token },
+          }
+        )
         .then((res) => {
           if (res.status === 204) {
             getIsMarked(false);
@@ -58,6 +64,7 @@ export default function BookmarkButton({ carId, bookmark, accessToken }) {
           console.log(err);
         });
     }
+    changed();
   };
 
   return (

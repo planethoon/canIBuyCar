@@ -99,7 +99,10 @@ export default function Signup({ signupComplete }) {
       return;
     }
     axios
-      .post("http://localhost:8080/auth/email", { [key]: e.target.value }) //
+      .post(
+        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth/email",
+        { [key]: e.target.value }
+      ) //
       .then((res) => {
         setValidation({ ...validation, checkEmail: true });
         setMessage({ ...message, email: "사용 가능한 이메일입니다" });
@@ -117,7 +120,10 @@ export default function Signup({ signupComplete }) {
   const handleSignup = () => {
     const { email, username, password } = signupInfo;
     axios
-      .post("http://localhost:8080/auth/signup", { email, username, password })
+      .post(
+        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth/signup",
+        { email, username, password }
+      )
       .then((res) => {
         signupComplete();
       })
