@@ -34,7 +34,7 @@ export default function MypageSideBar({ handleAll }) {
         <StyledDiv>{userName}님!</StyledDiv>
       </GreetingBox>
       <FavoriteBox>
-        <StyledLink to="/mypage/car" onClick={handleAll}>
+        <StyledLink to="/mypage/bookmark" onClick={handleAll}>
           즐겨찾기 목록
         </StyledLink>
       </FavoriteBox>
