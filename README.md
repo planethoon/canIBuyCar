@@ -15,8 +15,8 @@
 <linha de comando>
 ```
 
-## :soon: Implementação futura
-* O que será implementado na próxima sprint?
+## :soon: 링크 주소
+* 주소
 
 ## :handshake: 기획자
 <table>
@@ -40,11 +40,11 @@
             <a href="http://github.com/glen15">
         <img src="https://avatars.githubusercontent.com/u/56259137?v=4" width="100px;" alt="이정훈B"/>
         <sub>
-          <b></b>
+          <b>이정훈B</b>
         </sub>
       </a>
     </td>
   </tr>
 </table>
 
-## :dart: Status do projeto
+## :dart: Advanced
