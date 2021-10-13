@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SignupComplete from "./pages/SignupComplete";
 import Mypage from "./pages/Mypage";
-import Comments from "./pages/Comments";
+import Board from "./pages/Board";
 import "./reset.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useState } from "react";
@@ -49,8 +49,8 @@ function App() {
         <Route path="/mypage">
           <Mypage />
         </Route>
-        <Route path="/comments">
-          <Comments />
+        <Route path="/board">
+          <Board />
         </Route>
       </Switch>
     </Router>

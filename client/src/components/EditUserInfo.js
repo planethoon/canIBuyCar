@@ -99,7 +99,7 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
     const token = localStorage.getItem("token");
     axios
       .put(
-        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth",
+        "http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/auth",
         { username, password },
         { headers: { authorization: `Bearer ${token}` } }
       )

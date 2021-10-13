@@ -127,7 +127,7 @@ export default function Car() {
 
     axios
       .get(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`
+        `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`
       )
       .then((res) => {
         const carData = res.data.data.carData.filter((e) => {
@@ -178,7 +178,7 @@ export default function Car() {
   useEffect(() => {
     axios
       .get(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${carInfo.brand}`,
+        `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${carInfo.brand}`,
         {
           withCredentials: true,
         }
