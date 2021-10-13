@@ -15,7 +15,9 @@ module.exports = async (req, res) => {
     where: {year},
   });
   if (result) {
-    res.status(200).json({text: result.dataValues.text});
+    res
+      .status(200)
+      .json({text: `${year}년 부터니까 \n ${result.dataValues.text}`});
   } else {
     res.status(200).json({text: `${year}년 부터 모으셔야 했어요!`});
   }
