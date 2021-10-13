@@ -127,9 +127,9 @@ export default function Brand() {
   const getData = (selected) => {
     const { token, userId, userName, bookmark } = {
       token: localStorage.getItem("token"),
-      userId: localStorage.getItem("userId"),
+      userId: JSON.parse(localStorage.getItem("userId")),
       userName: localStorage.getItem("userName"),
-      bookmark: JSON.parse(localStorage.getItem("bookmark")),
+      bookmark: JSON.parse(localStorage.getItem("bookmark")) || [],
     };
 
     console.log(userInfo);
@@ -142,7 +142,7 @@ export default function Brand() {
 
     axios
       .get(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
+        `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
         {
           withCredentials: true,
         }
@@ -177,24 +177,26 @@ export default function Brand() {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        const { bookmarkData } = res.data.data;
+    setTimeout(() => {
+      axios
+        .get(
+          `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
+          {
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          const { bookmarkData } = res.data.data;
 
-        if (isLogin) {
-          const filtered = bookmarkData.filter(
-            (e) => e.userId === Number(userInfo.userId)
-          );
-          dispatch(setUserInfo({ bookmark: filtered }));
-          localStorage.setItem("bookmark", JSON.stringify(filtered));
-        }
-      });
+          if (isLogin) {
+            const filtered = bookmarkData.filter(
+              (e) => e.userId === Number(userInfo.userId)
+            );
+            dispatch(setUserInfo({ bookmark: filtered }));
+            localStorage.setItem("bookmark", JSON.stringify(filtered));
+          }
+        });
+    }, 100);
   }, [isChanged]);
 
   return (
@@ -217,12 +219,7 @@ export default function Brand() {
                     <Link to={`/car/${selected}-${e.id}`}>
                       <img src={e.img} alt={e.name} />
                     </Link>
-                    <BookmarkButton
-                      carId={e.id}
-                      changed={changed}
-                      bookmark={userInfo.bookmark}
-                      accessToken={userInfo.token}
-                    />
+                    <BookmarkButton carId={e.id} changed={changed} />
                     <span>
                       <LinkText to={`/car/${selected}-${e.id}`}>
                         {e.name}

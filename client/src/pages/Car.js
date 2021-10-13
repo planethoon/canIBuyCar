@@ -116,22 +116,21 @@ export default function Car() {
   useEffect(() => {
     const { token, userId, userName, bookmark } = {
       token: localStorage.getItem("token"),
-      userId: localStorage.getItem("userId"),
+      userId: JSON.parse(localStorage.getItem("userId")),
       userName: localStorage.getItem("userName"),
-      bookmark: JSON.parse(localStorage.getItem("bookmark")),
     };
     if (token) {
       dispatch(login());
-      dispatch(setUserInfo({ token, userId, userName, bookmark }));
+      dispatch(setUserInfo({ token, userId, userName }));
     }
 
     axios
       .get(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`
+        `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`
       )
       .then((res) => {
         const carData = res.data.data.carData.filter((e) => {
-          return e.id === Number(id);
+          return Number(e.id) === Number(id);
         });
 
         const bookmarkData = res.data.data.bookmarkData;
@@ -176,9 +175,10 @@ export default function Car() {
   };
 
   useEffect(() => {
+    console.log("호출됌 ?");
     axios
       .get(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${carInfo.brand}`,
+        `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`,
         {
           withCredentials: true,
         }
@@ -188,7 +188,7 @@ export default function Car() {
 
         if (isLogin) {
           const filtered = bookmarkData.filter(
-            (e) => e.userId === Number(userInfo.userId)
+            (e) => Number(e.userId) === Number(userInfo.userId)
           );
           dispatch(setUserInfo({ bookmark: filtered }));
           localStorage.setItem("bookmark", JSON.stringify(filtered));
@@ -204,12 +204,7 @@ export default function Car() {
           <Wrapper>
             <CarImg>
               <img src={carInfo.img} alt="" />
-              <BookmarkButton
-                changed={changed}
-                carId={carInfo.id}
-                bookmark={userInfo.bookmark}
-                accessToken={userInfo.token}
-              />
+              <BookmarkButton changed={changed} carId={carInfo.id} />
             </CarImg>
             <InfoContainer>
               <div className="header">차량명</div>
