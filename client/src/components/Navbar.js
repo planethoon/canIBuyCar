@@ -73,8 +73,8 @@ export default function Navbar() {
           <StyledLink to="/mypage">
             <NaviBtn>Mypage</NaviBtn>
           </StyledLink>
-          <StyledLink to="/comments">
-            <NaviBtn>Comments</NaviBtn>
+          <StyledLink to="/board">
+            <NaviBtn>Board</NaviBtn>
           </StyledLink>
         </BtnContainer>
       </NaviBar>
