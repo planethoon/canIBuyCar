@@ -73,7 +73,8 @@ export default function Board() {
           { headers: { authorization: `Bearer ${token}` } }
         )
         .then((res) => {
-          console.log(res.data);
+          handleComments();
+          setText("");
         })
         .catch((err) => {
           console.log(err);
@@ -81,12 +82,15 @@ export default function Board() {
     }
   };
 
+  const [like, setLike] = useState([]);
+
   const handleComments = () => {
     axios
       .get(
         "http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/board"
       )
       .then((res) => {
+        setLike(res.data.data.likeData);
         setComments(res.data.data.commentsData[0]);
       })
       .catch((err) => {
@@ -107,10 +111,6 @@ export default function Board() {
     }
   }, []);
 
-  useEffect(() => {
-    handleComments();
-  }, [comments]);
-
   return (
     <>
       <Background>
@@ -120,6 +120,7 @@ export default function Board() {
             <StyledDiv>{message}</StyledDiv>
             <StyledDiv>
               <RequestInput
+                value={text}
                 onChange={handleInputValue}
                 onKeyPress={handleKeyPress}
               />
