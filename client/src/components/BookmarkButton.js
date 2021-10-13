@@ -34,7 +34,7 @@ export default function BookmarkButton({
     if (!isMarked) {
       axios
         .post(
-          "http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/bookmark",
+          "http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/bookmark",
           { carId },
           { withCredentials: true, headers: { Authorization: token } }
         )
@@ -49,7 +49,7 @@ export default function BookmarkButton({
     } else {
       axios
         .delete(
-          `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${carId}`,
+          `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${carId}`,
           {
             withCredentials: true,
             headers: { Authorization: token },
