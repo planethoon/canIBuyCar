@@ -44,7 +44,7 @@ const Box = styled(StyledDiv)`
   height: 2rem;
 `;
 
-export default function SignupComplete() {
+export default function SignupComplete({ goLogin }) {
   return (
     <Background>
       <OuterContainer>
@@ -56,7 +56,7 @@ export default function SignupComplete() {
             </InputContainer>
           </InfoBox>
           <StyledDiv>
-            <StyledLink to="/login">
+            <StyledLink onClick={goLogin}>
               <StyledButton>로그인</StyledButton>
             </StyledLink>
           </StyledDiv>

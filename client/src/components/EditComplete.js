@@ -1,3 +1,4 @@
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import StyledButton from "../components/StyledButton";
 import StyledDiv from "../components/StyledDiv";
@@ -38,13 +39,6 @@ const InputContainer = styled(StyledDiv)`
 const Box = styled(StyledDiv)`
   height: 2rem;
 `;
-
-// const CapcharBox = styled(StyledDiv)`
-//   margin: 1rem;
-//   height: 10rem;
-//   width: 20em;
-//   background-color: gray;
-// `;
 
 export default function EditComplete() {
   return (

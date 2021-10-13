@@ -9,8 +9,18 @@ import Mypage from "./pages/Mypage";
 import Comments from "./pages/Comments";
 import "./reset.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+  const [isComplete, setIsComplete] = useState(false);
+  const signupComplete = () => {
+    setIsComplete(true);
+  };
+
+  const goLogin = () => {
+    setIsComplete(false);
+  };
+
   return (
     <Router>
       <Switch>
@@ -30,10 +40,11 @@ function App() {
           <Login />
         </Route>
         <Route exact path="/signup">
-          <Signup />
-        </Route>
-        <Route path="/signup/complete">
-          <SignupComplete />
+          {isComplete ? (
+            <SignupComplete goLogin={goLogin} />
+          ) : (
+            <Signup signupComplete={signupComplete} />
+          )}
         </Route>
         <Route path="/mypage">
           <Mypage />

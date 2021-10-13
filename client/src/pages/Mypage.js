@@ -9,6 +9,7 @@ import EditUserInfo from "../components/EditUserInfo";
 import EditComplete from "../components/EditComplete";
 import Favorites from "../components/Favorites";
 import { Route, Switch } from "react-router-dom";
+import { useState } from "react";
 
 const Background = styled.div`
   height: 100vh;
@@ -23,26 +24,39 @@ const CarContainer = styled(ContentContainer)`
 `;
 
 export default function Mypage() {
+  const [checkPW, setCheckPW] = useState(false);
+  const handleCheckPW = () => {
+    setCheckPW(true);
+  };
+
+  const [editInfo, setEditInfo] = useState(false);
+  const handleEditInfo = () => {
+    setEditInfo(true);
+  };
+
+  const handleAll = () => {
+    setCheckPW(false);
+    setEditInfo(false);
+  };
+
   return (
     <>
       <Background>
         <Navbar />
         <StyledDiv>
-          <MypageSideBar />
+          <MypageSideBar handleAll={handleAll} />
           <Switch>
             <Route exact path="/mypage/edit">
               <CarContainer>
-                <CheckPW />
-              </CarContainer>
-            </Route>
-            <Route exact path="/mypage/edit/userinfo">
-              <CarContainer>
-                <EditUserInfo />
-              </CarContainer>
-            </Route>
-            <Route exact path="/mypage/edit/complete">
-              <CarContainer>
-                <EditComplete />
+                {checkPW ? (
+                  editInfo ? (
+                    <EditComplete />
+                  ) : (
+                    <EditUserInfo handleEditInfo={handleEditInfo} />
+                  )
+                ) : (
+                  <CheckPW handleCheckPW={handleCheckPW} />
+                )}
               </CarContainer>
             </Route>
             <Route path="/mypage/">

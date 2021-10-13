@@ -55,7 +55,7 @@ const Button = styled(StyledButton)`
   margin-top: 0;
 `;
 
-export default function CheckPW() {
+export default function CheckPW({ handleCheckPW }) {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const history = useHistory();
@@ -76,7 +76,7 @@ export default function CheckPW() {
         { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => {
-        history.push("/mypage/edit/userinfo");
+        handleCheckPW();
       })
       .catch((err) => {
         setMessage("비밀번호를 확인해주세요");

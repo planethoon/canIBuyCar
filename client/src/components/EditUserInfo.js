@@ -51,7 +51,7 @@ const ValidationBox = styled(StyledDiv)`
   height: 1rem;
 `;
 
-export default function EditUserInfo() {
+export default function EditUserInfo({ handleEditInfo }) {
   const [editInfo, setEditInfo] = useState({
     username: "",
     password: "",
@@ -105,7 +105,7 @@ export default function EditUserInfo() {
         localStorage.setItem("userName", userName);
         if (token) {
           dispatch(setUserInfo({ token, userId, userName }));
-          history.push("/mypage/edit/complete");
+          handleEditInfo();
         }
       })
       .catch((err) => {
