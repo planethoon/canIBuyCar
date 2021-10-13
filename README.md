@@ -40,7 +40,7 @@
             <a href="http://github.com/glen15">
         <img src="https://avatars.githubusercontent.com/u/56259137?v=4" width="100px;" alt="이정훈B"/>
         <sub>
-          <b>tatialveso</b>
+          <b></b>
         </sub>
       </a>
     </td>
