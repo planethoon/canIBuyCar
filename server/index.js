@@ -20,6 +20,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.get("/a", (req, res) => {
+  res.status(200).send('abedsa')
+})
 app.use("/auth", authRouter);
 app.use("/car", carRouter);
 app.use("/board", boardRouter);
