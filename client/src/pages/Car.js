@@ -126,7 +126,7 @@ export default function Car() {
 
     axios
       .get(
-        `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`
+        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`
       )
       .then((res) => {
         const carData = res.data.data.carData.filter((e) => {
@@ -178,7 +178,7 @@ export default function Car() {
     console.log("호출됌 ?");
     axios
       .get(
-        `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`,
+        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`,
         {
           withCredentials: true,
         }
@@ -204,7 +204,11 @@ export default function Car() {
           <Wrapper>
             <CarImg>
               <img src={carInfo.img} alt="" />
-              <BookmarkButton changed={changed} carId={carInfo.id} />
+              <BookmarkButton
+                brand={brand}
+                changed={changed}
+                carId={carInfo.id}
+              />
             </CarImg>
             <InfoContainer>
               <div className="header">차량명</div>

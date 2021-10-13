@@ -125,24 +125,20 @@ export default function Brand() {
   };
 
   const getData = (selected) => {
-    const { token, userId, userName, bookmark } = {
+    const { token, userId, userName } = {
       token: localStorage.getItem("token"),
       userId: JSON.parse(localStorage.getItem("userId")),
       userName: localStorage.getItem("userName"),
-      bookmark: JSON.parse(localStorage.getItem("bookmark")) || [],
     };
-
-    console.log(userInfo);
-    console.log("check-token", token);
 
     if (token) {
       dispatch(login());
-      dispatch(setUserInfo({ token, userId, userName, bookmark }));
+      dispatch(setUserInfo({ token, userId, userName }));
     }
 
     axios
       .get(
-        `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
+        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
         {
           withCredentials: true,
         }
@@ -180,14 +176,13 @@ export default function Brand() {
     setTimeout(() => {
       axios
         .get(
-          `http:ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
+          `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
           {
             withCredentials: true,
           }
         )
         .then((res) => {
           const { bookmarkData } = res.data.data;
-
           if (isLogin) {
             const filtered = bookmarkData.filter(
               (e) => e.userId === Number(userInfo.userId)
@@ -216,10 +211,19 @@ export default function Brand() {
               brand.map((e) => {
                 return (
                   <CarBox key={e.id}>
-                    <Link to={`/car/${selected}-${e.id}`}>
+                    <Link
+                      to={`/car/${selected}-${e.id}`}
+                      onClick={() => {
+                        localStorage.setItem("watching", JSON.stringify(e.id));
+                      }}
+                    >
                       <img src={e.img} alt={e.name} />
                     </Link>
-                    <BookmarkButton carId={e.id} changed={changed} />
+                    <BookmarkButton
+                      brand={selected}
+                      carId={e.id}
+                      changed={changed}
+                    />
                     <span>
                       <LinkText to={`/car/${selected}-${e.id}`}>
                         {e.name}
