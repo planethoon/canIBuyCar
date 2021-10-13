@@ -12,7 +12,7 @@ sequelize.sync();
 app.use(express.json());
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: true,
   method: "*",
   allowedHeaders: ["Content-type", "Authorization"],
   credentials: true,
