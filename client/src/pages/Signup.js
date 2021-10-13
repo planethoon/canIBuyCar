@@ -5,7 +5,6 @@ import StyledInput from "../components/StyledInput";
 import StyledLink from "../components/StyledLink";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router";
 
 const Background = styled(StyledDiv)`
   height: 100vh;
@@ -76,8 +75,6 @@ export default function Signup({ signupComplete }) {
     password: "비밀번호는 8자리 이상, 숫자, 문자, 특수문자가 포함되어야 합니다",
     checkPW: "비밀번호를 입력해주세요",
   });
-
-  const history = useHistory();
 
   function isEmail(asValue) {
     var regExp =

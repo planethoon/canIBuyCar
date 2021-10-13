@@ -7,9 +7,13 @@ import ContentContainer from "../components/ContentContainer";
 import CheckPW from "../components/CheckPW";
 import EditUserInfo from "../components/EditUserInfo";
 import EditComplete from "../components/EditComplete";
+import DeleteUserinfo from "../components/DeleteUserinfo";
 import Favorites from "../components/Favorites";
 import { Route, Switch } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { login } from "../modules/isLogin";
 
 const Background = styled.div`
   height: 100vh;
@@ -37,7 +41,24 @@ export default function Mypage() {
   const handleAll = () => {
     setCheckPW(false);
     setEditInfo(false);
+    setDeleteInfo(false);
   };
+
+  const [deleteInfo, setDeleteInfo] = useState(false);
+  const handleDeleteInfo = () => {
+    setDeleteInfo(true);
+  };
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const token = useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      history.push("/login");
+    } else {
+      dispatch(login());
+    }
+  }, []);
 
   return (
     <>
@@ -49,10 +70,15 @@ export default function Mypage() {
             <Route exact path="/mypage/edit">
               <CarContainer>
                 {checkPW ? (
-                  editInfo ? (
+                  deleteInfo ? (
+                    <DeleteUserinfo />
+                  ) : editInfo ? (
                     <EditComplete />
                   ) : (
-                    <EditUserInfo handleEditInfo={handleEditInfo} />
+                    <EditUserInfo
+                      handleDeleteInfo={handleDeleteInfo}
+                      handleEditInfo={handleEditInfo}
+                    />
                   )
                 ) : (
                   <CheckPW handleCheckPW={handleCheckPW} />

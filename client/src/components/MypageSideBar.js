@@ -13,6 +13,7 @@ const GreetingBox = styled(StyledDiv)`
   width: 15rem;
   background-color: white;
   margin: 1rem;
+  flex-direction: column;
 `;
 
 const EditUserInfoBox = styled(StyledDiv)`
@@ -25,17 +26,21 @@ const EditUserInfoBox = styled(StyledDiv)`
 const FavoriteBox = styled(EditUserInfoBox)``;
 
 export default function MypageSideBar({ handleAll }) {
+  const userName = localStorage.getItem("userName");
   return (
     <Navbar>
-      <GreetingBox>환영합니다</GreetingBox>
+      <GreetingBox>
+        <StyledDiv>환영합니다</StyledDiv>
+        <StyledDiv>{userName}님!</StyledDiv>
+      </GreetingBox>
       <FavoriteBox>
         <StyledLink to="/mypage/car" onClick={handleAll}>
-          Car List
+          즐겨찾기 목록
         </StyledLink>
       </FavoriteBox>
       <EditUserInfoBox>
         <StyledLink to="/mypage/edit" onClick={handleAll}>
-          Edit
+          회원정보 수정
         </StyledLink>
       </EditUserInfoBox>
     </Navbar>
