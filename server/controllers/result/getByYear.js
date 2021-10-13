@@ -6,6 +6,11 @@ module.exports = async (req, res) => {
   if (!year) {
     res.status(400).json({message: '결과 전송 실패'});
   }
+  if (year <= 0) {
+    res
+      .status(200)
+      .sjon({message: '아무래도 기원전 부터 모았어야할거 같아요...'});
+  }
   const result = await Result.findOne({
     where: {year},
   });
