@@ -104,7 +104,6 @@ export default function Car() {
     userInfo: state.userInfoReducer,
     isLogin: state.loginReducer,
   }));
-  console.log("북마크", userInfo.bookmark);
   const dispatch = useDispatch();
 
   const [saving, setSaving] = useState(10);
@@ -115,31 +114,36 @@ export default function Car() {
   const id = carId.split("-")[1];
 
   useEffect(() => {
-    const { token, userId, userName } = {
+    const { token, userId, userName, bookmark } = {
       token: localStorage.getItem("token"),
       userId: localStorage.getItem("userId"),
       userName: localStorage.getItem("userName"),
+      bookmark: JSON.parse(localStorage.getItem("bookmark")),
     };
     if (token) {
       dispatch(login());
-      dispatch(setUserInfo({ token, userId, userName }));
+      dispatch(setUserInfo({ token, userId, userName, bookmark }));
     }
 
-    axios.get(`http://localhost:8080/car?brand=${brand}`).then((res) => {
-      const carData = res.data.data.carData.filter((e) => {
-        return e.id === Number(id);
+    axios
+      .get(
+        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`
+      )
+      .then((res) => {
+        const carData = res.data.data.carData.filter((e) => {
+          return e.id === Number(id);
+        });
+
+        const bookmarkData = res.data.data.bookmarkData;
+
+        if (isLogin) {
+          const filtered = bookmarkData.filter(
+            (e) => e.userId === userInfo.userId
+          );
+          dispatch(setUserInfo({ bookmark: filtered }));
+        }
+        dispatch(setCarInfo(carData[0]));
       });
-
-      const bookmarkData = res.data.data.bookmarkData;
-
-      if (isLogin) {
-        const filtered = bookmarkData.filter(
-          (e) => e.userId === userInfo.userId
-        );
-        dispatch(setUserInfo({ bookmark: filtered }));
-      }
-      dispatch(setCarInfo(carData[0]));
-    });
   }, []);
 
   const getPrice = (price) => {
@@ -165,6 +169,33 @@ export default function Car() {
     setIsShared(true);
   };
 
+  const [isChanged, setIsChanged] = useState(true);
+
+  const changed = () => {
+    setIsChanged(!isChanged);
+  };
+
+  useEffect(() => {
+    axios
+      .get(
+        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${carInfo.brand}`,
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        const { bookmarkData } = res.data.data;
+
+        if (isLogin) {
+          const filtered = bookmarkData.filter(
+            (e) => e.userId === Number(userInfo.userId)
+          );
+          dispatch(setUserInfo({ bookmark: filtered }));
+          localStorage.setItem("bookmark", JSON.stringify(filtered));
+        }
+      });
+  }, [isChanged]);
+
   return (
     <>
       <Background>
@@ -174,6 +205,7 @@ export default function Car() {
             <CarImg>
               <img src={carInfo.img} alt="" />
               <BookmarkButton
+                changed={changed}
                 carId={carInfo.id}
                 bookmark={userInfo.bookmark}
                 accessToken={userInfo.token}

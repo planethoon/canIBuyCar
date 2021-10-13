@@ -50,9 +50,12 @@ export default function DeleteUserinfo() {
   const handleDelete = () => {
     const token = localStorage.getItem("token");
     axios
-      .delete("http://localhost:8080/auth/", {
-        headers: { authorization: `Bearer ${token}` },
-      })
+      .delete(
+        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth/",
+        {
+          headers: { authorization: `Bearer ${token}` },
+        }
+      )
       .then((res) => {
         localStorage.clear();
         dispatch(logout());

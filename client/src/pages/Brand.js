@@ -5,7 +5,7 @@ import axios from "axios";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import { setInfo as setBrandInfo } from "../modules/brand";
+import { setBrand } from "../modules/brand";
 import { setInfo as setUserInfo } from "../modules/userInfo";
 import { login } from "../modules/isLogin";
 import { logo } from "../img/brandLogo";
@@ -105,6 +105,7 @@ const LinkText = styled(StyledLink)`
 
 export default function Brand() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isChanged, setIsChanged] = useState(true);
   const { selected } = useParams();
 
   const { isLogin, brand, userInfo } = useSelector((state) => ({
@@ -115,43 +116,50 @@ export default function Brand() {
 
   const dispatch = useDispatch();
 
+  const changed = () => {
+    setIsChanged(!isChanged);
+  };
+
   const setLogo = (brand) => {
     return logo.filter((e) => e[0] === brand)[0][1];
   };
-  console.log(userInfo);
 
   const getData = (selected) => {
+    const { token, userId, userName, bookmark } = {
+      token: localStorage.getItem("token"),
+      userId: localStorage.getItem("userId"),
+      userName: localStorage.getItem("userName"),
+      bookmark: JSON.parse(localStorage.getItem("bookmark")),
+    };
+
+    console.log(userInfo);
+    console.log("check-token", token);
+
+    if (token) {
+      dispatch(login());
+      dispatch(setUserInfo({ token, userId, userName, bookmark }));
+    }
+
     axios
-      .get(`http://localhost:8080/car?brand=${selected}`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        const { token, userId, userName } = {
-          token: localStorage.getItem("token"),
-          userId: localStorage.getItem("userId"),
-          userName: localStorage.getItem("userName"),
-        };
-        if (token) {
-          dispatch(login());
-          dispatch(setUserInfo({ token, userId, userName }));
+      .get(
+        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
+        {
+          withCredentials: true,
         }
-        return res;
-      })
+      )
       .then((res) => {
-        setTimeout(() => {
-          const { carData, bookmarkData } = res.data.data;
-          console.log("필터 전 북마크", bookmarkData);
-          console.log("로그인 여부", isLogin);
-          if (isLogin) {
-            const filtered = bookmarkData.filter(
-              (e) => e.userId === Number(userInfo.userId)
-            );
-            console.log("필터된 북마크", filtered);
-            dispatch(setUserInfo({ bookmark: filtered }));
-          }
-          dispatch(setBrandInfo(carData));
-          setIsLoading(false);
-        }, 0);
+        const { carData, bookmarkData } = res.data.data;
+
+        if (isLogin) {
+          const filtered = bookmarkData.filter(
+            (e) => e.userId === Number(userInfo.userId)
+          );
+          dispatch(setUserInfo({ bookmark: filtered }));
+          localStorage.setItem("bookmark", JSON.stringify(filtered));
+        }
+
+        dispatch(setBrand(carData));
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -162,11 +170,32 @@ export default function Brand() {
     setIsLoading(true);
     // 데이터 표기
     getData(selected);
-  }, [isLogin]);
+  }, [selected]);
 
   const logoClickHandler = () => {
     getData(selected);
   };
+
+  useEffect(() => {
+    axios
+      .get(
+        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        const { bookmarkData } = res.data.data;
+
+        if (isLogin) {
+          const filtered = bookmarkData.filter(
+            (e) => e.userId === Number(userInfo.userId)
+          );
+          dispatch(setUserInfo({ bookmark: filtered }));
+          localStorage.setItem("bookmark", JSON.stringify(filtered));
+        }
+      });
+  }, [isChanged]);
 
   return (
     <>
@@ -190,6 +219,7 @@ export default function Brand() {
                     </Link>
                     <BookmarkButton
                       carId={e.id}
+                      changed={changed}
                       bookmark={userInfo.bookmark}
                       accessToken={userInfo.token}
                     />

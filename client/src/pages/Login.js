@@ -88,7 +88,7 @@ export default function Login() {
     const { email, password } = loginInfo;
     axios
       .post(
-        "http://localhost:8080/auth/login",
+        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth/login",
         { email, password },
         { withCredentials: true }
       )
