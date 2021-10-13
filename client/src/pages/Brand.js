@@ -173,7 +173,6 @@ export default function Brand() {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
     setTimeout(() => {
       axios
         .get(
@@ -193,26 +192,6 @@ export default function Brand() {
           }
         });
     }, 100);
-=======
-    axios
-      .get(
-        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        const { bookmarkData } = res.data.data;
-
-        if (isLogin) {
-          const filtered = bookmarkData.filter(
-            (e) => e.userId === Number(userInfo.userId)
-          );
-          dispatch(setUserInfo({ bookmark: filtered }));
-          localStorage.setItem("bookmark", JSON.stringify(filtered));
-        }
-      });
->>>>>>> 057afaa415297c41612c690c9e02b574eb8aa112
   }, [isChanged]);
 
   return (
