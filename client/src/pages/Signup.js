@@ -54,7 +54,7 @@ const ValidationBox = styled(StyledDiv)`
   height: 1rem;
 `;
 
-export default function Signup() {
+export default function Signup({ signupComplete }) {
   const [signupInfo, setSignupInfo] = useState({
     email: "",
     username: "",
@@ -122,7 +122,7 @@ export default function Signup() {
     axios
       .post("http://localhost:8080/auth/signup", { email, username, password })
       .then((res) => {
-        history.push("/signup/complete");
+        signupComplete();
       })
       .catch((err) => {
         console.log(err);

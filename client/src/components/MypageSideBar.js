@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import StyledLink from './StyledLink';
-import StyledDiv from './StyledDiv';
-import ContentContainer from '../components/ContentContainer';
+import styled from "styled-components";
+import StyledLink from "./StyledLink";
+import StyledDiv from "./StyledDiv";
+import ContentContainer from "../components/ContentContainer";
 
 const Navbar = styled(ContentContainer)`
   flex: 1 0 10rem;
@@ -24,15 +24,19 @@ const EditUserInfoBox = styled(StyledDiv)`
 
 const FavoriteBox = styled(EditUserInfoBox)``;
 
-export default function MypageSideBar() {
+export default function MypageSideBar({ handleAll }) {
   return (
     <Navbar>
       <GreetingBox>환영합니다</GreetingBox>
       <FavoriteBox>
-        <StyledLink to='/mypage/car'>Car List</StyledLink>
+        <StyledLink to="/mypage/car" onClick={handleAll}>
+          Car List
+        </StyledLink>
       </FavoriteBox>
       <EditUserInfoBox>
-        <StyledLink to='/mypage/edit'>Edit</StyledLink>
+        <StyledLink to="/mypage/edit" onClick={handleAll}>
+          Edit
+        </StyledLink>
       </EditUserInfoBox>
     </Navbar>
   );
