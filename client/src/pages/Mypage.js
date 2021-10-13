@@ -8,7 +8,7 @@ import CheckPW from "../components/CheckPW";
 import EditUserInfo from "../components/EditUserInfo";
 import EditComplete from "../components/EditComplete";
 import DeleteUserinfo from "../components/DeleteUserinfo";
-import Favorites from "../components/Favorites";
+import Bookmarks from "../components/Bookmarks";
 import { Route, Switch } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
@@ -25,6 +25,14 @@ const CarContainer = styled(ContentContainer)`
   flex-wrap: wrap;
   justify-content: space-around;
   overflow: auto;
+  position: relative;
+  > span {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    z-index: 2;
+  }
 `;
 
 export default function Mypage() {
@@ -85,9 +93,10 @@ export default function Mypage() {
                 )}
               </CarContainer>
             </Route>
-            <Route path="/mypage/">
+            <Route path="/mypage/bookmark">
               <CarContainer>
-                <Favorites />
+                <span>나의 드림카 목록</span>
+                <Bookmarks />
               </CarContainer>
             </Route>
           </Switch>

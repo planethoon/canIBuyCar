@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { useEffect, useState } from "react";
 
 import { getGukbab, getTimesForApt } from "../Calculations";
 import { useSelector } from "react-redux";

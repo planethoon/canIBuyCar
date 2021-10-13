@@ -79,7 +79,7 @@ export default function Board() {
     } else {
       axios
         .post(
-          "http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/board",
+          "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/board",
           { text },
           { headers: { authorization: `Bearer ${token}` } }
         )
@@ -96,7 +96,7 @@ export default function Board() {
   const handleComments = () => {
     axios
       .get(
-        "http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/board"
+        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/board"
       )
       .then((res) => {
         setLikeData(res.data.data.likeData.filter((e) => e.length));
