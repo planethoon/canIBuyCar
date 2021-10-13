@@ -125,19 +125,15 @@ export default function Brand() {
   };
 
   const getData = (selected) => {
-    const { token, userId, userName, bookmark } = {
+    const { token, userId, userName } = {
       token: localStorage.getItem("token"),
-      userId: localStorage.getItem("userId"),
+      userId: JSON.parse(localStorage.getItem("userId")),
       userName: localStorage.getItem("userName"),
-      bookmark: JSON.parse(localStorage.getItem("bookmark")),
     };
-
-    console.log(userInfo);
-    console.log("check-token", token);
 
     if (token) {
       dispatch(login());
-      dispatch(setUserInfo({ token, userId, userName, bookmark }));
+      dispatch(setUserInfo({ token, userId, userName }));
     }
 
     axios
@@ -177,24 +173,25 @@ export default function Brand() {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        const { bookmarkData } = res.data.data;
-
-        if (isLogin) {
-          const filtered = bookmarkData.filter(
-            (e) => e.userId === Number(userInfo.userId)
-          );
-          dispatch(setUserInfo({ bookmark: filtered }));
-          localStorage.setItem("bookmark", JSON.stringify(filtered));
-        }
-      });
+    setTimeout(() => {
+      axios
+        .get(
+          `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
+          {
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          const { bookmarkData } = res.data.data;
+          if (isLogin) {
+            const filtered = bookmarkData.filter(
+              (e) => e.userId === Number(userInfo.userId)
+            );
+            dispatch(setUserInfo({ bookmark: filtered }));
+            localStorage.setItem("bookmark", JSON.stringify(filtered));
+          }
+        });
+    }, 100);
   }, [isChanged]);
 
   return (
@@ -214,14 +211,18 @@ export default function Brand() {
               brand.map((e) => {
                 return (
                   <CarBox key={e.id}>
-                    <Link to={`/car/${selected}-${e.id}`}>
+                    <Link
+                      to={`/car/${selected}-${e.id}`}
+                      onClick={() => {
+                        localStorage.setItem("watching", JSON.stringify(e.id));
+                      }}
+                    >
                       <img src={e.img} alt={e.name} />
                     </Link>
                     <BookmarkButton
+                      brand={selected}
                       carId={e.id}
                       changed={changed}
-                      bookmark={userInfo.bookmark}
-                      accessToken={userInfo.token}
                     />
                     <span>
                       <LinkText to={`/car/${selected}-${e.id}`}>

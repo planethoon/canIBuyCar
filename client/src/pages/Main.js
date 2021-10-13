@@ -1,12 +1,16 @@
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
 
-import {logo} from "../img/brandLogo";
+import { logo } from "../img/brandLogo";
+import { useDispatch, useSelector } from "react-redux";
+import { setInfo as setUserInfo } from "../modules/userInfo";
+import { login } from "../modules/isLogin";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import StyledDiv from "../components/StyledDiv";
+import { useEffect } from "react";
 
 const Background = styled.div`
   background-color: grey;
@@ -44,6 +48,21 @@ const LogoBtn = styled.li`
 // `
 
 export default function Main() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const { token, userId, userName, bookmark } = {
+      token: localStorage.getItem("token"),
+      userId: JSON.parse(localStorage.getItem("userId")),
+      userName: localStorage.getItem("userName"),
+      bookmark: JSON.parse(localStorage.getItem("bookmark")) || [],
+    };
+
+    if (token) {
+      dispatch(login());
+      dispatch(setUserInfo({ token, userId, userName, bookmark }));
+    }
+  }, []);
+
   return (
     <>
       <Background>

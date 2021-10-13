@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import StyledLink from "./StyledLink";
 import { useHistory } from "react-router";
 import { logout } from "../modules/isLogin";
+import { delInfo } from "../modules/userInfo";
 
 const NaviBar = styled.div`
   box-sizing: border-box;
@@ -42,13 +43,16 @@ const NaviBtn = styled.li`
 `;
 
 export default function Navbar() {
-  const isLogin = useSelector((state) => state.loginReducer);
+  const { isLogin } = useSelector((state) => ({
+    isLogin: state.loginReducer
+  }));
   const dispatch = useDispatch();
   const history = useHistory();
 
   const handleOnclick = () => {
     localStorage.clear();
     dispatch(logout());
+    dispatch(delInfo());
     history.push("/");
   };
   return (
