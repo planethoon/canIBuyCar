@@ -8,6 +8,8 @@ const development = {
   database: 'canIBuyCar',
   host: process.env.DATABASE_HOST,
   dialect: 'mysql',
+
+  port: process.env.DATABASE_PORT
 };
 
 const production = {
@@ -17,6 +19,9 @@ const production = {
   database: 'canIBuyCar',
   host: process.env.DATABASE_HOST,
   dialect: 'mysql',
+
+  port: process.env.DATABASE_PORT
+
 };
 
 const test = {
@@ -26,6 +31,8 @@ const test = {
   database: 'canIBuyCar',
   host: process.env.DATABASE_HOST,
   dialect: 'mysql',
+
+  port: process.env.DATABASE_PORT
 };
 
 module.exports = {development, production, test};
