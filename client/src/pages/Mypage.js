@@ -51,7 +51,7 @@ export default function Mypage() {
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const token = useEffect(() => {
+  useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
       history.push("/login");
