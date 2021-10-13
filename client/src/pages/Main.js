@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
 
 import { logo } from "../img/brandLogo";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setInfo as setUserInfo } from "../modules/userInfo";
 import { login } from "../modules/isLogin";
 
@@ -61,6 +61,7 @@ export default function Main() {
       dispatch(login());
       dispatch(setUserInfo({ token, userId, userName, bookmark }));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

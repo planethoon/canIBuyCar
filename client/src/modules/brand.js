@@ -1,17 +1,6 @@
-import { createAction, createReducer, createSlice } from "@reduxjs/toolkit";
-
-// export const setInfo = createAction("brand/setInfo");
-// export const deleteInfo = createAction("brand/deleteInfo");
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [];
-
-// const brandReducer = createReducer(initialState, (builder) => {
-//   builder
-//     .addCase(setInfo, (state, action) => [...action.payload])
-//     .addCase(deleteInfo, (state, action) => initialState);
-// });
-
-// export default brandReducer;
 
 const brandSlice = createSlice({
   name: "brand",

@@ -3,7 +3,7 @@ import StyledButton from "./StyledButton";
 import StyledDiv from "./StyledDiv";
 import StyledLink from "./StyledLink";
 import StyledInput from "./StyledInput";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
 import axios from "axios";
 

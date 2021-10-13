@@ -21,7 +21,7 @@ const NaviBar = styled.div`
 
 const TitleText = styled.span`
   flex: 5 0 0;
-  font-size: 2rem;
+  font-size: 3rem;
   margin-left: 1rem;
 `;
 
@@ -44,7 +44,7 @@ const NaviBtn = styled.li`
 
 export default function Navbar() {
   const { isLogin } = useSelector((state) => ({
-    isLogin: state.loginReducer
+    isLogin: state.loginReducer,
   }));
   const dispatch = useDispatch();
   const history = useHistory();
@@ -59,7 +59,7 @@ export default function Navbar() {
     <>
       <NaviBar>
         <TitleText>
-          <StyledLink to="/main">canIBuyCar</StyledLink>
+          <StyledLink to="/main">Can I Buy Car ?</StyledLink>
         </TitleText>
         <BtnContainer>
           {isLogin ? (

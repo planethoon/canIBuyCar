@@ -105,7 +105,6 @@ const LinkText = styled(StyledLink)`
 
 export default function Brand() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isChanged, setIsChanged] = useState(true);
   const { selected } = useParams();
 
   const { isLogin, brand, userInfo } = useSelector((state) => ({
@@ -115,10 +114,6 @@ export default function Brand() {
   }));
 
   const dispatch = useDispatch();
-
-  const changed = () => {
-    setIsChanged(!isChanged);
-  };
 
   const setLogo = (brand) => {
     return logo.filter((e) => e[0] === brand)[0][1];
@@ -150,7 +145,6 @@ export default function Brand() {
           const filtered = bookmarkData.filter(
             (e) => e.userId === Number(userInfo.userId)
           );
-          const filteredId = filtered.map((e) => e.carId);
           dispatch(setUserInfo({ bookmark: filtered }));
           localStorage.setItem("bookmark", JSON.stringify(filtered));
         }
@@ -167,6 +161,7 @@ export default function Brand() {
     setIsLoading(true);
     // 데이터 표기
     getData(selected);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
   const logoClickHandler = () => {

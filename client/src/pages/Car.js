@@ -12,7 +12,9 @@ import Footer from "../components/Footer";
 import StyledDiv from "../components/StyledDiv";
 import ContentContainer from "../components/ContentContainer";
 import BookmarkButton from "../components/BookmarkButton";
-import { getGukbab, getYear, getTimesForApt } from "../components/Calculations";
+import ClientComment from "../components/car/ClientComment";
+import ServerComment from "../components/car/ServerComment";
+import { getYear } from "../components/Calculations";
 import axios from "axios";
 
 const Background = styled.div`
@@ -79,10 +81,12 @@ const Result = styled(StyledDiv)`
   width: 90%;
   height: 70%;
   flex-direction: column;
+  /* overflow: hidden; */
 
   > div {
     margin: 1rem;
     padding: 1rem;
+    border: 1px solid black;
   }
 `;
 
@@ -98,6 +102,34 @@ const Share = styled(StyledDiv)`
   }
 `;
 
+const InputWrapper = styled.div`
+  background-color: white;
+  > div {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  > div > input {
+    width: 40%;
+    height: 1.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid black;
+
+    &:focus {
+      outline: none;
+    }
+  }
+`;
+
+const ResultWrapper = styled(StyledDiv)`
+  flex-direction: column;
+  overflow: hidden;
+  > div.saving {
+    font-size: 1.2rem;
+  }
+`;
+
 export default function Car() {
   const { carInfo, userInfo, isLogin } = useSelector((state) => ({
     carInfo: state.carInfoReducer,
@@ -106,7 +138,6 @@ export default function Car() {
   }));
   const dispatch = useDispatch();
 
-  const [saving, setSaving] = useState(10);
   const [isShared, setIsShared] = useState(false);
 
   const { carId } = useParams();
@@ -114,7 +145,7 @@ export default function Car() {
   const id = carId.split("-")[1];
 
   useEffect(() => {
-    const { token, userId, userName, bookmark } = {
+    const { token, userId, userName } = {
       token: localStorage.getItem("token"),
       userId: JSON.parse(localStorage.getItem("userId")),
       userName: localStorage.getItem("userName"),
@@ -143,6 +174,7 @@ export default function Car() {
         }
         dispatch(setCarInfo(carData[0]));
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getPrice = (price) => {
@@ -159,7 +191,20 @@ export default function Car() {
         e.target.value = carInfo.price;
       }
       setSaving(Number(e.target.value));
+      getComment(getYear(carInfo.price, e.target.value));
     }
+  };
+
+  const [saving, setSaving] = useState(10);
+  const [comment, setComment] = useState("default");
+  const getComment = (price) => {
+    axios
+      .get(
+        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/result?year=${price}`
+      )
+      .then((res) => {
+        setComment(res.data.text);
+      });
   };
 
   const shareHandler = () => {
@@ -167,34 +212,6 @@ export default function Car() {
     navigator.clipboard.writeText(text);
     setIsShared(true);
   };
-
-  const [isChanged, setIsChanged] = useState(true);
-
-  const changed = () => {
-    setIsChanged(!isChanged);
-  };
-
-  useEffect(() => {
-    console.log("호출됌 ?");
-    axios
-      .get(
-        `http://ec2-52-79-228-28.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${brand}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        const { bookmarkData } = res.data.data;
-
-        if (isLogin) {
-          const filtered = bookmarkData.filter(
-            (e) => Number(e.userId) === Number(userInfo.userId)
-          );
-          dispatch(setUserInfo({ bookmark: filtered }));
-          localStorage.setItem("bookmark", JSON.stringify(filtered));
-        }
-      });
-  }, [isChanged]);
 
   return (
     <>
@@ -218,17 +235,25 @@ export default function Car() {
 
           <ResultContainer>
             <Result>
-              <input
-                type="number"
-                onKeyUp={(e) => {
-                  savingHandler(e);
-                }}
-                min={0}
-              />
-              매 달 저축액을 입력하고 Enter를 입력해주세요.
-              {saving === 0 ? (
+              <InputWrapper>
+                <div>매달 저축하실 금액을 입력해주세요.</div>
                 <div>
-                  저축하지 않고 차 살 생각을 하시다니, 집이 좀 사시나봅니다.
+                  <input
+                    type="number"
+                    onKeyUp={(e) => {
+                      savingHandler(e);
+                    }}
+                    min={0}
+                  />
+                  만원
+                </div>
+              </InputWrapper>
+              {comment === "default" ? (
+                <div>매 달 저축액을 입력하고 Enter를 입력해주세요.</div>
+              ) : saving === 0 ? (
+                <div>
+                  저축하지 않고 차 살 생각을 하시다니,
+                  <br /> 집이 좀 사시나봅니다.
                 </div>
               ) : saving === carInfo.price ? (
                 <div>
@@ -236,20 +261,13 @@ export default function Car() {
                   지금 바로 FLEX하세요!
                 </div>
               ) : (
-                <>
-                  <div>
-                    당신은 {getYear(carInfo.price, saving)}년부터 돈을 모아야
-                    했습니다.
-                  </div>
-                  <div>
-                    그 돈으로 국밥을 먹었을때 {getGukbab(carInfo.price)}번은
-                    먹을 수 있습니다.
-                  </div>
-                  <div>
-                    하지만 그 큰 돈도 서울 아파트 평균 매매가의{" "}
-                    {getTimesForApt(carInfo.price)}% 밖에 되지 않는군요.
-                  </div>
-                </>
+                <ResultWrapper>
+                  <div
+                    className={"saving"}
+                  >{`${saving}만원을 매달 저금한다면`}</div>
+                  <ServerComment comment={comment} />
+                  <ClientComment />
+                </ResultWrapper>
               )}
             </Result>
             <Share>
