@@ -53,6 +53,7 @@ export default function Search() {
     setOptions(nameArr);
     setFocused("");
     setIndex(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   const textHandler = (e) => {
@@ -70,10 +71,12 @@ export default function Search() {
     setOptions(
       nameArr.filter((carName) => (carName.includes(text) ? true : false))
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text]);
 
   useEffect(() => {
     setFocused(options[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [options]);
 
   const handleDropdownMoves = (e) => {
@@ -91,6 +94,7 @@ export default function Search() {
 
   useEffect(() => {
     setFocused(options[index]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index]);
 
   const infoHandler = (carName) => {
