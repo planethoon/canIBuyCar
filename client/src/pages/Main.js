@@ -45,10 +45,10 @@ const LogoBtn = styled.li`
     max-width: 100%;
     border-radius: 50%;
     transition: 0.5s;
-    box-shadow: 0 0 10px white;
+    box-shadow: 0 0 10px gainsboro;
     &:hover {
       border-radius: 10%;
-      box-shadow: 0 0 25px white;
+      box-shadow: 0 0 25px gainsboro;
 
       transition: 0.2s;
     }

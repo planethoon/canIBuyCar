@@ -23,8 +23,8 @@ const BackgroundOuter = styled.div`
 `;
 
 const CarContainer = styled(ContentContainer)`
-  background-color: white;
-  box-shadow: 0 0 5px white;
+  background-color: gainsboro;
+  box-shadow: 0 0 5px gainsboro;
   border-radius: 10px;
   flex: 7 0 0;
   flex-wrap: wrap;

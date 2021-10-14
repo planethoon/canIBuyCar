@@ -31,7 +31,7 @@ const LinkList = styled(StyledLink)`
 `;
 
 const BrandName = styled.li`
-  background-color: white;
+  background-color: gainsboro;
   border-bottom: 1px solid #aaaaaa;
   width: 100%;
   height: 1.5rem;
