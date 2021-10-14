@@ -22,7 +22,7 @@ const Outer = styled.div`
 
 const Inner = styled(Outer)`
   /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
-  background: linear-gradient(-45deg, black, #444444, #222222);
+  background: linear-gradient(-45deg, black, #333333, black, #111111);
   background-size: 400% 400%;
   animation: ${gradient} 15s ease infinite;
   z-index: -1;

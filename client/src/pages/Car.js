@@ -16,10 +16,12 @@ import ClientComment from "../components/car/ClientComment";
 import ServerComment from "../components/car/ServerComment";
 import { getYear } from "../components/Calculations";
 import axios from "axios";
+import Background from "../components/Background";
 
-const Background = styled.div`
+const BackgroundOuter = styled.div`
   height: 100vh;
-  background-color: grey;
+  position: relative;
+  z-index: 0;
 `;
 
 const Wrapper = styled(ContentContainer)`
@@ -28,6 +30,8 @@ const Wrapper = styled(ContentContainer)`
 `;
 
 const CarImg = styled.div`
+  border: 5px solid white;
+  border-bottom: none;
   height: 85vh;
   width: 90%;
   margin-top: 2rem;
@@ -57,6 +61,9 @@ const InfoContainer = styled(StyledDiv)`
   width: 90%;
   margin-bottom: 2rem;
   background-color: black;
+  border: 5px solid white;
+  border-top: none;
+  box-shadow: 0 0 30px white;
 
   > div.header {
     padding: 1rem;
@@ -77,7 +84,9 @@ const ResultContainer = styled(ContentContainer)`
 `;
 
 const Result = styled(StyledDiv)`
-  border: 2px solid black;
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 10px white;
   width: 90%;
   height: 70%;
   flex-direction: column;
@@ -91,14 +100,25 @@ const Result = styled(StyledDiv)`
 `;
 
 const Share = styled(StyledDiv)`
-  border: 2px solid black;
+  background-color: white;
+  box-shadow: 0 0 10px white;
+
+  border-radius: 0 0 10px 10px;
   width: 90%;
   height: 20%;
   flex-direction: column;
 
   > div {
+    border: 1px solid black;
+    border-radius: 10px;
     margin: 10px;
     padding: 10px;
+    &:hover {
+      cursor: default;
+    }
+    &.btn:hover {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -215,7 +235,8 @@ export default function Car() {
 
   return (
     <>
-      <Background>
+      <BackgroundOuter>
+        <Background />
         <Navbar />
         <StyledDiv>
           <Wrapper>
@@ -278,17 +299,20 @@ export default function Car() {
                     onClick={() => {
                       setIsShared(false);
                     }}
+                    className={"btn"}
                   >
                     다시 복사하기
                   </div>
                 </>
               ) : (
-                <div onClick={shareHandler}>클립보드에 복사하기</div>
+                <div className={"btn"} onClick={shareHandler}>
+                  클립보드에 복사하기
+                </div>
               )}
             </Share>
           </ResultContainer>
         </StyledDiv>
-      </Background>
+      </BackgroundOuter>
       <Footer />
     </>
   );

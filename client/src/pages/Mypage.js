@@ -14,13 +14,18 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { login } from "../modules/isLogin";
+import Background from "../components/Background";
 
-const Background = styled.div`
+const BackgroundOuter = styled.div`
   height: 100vh;
-  background-color: grey;
+  position: relative;
+  z-index: 0;
 `;
 
 const CarContainer = styled(ContentContainer)`
+  background-color: white;
+  box-shadow: 0 0 5px white;
+  border-radius: 10px;
   flex: 7 0 0;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -70,7 +75,8 @@ export default function Mypage() {
 
   return (
     <>
-      <Background>
+      <BackgroundOuter>
+        <Background />
         <Navbar />
         <StyledDiv>
           <MypageSideBar handleAll={handleAll} />
@@ -101,7 +107,7 @@ export default function Mypage() {
             </Route>
           </Switch>
         </StyledDiv>
-      </Background>
+      </BackgroundOuter>
       <Footer />
     </>
   );
