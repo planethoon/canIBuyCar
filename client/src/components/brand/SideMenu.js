@@ -31,7 +31,7 @@ const LinkList = styled(StyledLink)`
 `;
 
 const BrandName = styled.li`
-  background-color: gainsboro;
+  background-color: #fafafa;
   border-bottom: 1px solid #aaaaaa;
   width: 100%;
   height: 1.5rem;
@@ -81,7 +81,7 @@ export default function SideMenu({ selected, logo }) {
             <LinkList to={`/brand/${e[0]}`} key={e[0]}>
               <BrandName>
                 <div>
-                  <img src={e[1]} />
+                  <img src={e[1]} alt="" />
                 </div>
                 <span>{brandName}</span>
               </BrandName>

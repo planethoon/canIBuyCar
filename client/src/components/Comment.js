@@ -13,14 +13,14 @@ const CommentBox = styled(StyledDiv)`
 `;
 
 const TextBox = styled(StyledDiv)`
-  background-color: gainsboro;
+  background-color: #fafafa;
   width: 30vw;
   flex: 5 1 auto;
   height: 7vh;
 `;
 
 const ButtonBox = styled(StyledDiv)`
-  background-color: gainsboro;
+  background-color: #fafafa;
   width: 5vw;
   flex: 1 1 auto;
   height: 8vh;
@@ -104,6 +104,7 @@ export default function Comment({
     } else {
       setIsClicked(false);
     }
+    // eslint-disable-next-line
   }, []);
 
   return (

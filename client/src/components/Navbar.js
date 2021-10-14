@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 
 import StyledLink from "./StyledLink";
-import { useHistory } from "react-router";
 import { logout } from "../modules/isLogin";
 import { delInfo } from "../modules/userInfo";
 
@@ -14,7 +13,7 @@ const NaviBar = styled.div`
   align-items: center;
   background-color: black;
   border-bottom: 1px solid;
-  border-image: linear-gradient(to right, black, gainsboro, black);
+  border-image: linear-gradient(to right, black, #fafafa, black);
   border-image-slice: 1;
 `;
 
@@ -27,13 +26,13 @@ const TitleText = styled.span`
   > a {
     font-family: "Nanum Myeongjo", serif;
 
-    color: gainsboro;
+    color: #fafafa;
     transition: 0.3s;
     border-bottom: 6px solid black;
 
     &:hover {
       transition: 0.2s;
-      border-bottom: 2px solid gainsboro;
+      border-bottom: 2px solid #fafafa;
     }
   }
 `;
@@ -54,12 +53,12 @@ const NaviBtn = styled.li`
   padding: 0.4rem;
   margin: 0.8rem;
   cursor: pointer;
-  color: gainsboro;
+  color: #fafafa;
   transition: 0.3s;
 
   &:hover {
     transition: 0.2s;
-    border-bottom: 1px solid gainsboro;
+    border-bottom: 1px solid #fafafa;
   }
 `;
 

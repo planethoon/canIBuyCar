@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
     text-decoration: none;
   }
   &:hover {
-    color: gainsboro;
+    color: #fafafa;
   }
 `;
 

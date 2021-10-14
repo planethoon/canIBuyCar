@@ -23,8 +23,8 @@ const BackgroundOuter = styled.div`
 `;
 
 const CarContainer = styled(ContentContainer)`
-  background-color: gainsboro;
-  box-shadow: 0 0 5px gainsboro;
+  background-color: #fafafa;
+  box-shadow: 0 0 5px #fafafa;
   border-radius: 10px;
   flex: 7 0 0;
   flex-wrap: wrap;
@@ -71,6 +71,7 @@ export default function Mypage() {
     } else {
       dispatch(login());
     }
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -101,7 +102,6 @@ export default function Mypage() {
             </Route>
             <Route path="/mypage/bookmark">
               <CarContainer>
-                <span>나의 드림카 목록</span>
                 <Bookmarks />
               </CarContainer>
             </Route>

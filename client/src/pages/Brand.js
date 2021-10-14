@@ -31,15 +31,15 @@ const BackgroundOuter = styled.div`
 
 // 사이드 검색 바
 const SideContainer = styled(ContentContainer)`
-  background-color: gainsboro;
+  background-color: #fafafa;
   flex: 1 0 10rem;
   flex-direction: column;
-  box-shadow: 0 0 10px gainsboro;
+  box-shadow: 0 0 10px #fafafa;
   border-radius: 10px;
   transition: 0.6s;
   &:hover {
     transition: 0.4s;
-    box-shadow: 0 0 30px gainsboro;
+    box-shadow: 0 0 30px #fafafa;
   }
 `;
 
@@ -65,9 +65,9 @@ const Logo = styled.div`
 
 // 카 리스트
 const CarContainer = styled(ContentContainer)`
-  background-color: gainsboro;
+  background-color: #fafafa;
   border-radius: 10px;
-  box-shadow: 0 0 10px gainsboro;
+  box-shadow: 0 0 10px #fafafa;
   flex: 7 0 0;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -78,7 +78,7 @@ const CarContainer = styled(ContentContainer)`
   }
   &:hover {
     transition: 0.4s;
-    box-shadow: 0 0 30px gainsboro;
+    box-shadow: 0 0 30px #fafafa;
   }
 `;
 
@@ -138,7 +138,7 @@ const CarBox = styled.div`
 `;
 
 const LinkText = styled(StyledLink)`
-  color: gainsboro;
+  color: #fafafa;
   font-size: 1.3rem;
   text-shadow: 0 0 5px #000000;
 `;
@@ -231,7 +231,7 @@ export default function Brand() {
                         localStorage.setItem("watching", JSON.stringify(e.id));
                       }}
                     >
-                      <img src={e.img} alt={e.name} />
+                      <img src={e.img} alt={""} />
                     </Link>
                     <BookmarkButton
                       brand={selected}

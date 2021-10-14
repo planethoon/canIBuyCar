@@ -16,7 +16,7 @@ from, to { border-color: transparent }
 const Typewriter = styled.div`
   overflow: hidden;
   border-right: 0.15em solid black;
-  gainsboro-space: wrap;
+  white-space: wrap;
   margin: 0 auto;
   letter-spacing: 0.1em;
   text-align: center;
@@ -29,7 +29,6 @@ const Instance1 = styled(Typewriter)`
 `;
 
 const GukbabWrapper = styled.div`
-  border: 1px solid black;
   padding: 1rem;
   font-size: 1.2rem;
   width: 90%;

@@ -17,6 +17,7 @@ import ServerComment from "../components/car/ServerComment";
 import { getYear } from "../components/Calculations";
 import axios from "axios";
 import Background from "../components/Background";
+import StyledButton from "../components/StyledButton";
 
 const BackgroundOuter = styled.div`
   height: 100vh;
@@ -30,7 +31,7 @@ const Wrapper = styled(ContentContainer)`
 `;
 
 const CarImg = styled.div`
-  border: 5px solid gainsboro;
+  border: 5px solid #fafafa;
   border-bottom: none;
   height: 85vh;
   width: 90%;
@@ -61,9 +62,9 @@ const InfoContainer = styled(StyledDiv)`
   width: 90%;
   margin-bottom: 2rem;
   background-color: black;
-  border: 5px solid gainsboro;
+  border: 5px solid #fafafa;
   border-top: none;
-  box-shadow: 0 0 30px gainsboro;
+  box-shadow: 0 0 30px #fafafa;
 
   > div.header {
     padding: 1rem;
@@ -73,7 +74,7 @@ const InfoContainer = styled(StyledDiv)`
 
   > div.body {
     padding: 1rem;
-    color: gainsboro;
+    color: #fafafa;
     font-size: 1.2rem;
   }
 `;
@@ -84,9 +85,9 @@ const ResultContainer = styled(ContentContainer)`
 `;
 
 const Result = styled(StyledDiv)`
-  background-color: gainsboro;
+  background-color: #fafafa;
   border-radius: 10px 10px 0 0;
-  box-shadow: 0 0 10px gainsboro;
+  box-shadow: 0 0 10px #fafafa;
   width: 90%;
   height: 70%;
   flex-direction: column;
@@ -95,13 +96,12 @@ const Result = styled(StyledDiv)`
   > div {
     margin: 1rem;
     padding: 1rem;
-    border: 1px solid black;
   }
 `;
 
 const Share = styled(StyledDiv)`
-  background-color: gainsboro;
-  box-shadow: 0 0 10px gainsboro;
+  background-color: #fafafa;
+  box-shadow: 0 0 10px #fafafa;
 
   border-radius: 0 0 10px 10px;
   width: 90%;
@@ -109,8 +109,7 @@ const Share = styled(StyledDiv)`
   flex-direction: column;
 
   > div {
-    border: 1px solid black;
-    border-radius: 10px;
+    border-bottom: 1px solid #5f5f5f;
     margin: 10px;
     padding: 10px;
     &:hover {
@@ -123,7 +122,7 @@ const Share = styled(StyledDiv)`
 `;
 
 const InputWrapper = styled.div`
-  background-color: gainsboro;
+  background-color: #fafafa;
   > div {
     text-align: center;
     font-size: 1.2rem;
@@ -295,19 +294,19 @@ export default function Car() {
               {isShared ? (
                 <>
                   <div>클립보드에 복사되었습니다.</div>
-                  <div
+                  <StyledButton
                     onClick={() => {
                       setIsShared(false);
                     }}
                     className={"btn"}
                   >
                     다시 복사하기
-                  </div>
+                  </StyledButton>
                 </>
               ) : (
-                <div className={"btn"} onClick={shareHandler}>
+                <StyledButton className={"btn"} onClick={shareHandler}>
                   클립보드에 복사하기
-                </div>
+                </StyledButton>
               )}
             </Share>
           </ResultContainer>

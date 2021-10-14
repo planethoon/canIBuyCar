@@ -23,8 +23,8 @@ const InputContainer = styled(StyledDiv)`
   width: 70vw;
   height: 20vh;
   flex-direction: column;
-  /* color: gainsboro; */
-  background-color: gainsboro;
+  /* color: #fafafa; */
+  background-color: #fafafa;
   border: black 1px solid;
   margin: 1rem;
 `;
@@ -39,7 +39,7 @@ const AddBtn = styled(StyledButton)``;
 const CommentsContainer = styled(StyledDiv)`
   width: 70vw;
   height: 70vh;
-  background-color: gainsboro;
+  background-color: #fafafa;
   border: black 1px solid;
   flex-direction: column-reverse;
   justify-content: flex-end;
@@ -119,6 +119,7 @@ export default function Board() {
       dispatch(login());
     }
     handleComments();
+    // eslint-disable-next-line
   }, []);
 
   return (

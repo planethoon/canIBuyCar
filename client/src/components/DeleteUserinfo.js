@@ -4,7 +4,6 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import StyledButton from "../components/StyledButton";
 import StyledDiv from "../components/StyledDiv";
-import StyledLink from "../components/StyledLink";
 import { logout } from "../modules/isLogin";
 
 const OuterContainer = styled(StyledDiv)`
@@ -17,7 +16,7 @@ const InnerContainer = styled(StyledDiv)`
   height: 70vh;
   width: 45rem;
   flex-direction: column;
-  background-color: gainsboro;
+  background-color: #fafafa;
 `;
 
 const TextBox = styled(StyledDiv)`

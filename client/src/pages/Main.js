@@ -45,10 +45,10 @@ const LogoBtn = styled.li`
     max-width: 100%;
     border-radius: 50%;
     transition: 0.5s;
-    box-shadow: 0 0 10px gainsboro;
+    box-shadow: 0 0 10px #fafafa;
     &:hover {
       border-radius: 10%;
-      box-shadow: 0 0 25px gainsboro;
+      box-shadow: 0 0 25px #fafafa;
 
       transition: 0.2s;
     }
@@ -88,7 +88,7 @@ export default function Main() {
                 <LogoOuter key={e[1]}>
                   <Link to={`/brand/${e[0]}`}>
                     <LogoBtn>
-                      <img src={e[1]} alt={e[0]} />
+                      <img src={e[1]} alt={""} />
                     </LogoBtn>
                   </Link>
                 </LogoOuter>

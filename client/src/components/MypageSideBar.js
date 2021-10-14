@@ -6,21 +6,34 @@ import ContentContainer from "../components/ContentContainer";
 const Navbar = styled(ContentContainer)`
   flex: 1 0 10rem;
   flex-direction: column;
+  > a:hover {
+    color: #555555;
+  }
 `;
 
 const GreetingBox = styled(StyledDiv)`
   height: 10rem;
   width: 15rem;
-  background-color: gainsboro;
+  background-color: #fafafa;
   margin: 1rem;
   flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 0 5px white;
 `;
 
 const EditUserInfoBox = styled(StyledDiv)`
   height: 3rem;
   width: 15rem;
-  background-color: gainsboro;
+  background-color: #fafafa;
   margin: 1rem;
+  box-shadow: 0 0 5px white;
+  border-radius: 10px;
+  transition: 0.4s;
+
+  &:hover {
+    box-shadow: 0 0 20px white;
+    transition: 0.2s;
+  }
 `;
 
 const FavoriteBox = styled(EditUserInfoBox)``;
@@ -33,16 +46,12 @@ export default function MypageSideBar({ handleAll }) {
         <StyledDiv>환영합니다</StyledDiv>
         <StyledDiv>{userName}님!</StyledDiv>
       </GreetingBox>
-      <FavoriteBox>
-        <StyledLink to="/mypage/bookmark" onClick={handleAll}>
-          즐겨찾기 목록
-        </StyledLink>
-      </FavoriteBox>
-      <EditUserInfoBox>
-        <StyledLink to="/mypage/edit" onClick={handleAll}>
-          회원정보 수정
-        </StyledLink>
-      </EditUserInfoBox>
+      <StyledLink to="/mypage/bookmark" onClick={handleAll}>
+        <FavoriteBox>즐겨찾기 목록</FavoriteBox>
+      </StyledLink>
+      <StyledLink to="/mypage/edit" onClick={handleAll}>
+        <EditUserInfoBox>회원정보 수정</EditUserInfoBox>
+      </StyledLink>
     </Navbar>
   );
 }
