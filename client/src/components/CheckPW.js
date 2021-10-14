@@ -17,7 +17,9 @@ const InnerContainer = styled(StyledDiv)`
   height: 70vh;
   width: 45rem;
   flex-direction: column;
-  background-color: white;
+  border-radius: 1rem;
+  background: #fafafa;
+  box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
 const TextBox = styled(StyledDiv)`
@@ -49,6 +51,7 @@ const ValidationBox = styled(StyledDiv)`
   margin-top: 1.3rem;
   height: 1rem;
   width: 10rem;
+  color: red;
 `;
 
 const Button = styled(StyledButton)`
@@ -62,7 +65,6 @@ export default function CheckPW({ handleCheckPW }) {
   const handleInputValue = (key) => (e) => {
     setPassword(`${e.target.value.toLowerCase()}`);
     setMessage("");
-    console.log(password);
   };
 
   const handleOnclick = () => {

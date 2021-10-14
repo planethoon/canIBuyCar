@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledButton = styled.button`
   margin: 1rem;
@@ -7,12 +7,14 @@ const StyledButton = styled.button`
   align-items: center;
   height: 5rem;
   width: 15rem;
-  border: 0.1rem solid white;
   border-radius: 0.5rem;
+  background: #ededed;
+  box-shadow: inset -9px -9px 18px #e6e6e6, inset 9px 9px 18px #f4f4f4;
+  border: none;
   cursor: pointer;
-  color: black;
+  color: gray;
   &:hover {
-    color: white;
+    color: black;
   }
 `;
 
