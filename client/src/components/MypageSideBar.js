@@ -11,7 +11,7 @@ const Navbar = styled(ContentContainer)`
 const GreetingBox = styled(StyledDiv)`
   height: 10rem;
   width: 15rem;
-  background-color: white;
+  background-color: gainsboro;
   margin: 1rem;
   flex-direction: column;
 `;
@@ -19,7 +19,7 @@ const GreetingBox = styled(StyledDiv)`
 const EditUserInfoBox = styled(StyledDiv)`
   height: 3rem;
   width: 15rem;
-  background-color: white;
+  background-color: gainsboro;
   margin: 1rem;
 `;
 

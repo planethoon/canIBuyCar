@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Outer = styled.div`
   background-color: black;
   height: 8rem;
-  color: white;
+  color: gainsboro;
   display: flex;
   justify-content: center;
   border-top: 1px solid;
@@ -27,13 +27,13 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.span`
-  color: white;
+  color: gainsboro;
   font-size: 2rem;
   margin-bottom: 0.5rem;
 `;
 
 const TitleText = styled.span`
-  color: white;
+  color: gainsboro;
   font-size: 0.9rem;
 `;
 
@@ -46,13 +46,13 @@ const InnerContainer = styled.div`
 `;
 
 const Guide = styled.span`
-  color: white;
+  color: gainsboro;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 `;
 
 const Link = styled.a`
-  color: white;
+  color: gainsboro;
   text-decoration: none;
   &:hover {
     font-size: 1.05rem;

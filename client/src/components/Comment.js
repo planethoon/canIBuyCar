@@ -13,14 +13,14 @@ const CommentBox = styled.li`
 `;
 
 const TextBox = styled(StyledDiv)`
-  background-color: white;
+  background-color: gainsboro;
   width: 30vw;
   flex: 4 1 auto;
   height: 8vh;
 `;
 
 const ButtonBox = styled(StyledDiv)`
-  background-color: white;
+  background-color: gainsboro;
   width: 5vw;
   flex: 1 1 auto;
   height: 8vh;

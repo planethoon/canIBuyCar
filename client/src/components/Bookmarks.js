@@ -40,7 +40,7 @@ const Bookmark = styled.li`
   margin: 1rem;
   width: 90%;
   height: 6rem;
-  background-color: white;
+  background-color: gainsboro;
   list-style-type: none;
   flex-direction: row;
   justify-content: space-space-around;
@@ -77,7 +77,7 @@ const EmptyBookmark = styled.li`
   margin: 1rem;
   width: 90%;
   height: 6rem;
-  background-color: white;
+  background-color: gainsboro;
   flex-direction: column;
   overflow: hidden;
 

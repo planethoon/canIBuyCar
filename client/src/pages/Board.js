@@ -43,10 +43,6 @@ const CommentsContainer = styled(StyledDiv)`
   top: 62.5%;
   transform: translate(-50%, -50%);
   flex-wrap: wrap;
-  overflow: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 const InnerWrapper = styled.ul`

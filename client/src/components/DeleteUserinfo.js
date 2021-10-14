@@ -17,9 +17,14 @@ const InnerContainer = styled(StyledDiv)`
   height: 70vh;
   width: 45rem;
   flex-direction: column;
-  border-radius: 1rem;
-  background: #fafafa;
-  box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
+  background-color: gainsboro;
+`;
+
+const TextBox = styled(StyledDiv)`
+  margin: 1rem;
+  height: 5rem;
+  width: 40rem;
+  background-color: gray;
 `;
 
 const InfoBox = styled(StyledDiv)`

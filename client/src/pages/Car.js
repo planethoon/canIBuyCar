@@ -30,7 +30,7 @@ const Wrapper = styled(ContentContainer)`
 `;
 
 const CarImg = styled.div`
-  border: 5px solid white;
+  border: 5px solid gainsboro;
   border-bottom: none;
   height: 85vh;
   width: 90%;
@@ -61,9 +61,9 @@ const InfoContainer = styled(StyledDiv)`
   width: 90%;
   margin-bottom: 2rem;
   background-color: black;
-  border: 5px solid white;
+  border: 5px solid gainsboro;
   border-top: none;
-  box-shadow: 0 0 30px white;
+  box-shadow: 0 0 30px gainsboro;
 
   > div.header {
     padding: 1rem;
@@ -73,7 +73,7 @@ const InfoContainer = styled(StyledDiv)`
 
   > div.body {
     padding: 1rem;
-    color: white;
+    color: gainsboro;
     font-size: 1.2rem;
   }
 `;
@@ -84,9 +84,9 @@ const ResultContainer = styled(ContentContainer)`
 `;
 
 const Result = styled(StyledDiv)`
-  background-color: white;
+  background-color: gainsboro;
   border-radius: 10px 10px 0 0;
-  box-shadow: 0 0 10px white;
+  box-shadow: 0 0 10px gainsboro;
   width: 90%;
   height: 70%;
   flex-direction: column;
@@ -100,8 +100,8 @@ const Result = styled(StyledDiv)`
 `;
 
 const Share = styled(StyledDiv)`
-  background-color: white;
-  box-shadow: 0 0 10px white;
+  background-color: gainsboro;
+  box-shadow: 0 0 10px gainsboro;
 
   border-radius: 0 0 10px 10px;
   width: 90%;
@@ -123,7 +123,7 @@ const Share = styled(StyledDiv)`
 `;
 
 const InputWrapper = styled.div`
-  background-color: white;
+  background-color: gainsboro;
   > div {
     text-align: center;
     font-size: 1.2rem;

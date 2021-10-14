@@ -15,7 +15,7 @@ const InputContainer = styled.div`
 
 const DropdownContainer = styled.ul`
   width: 100%;
-  background-color: white;
+  background-color: gainsboro;
   display: block;
   position: absolute;
   > li {
