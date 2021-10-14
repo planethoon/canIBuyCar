@@ -34,7 +34,8 @@ const SideContainer = styled(ContentContainer)`
   background-color: white;
   flex: 1 0 10rem;
   flex-direction: column;
-  border-radius: 2%;
+  box-shadow: 0 0 10px white;
+  border-radius: 10px;
   transition: 0.6s;
   &:hover {
     transition: 0.4s;
@@ -43,11 +44,21 @@ const SideContainer = styled(ContentContainer)`
 `;
 
 const Logo = styled.div`
-  border: 2px solid black;
   height: 10rem;
   width: 10rem;
   margin-bottom: 2rem;
+  box-shadow: 0 0 5px black;
+  border-radius: 10px;
+  transition: 0.4s;
+
+  &:hover {
+    box-shadow: 0 0 15px black;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+
   > img {
+    border-radius: 10px;
     max-width: 100%;
   }
 `;
@@ -55,7 +66,7 @@ const Logo = styled.div`
 // 카 리스트
 const CarContainer = styled(ContentContainer)`
   background-color: white;
-  border-radius: 2%;
+  border-radius: 10px;
   box-shadow: 0 0 10px white;
   flex: 7 0 0;
   flex-wrap: wrap;
@@ -75,9 +86,18 @@ const CarBox = styled.div`
   margin: 1rem;
   height: 15rem;
   width: 15rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  box-shadow: 0 0 5px black;
+  transition: 0.4s;
+
+  border-radius: 10px;
   position: relative;
   overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 0 15px black;
+    transition: 0.2s;
+  }
 
   > span,
   div {

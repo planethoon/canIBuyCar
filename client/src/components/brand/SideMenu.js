@@ -3,11 +3,17 @@ import StyledLink from "../StyledLink";
 
 const BrandWrapper = styled.div`
   margin-top: 1rem;
-  border: 3px solid black;
+  box-shadow: 0 0 5px black;
+  border-radius: 10px;
   height: 55%;
   width: 80%;
   overflow-y: auto;
   overflow-x: hidden;
+  transition: 0.4s;
+  &:hover {
+    box-shadow: 0 0 15px black;
+    transition: 0.2s;
+  }
 `;
 
 const BrandList = styled.ul`

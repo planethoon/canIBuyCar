@@ -6,6 +6,9 @@ const Outer = styled.div`
   color: white;
   display: flex;
   justify-content: center;
+  border-top: 1px solid;
+  border-image: linear-gradient(to right, #000000, #555555, #000000);
+  border-image-slice: 1;
 `;
 
 const Copyright = styled.div`

@@ -17,17 +17,26 @@ const BookmarkWrapper = styled(StyledDiv)`
 
   flex-wrap: wrap;
   overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const InnerWrapper = styled.ul`
   width: 100%;
+  display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-evenly;
 `;
 
 const Bookmark = styled.li`
   display: flex;
-  border: 1px solid black;
+  box-shadow: 0 0 5px black;
+  border-radius: 5px;
   margin: 1rem;
   width: 90%;
   height: 6rem;
@@ -36,9 +45,14 @@ const Bookmark = styled.li`
   flex-direction: row;
   justify-content: space-space-around;
   align-items: center;
+  transition: 0.4s;
+
+  &:hover {
+    transition: 0.2s;
+    box-shadow: 0 0 10px black;
+  }
 
   > div {
-    border: 1px solid black;
     display: flex;
     justify-content: center;
     > div {
@@ -96,7 +110,6 @@ const EmptyBookmark = styled.li`
 `;
 
 const BookmarkImg = styled.div`
-  border: 1px solid red;
   height: 5rem;
   width: 5rem;
   position: relative;
@@ -115,9 +128,17 @@ const BookmarkCarInfo = styled(StyledDiv)`
   font-size: 1.2rem;
 `;
 const BookmarkDelete = styled.div`
-  border: 1px solid black;
   height: 2rem;
   width: 2rem;
+  &:hover {
+    cursor: pointer;
+  }
+  > i {
+    color: green;
+  }
+  > i.fa-trash {
+    color: red;
+  }
 `;
 
 const BookmarkLink = styled(BookmarkDelete)``;
@@ -161,40 +182,49 @@ export default function Bookmarks() {
   return (
     <BookmarkWrapper>
       <InnerWrapper>
-        {bookmarkArr.map((e) => {
-          return (
-            <Bookmark>
-              <div className={"side"}>
-                <BookmarkImg>
-                  <img src={e.img} />
-                </BookmarkImg>
-              </div>
-              <div className={"center"}>
-                <BookmarkCarInfo>
-                  <span>{e.brand}</span>
-                </BookmarkCarInfo>
-                <BookmarkCarInfo>
-                  <span>{e.name}</span>
-                </BookmarkCarInfo>
-              </div>
-              <div className={"side"}>
-                <Link to={`/car/${e.brand.toLowerCase()}-${e.id}`}>
-                  <BookmarkLink>{"->"}</BookmarkLink>
-                </Link>
+        {bookmarkArr.length ? (
+          bookmarkArr.map((e) => {
+            return (
+              <Bookmark>
+                <div className={"side"}>
+                  <BookmarkImg className={"img"}>
+                    <img src={e.img} />
+                  </BookmarkImg>
+                </div>
+                <div className={"center"}>
+                  <BookmarkCarInfo>
+                    <span>{e.brand}</span>
+                  </BookmarkCarInfo>
+                  <BookmarkCarInfo>
+                    <span>{e.name}</span>
+                  </BookmarkCarInfo>
+                </div>
+                <div className={"side"}>
+                  <Link
+                    to={`/car/${e.brand.toLowerCase()}-${e.id}`}
+                    onClick={() => {
+                      localStorage.setItem("watching", e.id);
+                    }}
+                  >
+                    <BookmarkLink>
+                      <i class="fas fa-arrow-circle-right fa-2x"></i>
+                    </BookmarkLink>
+                  </Link>
 
-                <BookmarkDelete
-                  onClick={() => {
-                    deleteHandler(e.id);
-                  }}
-                >
-                  X
-                </BookmarkDelete>
-              </div>
-            </Bookmark>
-          );
-        })}
-
-        <Empty />
+                  <BookmarkDelete
+                    onClick={() => {
+                      deleteHandler(e.id);
+                    }}
+                  >
+                    <i className={"fas fa-trash fa-2x"} />
+                  </BookmarkDelete>
+                </div>
+              </Bookmark>
+            );
+          })
+        ) : (
+          <Empty />
+        )}
       </InnerWrapper>
     </BookmarkWrapper>
   );
