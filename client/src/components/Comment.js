@@ -17,6 +17,7 @@ const TextBox = styled(StyledDiv)`
   width: 30vw;
   flex: 4 1 auto;
   height: 8vh;
+  font-size: 1.5rem;
 `;
 
 const ButtonBox = styled(StyledDiv)`
