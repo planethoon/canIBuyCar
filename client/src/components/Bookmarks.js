@@ -7,6 +7,9 @@ import StyledLink from "./StyledLink";
 import axios from "axios";
 import StyledButton from "./StyledButton";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { login } from "../modules/isLogin";
+import { setInfo as setUserInfo } from "../modules/userInfo";
 
 const BookmarkWrapper = styled(StyledDiv)`
   background-color: #fafafa;
@@ -150,7 +153,11 @@ const BookmarkLink = styled(BookmarkDelete)``;
 
 export default function Bookmarks() {
   const userInfo = useSelector((state) => state.userInfoReducer);
-  const [bookmarkArr, setBookmarkArr] = useState([]);
+  const [bookmarkArr, setBookmarkArr] = useState(
+    JSON.parse(localStorage.getItem("mypagebm")) || []
+  );
+
+  const dispatch = useDispatch();
 
   const getData = () => {
     const token = `Bearer ${userInfo.token}`;
@@ -162,11 +169,21 @@ export default function Bookmarks() {
       .then((res) => {
         if (res.status === 200) {
           setBookmarkArr(res.data.data);
+          localStorage.setItem("mypagebm", JSON.stringify(res.data.data));
         }
       });
   };
 
   useEffect(() => {
+    const { token, userId, userName } = {
+      token: localStorage.getItem("token"),
+      userId: JSON.parse(localStorage.getItem("userId")),
+      userName: localStorage.getItem("userName"),
+    };
+    if (token) {
+      dispatch(login());
+      dispatch(setUserInfo({ token, userId, userName }));
+    }
     getData();
     // eslint-disable-next-line
   }, []);
@@ -174,13 +191,13 @@ export default function Bookmarks() {
   const deleteHandler = (id) => {
     console.log("delete test");
     const token = `Bearer ${userInfo.token}`;
-
     axios
       .delete(
         `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${id}`,
         { withCredentials: true, headers: { Authorization: token } }
       )
       .then((res) => {
+        console.log("delete res", res);
         getData();
       });
   };
