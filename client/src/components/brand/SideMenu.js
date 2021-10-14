@@ -15,6 +15,9 @@ const BrandList = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const LinkList = styled(StyledLink)`
@@ -23,7 +26,7 @@ const LinkList = styled(StyledLink)`
 
 const BrandName = styled.li`
   background-color: white;
-  border: 1px solid black;
+  border-bottom: 1px solid #aaaaaa;
   width: 100%;
   height: 1.5rem;
   text-align: center;

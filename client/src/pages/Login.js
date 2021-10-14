@@ -25,8 +25,9 @@ const InnerContainer = styled(StyledDiv)`
   height: 40rem;
   width: 40rem;
   flex-direction: column;
-  background-color: white;
-  border-radius: 10px;
+  border-radius: 1rem;
+  background: #fafafa;
+  box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
 const TextBox = styled(StyledDiv)`
@@ -51,10 +52,11 @@ const InputContainer = styled(StyledDiv)`
 
 const Box = styled(StyledDiv)`
   height: 2rem;
+  margin-top: 0.5rem;
 `;
 
 const ValidationBox = styled(StyledDiv)`
-  margin-top: 2rem;
+  margin-top: 1.6rem;
   height: 1rem;
 `;
 

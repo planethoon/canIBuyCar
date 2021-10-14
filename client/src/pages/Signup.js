@@ -21,14 +21,9 @@ const InnerContainer = styled(StyledDiv)`
   height: 50rem;
   width: 45rem;
   flex-direction: column;
-  background-color: white;
-`;
-
-const TextBox = styled(StyledDiv)`
-  margin: 1rem;
-  height: 5rem;
-  width: 40rem;
-  background-color: gray;
+  border-radius: 1rem;
+  background: #fafafa;
+  box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
 const InfoBox = styled(StyledDiv)`
@@ -50,7 +45,18 @@ const Box = styled(StyledDiv)`
 
 const ValidationBox = styled(StyledDiv)`
   margin-top: 0.5rem;
+  margin-bottom: 1rem;
   height: 1rem;
+`;
+
+const ErrorBox = styled(ValidationBox)`
+  color: red;
+`;
+
+const Button = styled(StyledButton)`
+  &:hover {
+    color: gray;
+  }
 `;
 
 export default function Signup({ signupComplete }) {
@@ -63,7 +69,7 @@ export default function Signup({ signupComplete }) {
 
   const [validation, setValidation] = useState({
     email: false,
-    checkEmail: false,
+    checkEmail: true,
     username: false,
     password: false,
     checkPW: false,
@@ -83,7 +89,7 @@ export default function Signup({ signupComplete }) {
   }
 
   function isUsername(asValue) {
-    var regExp = /^[가-힣]+$/;
+    var regExp = /^[ㄱ-ㅎ가-힣]+$/;
     return regExp.test(asValue);
   }
 
@@ -183,7 +189,6 @@ export default function Signup({ signupComplete }) {
     <Background>
       <OuterContainer>
         <InnerContainer>
-          <TextBox>회원가입</TextBox>
           <InfoBox>
             <InputContainer>
               <Box>E-mail</Box>
@@ -193,7 +198,13 @@ export default function Signup({ signupComplete }) {
                 onChange={handleInputValue("email")}
                 onKeyPress={handleKeyPress}
               />
-              <ValidationBox>{message.email}</ValidationBox>
+              {message.email === "이메일 주소를 입력해주세요" ? (
+                <ValidationBox>{message.email}</ValidationBox>
+              ) : message.email === "사용 가능한 이메일입니다" ? (
+                <ValidationBox>{message.email}</ValidationBox>
+              ) : (
+                <ErrorBox>{message.email}</ErrorBox>
+              )}
             </InputContainer>
             <InputContainer>
               <Box>이름</Box>
@@ -202,7 +213,11 @@ export default function Signup({ signupComplete }) {
                 onChange={handleInputValue("username")}
                 onKeyPress={handleKeyPress}
               />
-              <ValidationBox>{message.username}</ValidationBox>
+              {message.username === "한글만 입력해주세요" ? (
+                <ErrorBox>{message.username}</ErrorBox>
+              ) : (
+                <ValidationBox>{message.username}</ValidationBox>
+              )}
             </InputContainer>
             <InputContainer>
               <Box>비밀번호</Box>
@@ -211,7 +226,14 @@ export default function Signup({ signupComplete }) {
                 onChange={handleInputValue("password")}
                 onKeyPress={handleKeyPress}
               />
-              <ValidationBox>{message.password}</ValidationBox>
+              {message.password ===
+              "비밀번호는 8자리 이상, 숫자, 문자, 특수문자가 포함되어야 합니다" ? (
+                <ValidationBox>{message.password}</ValidationBox>
+              ) : message.password === "사용할 수 있는 비밀번호 입니다" ? (
+                <ValidationBox>{message.password}</ValidationBox>
+              ) : (
+                <ErrorBox>{message.password}</ErrorBox>
+              )}
             </InputContainer>
             <InputContainer>
               <Box>비밀번호 확인</Box>
@@ -220,7 +242,11 @@ export default function Signup({ signupComplete }) {
                 onChange={handleInputValue("checkPW")}
                 onKeyPress={handleKeyPress}
               />
-              <ValidationBox>{message.checkPW}</ValidationBox>
+              {message.checkPW === "비밀번호가 불일치합니다" ? (
+                <ErrorBox>{message.checkPW}</ErrorBox>
+              ) : (
+                <ValidationBox>{message.checkPW}</ValidationBox>
+              )}
             </InputContainer>
           </InfoBox>
           <StyledDiv>
@@ -232,7 +258,7 @@ export default function Signup({ signupComplete }) {
                 회원가입
               </StyledButton>
             ) : (
-              <StyledButton type="submit">회원가입</StyledButton>
+              <Button>회원가입</Button>
             )}
           </StyledDiv>
         </InnerContainer>

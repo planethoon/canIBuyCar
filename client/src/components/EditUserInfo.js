@@ -2,7 +2,6 @@ import styled from "styled-components";
 import StyledInput from "./StyledInput";
 import StyledButton from "./StyledButton";
 import StyledDiv from "./StyledDiv";
-import StyledLink from "./StyledLink";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
@@ -19,19 +18,14 @@ const InnerContainer = styled(StyledDiv)`
   height: 70vh;
   width: 45rem;
   flex-direction: column;
-  background-color: white;
-`;
-
-const TextBox = styled(StyledDiv)`
-  margin: 1rem;
-  height: 5rem;
-  width: 40rem;
-  background-color: gray;
+  border-radius: 1rem;
+  background: #fafafa;
+  box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
 const InfoBox = styled(StyledDiv)`
   margin: 3rem;
-  height: 15rem;
+  height: 16.5rem;
   width: 60rem;
   flex-direction: column;
 `;
@@ -43,12 +37,19 @@ const InputContainer = styled(StyledDiv)`
 `;
 
 const Box = styled(StyledDiv)`
-  height: 2rem;
+  font-size: 1rem;
 `;
 
 const ValidationBox = styled(StyledDiv)`
   margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   height: 1rem;
+  font-size: 0.8rem;
+  color: #b3b3b3;
+`;
+
+const ErrorBox = styled(ValidationBox)`
+  color: red;
 `;
 
 const DeleteBtn = styled(StyledButton)`
@@ -80,7 +81,7 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
   const dispatch = useDispatch();
 
   function isUsername(asValue) {
-    var regExp = /^[가-힣]+$/;
+    var regExp = /^[ㄱ-ㅎ가-힣]+$/;
     return regExp.test(asValue);
   }
 
@@ -105,13 +106,11 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
       )
       .then((res) => {
         const { userId, userName, accessToken } = res.data.data;
-        console.log(accessToken);
         localStorage.removeItem("token");
         localStorage.setItem("token", accessToken);
         localStorage.setItem("userId", userId);
         localStorage.setItem("userName", userName);
         if (token) {
-          console.log("수정 후", token);
           dispatch(setUserInfo({ token, userId, userName }));
           handleEditInfo();
         }
@@ -165,7 +164,6 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
   return (
     <OuterContainer>
       <InnerContainer>
-        <TextBox>회원정보 수정</TextBox>
         <InfoBox>
           <InputContainer>
             <Box>이름</Box>
@@ -174,7 +172,11 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
               onChange={handleInputValue("username")}
               onKeyPress={handleKeyPress}
             />
-            <ValidationBox>{message.username}</ValidationBox>
+            {message.username === "한글만 입력해주세요" ? (
+              <ErrorBox>{message.username}</ErrorBox>
+            ) : (
+              <ValidationBox>{message.username}</ValidationBox>
+            )}
           </InputContainer>
           <InputContainer>
             <Box>비밀번호</Box>
@@ -183,7 +185,14 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
               onChange={handleInputValue("password")}
               onKeyPress={handleKeyPress}
             />
-            <ValidationBox>{message.password}</ValidationBox>
+            {message.password ===
+            "비밀번호는 8자리 이상, 숫자, 문자, 특수문자가 포함되어야 합니다" ? (
+              <ValidationBox>{message.password}</ValidationBox>
+            ) : message.password === "사용할 수 있는 비밀번호 입니다" ? (
+              <ValidationBox>{message.password}</ValidationBox>
+            ) : (
+              <ErrorBox>{message.password}</ErrorBox>
+            )}
           </InputContainer>
           <InputContainer>
             <Box>비밀번호 확인</Box>
@@ -192,7 +201,11 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
               onChange={handleInputValue("checkPW")}
               onKeyPress={handleKeyPress}
             />
-            <ValidationBox>{message.checkPW}</ValidationBox>
+            {message.checkPW === "비밀번호가 불일치합니다" ? (
+              <ErrorBox>{message.checkPW}</ErrorBox>
+            ) : (
+              <ValidationBox>{message.checkPW}</ValidationBox>
+            )}
           </InputContainer>
         </InfoBox>
         <StyledDiv>
