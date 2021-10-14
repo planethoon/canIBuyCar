@@ -239,7 +239,7 @@ canIBuyCar
 <br/>
 
 ## :soon: 링크 주소
-* 주소
+**http://canibuycar-client.s3-website.ap-northeast-2.amazonaws.com/**
 
 <br/>
 
