@@ -18,7 +18,9 @@ const InnerContainer = styled(StyledDiv)`
   height: 50rem;
   width: 45rem;
   flex-direction: column;
-  background-color: gainsboro;
+  border-radius: 1rem;
+  background: #fafafa;
+  box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
 const TextBox = styled(StyledDiv)`
@@ -30,8 +32,8 @@ const TextBox = styled(StyledDiv)`
 
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
-  height: 10rem;
-  width: 30rem;
+  height: 2rem;
+  width: 50rem;
   flex-direction: column;
 `;
 
@@ -57,7 +59,7 @@ export default function SignupComplete({ signupClear }) {
           <TextBox>로고</TextBox>
           <InfoBox>
             <InputContainer>
-              <Box>회원가입을 축하드립니다 !</Box>
+              <Box>🎉 회원가입을 축하드립니다 🎉</Box>
             </InputContainer>
           </InfoBox>
           <StyledDiv>

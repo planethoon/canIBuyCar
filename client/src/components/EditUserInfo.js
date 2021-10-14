@@ -37,7 +37,9 @@ const InputContainer = styled(StyledDiv)`
 `;
 
 const Box = styled(StyledDiv)`
-  font-size: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #2f312e;
 `;
 
 const ValidationBox = styled(StyledDiv)`
@@ -50,12 +52,21 @@ const ValidationBox = styled(StyledDiv)`
 
 const ErrorBox = styled(ValidationBox)`
   color: red;
+  font-size: 0.8rem;
+`;
+
+const Button = styled(StyledButton)`
+  &:hover {
+    color: gray;
+  }
 `;
 
 const DeleteBtn = styled(StyledButton)`
   margin-top: 0;
   width: 32rem;
-  color: red;
+  &:hover {
+    color: red;
+  }
 `;
 
 export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
@@ -217,7 +228,7 @@ export default function EditUserInfo({ handleEditInfo, handleDeleteInfo }) {
               수정하기
             </StyledButton>
           ) : (
-            <StyledButton type="submit">수정하기</StyledButton>
+            <Button>수정하기</Button>
           )}
         </StyledDiv>
         <DeleteBtn onClick={handleDeleteInfo}>회원탈퇴</DeleteBtn>
