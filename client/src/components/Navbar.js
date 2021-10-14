@@ -83,7 +83,7 @@ export default function Navbar() {
         </TitleText>
         <BtnContainer>
           {isLogin ? (
-            <StyledLink exact to="/">
+            <StyledLink exact to="/main">
               <NaviBtn onClick={handleOnclick}>Logout</NaviBtn>
             </StyledLink>
           ) : (

@@ -9,6 +9,7 @@ import markedIcon from "../img/marked.png";
 import unmarkedIcon from "../img/unmarked.png";
 
 const BookmarkWrapper = styled.div`
+  cursor: pointer;
   height: 2rem;
   width: 2rem;
 
