@@ -4,7 +4,7 @@ import BrandPage from "./pages/Brand";
 import CarPage from "./pages/Car";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import SignupComplete from "./pages/SignupComplete";
+import SignupComplete from "./components/SignupComplete";
 import Mypage from "./pages/Mypage";
 import Board from "./pages/Board";
 import "./reset.css";

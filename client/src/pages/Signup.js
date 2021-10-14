@@ -28,7 +28,7 @@ const InnerContainer = styled(StyledDiv)`
 
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
-  height: 30rem;
+  height: 25rem;
   width: 50rem;
   flex-direction: column;
 `;
@@ -40,17 +40,22 @@ const InputContainer = styled(StyledDiv)`
 `;
 
 const Box = styled(StyledDiv)`
-  height: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #2f312e;
 `;
 
 const ValidationBox = styled(StyledDiv)`
   margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   height: 1rem;
+  font-size: 0.8rem;
+  color: #b3b3b3;
 `;
 
 const ErrorBox = styled(ValidationBox)`
   color: red;
+  font-size: 0.8rem;
 `;
 
 const Button = styled(StyledButton)`

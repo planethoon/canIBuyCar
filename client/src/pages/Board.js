@@ -43,6 +43,7 @@ const CommentsContainer = styled(StyledDiv)`
   border: black 1px solid;
   flex-direction: column-reverse;
   justify-content: flex-end;
+  overflow: auto;
 `;
 
 export default function Board() {
