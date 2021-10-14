@@ -1,9 +1,8 @@
 import styled, { keyframes } from "styled-components";
 
 const Comment = styled.div`
-  border: 1px solid black;
   padding: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 `;
 
 /* The typing effect */
@@ -22,7 +21,7 @@ const Typewriter = styled.div`
   overflow: hidden;
   text-align: center;
   border-right: 0.15em solid black;
-  gainsboro-space: wrap;
+  white-space: wrap;
   margin: 0 auto;
   letter-spacing: 0.1em; /* Adjust as needed */
   animation: ${typing} 2.5s steps(30, end),

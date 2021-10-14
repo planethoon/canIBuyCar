@@ -26,7 +26,7 @@ const LandingText = styled.div`
   margin: 1rem;
   padding: 1rem;
   font-size: 4rem;
-  color: gainsboro;
+  color: #fafafa;
   &.korean {
     top: 17vh;
   }
@@ -49,7 +49,7 @@ const TitleBox = styled(StyledDiv)`
   margin: 3rem;
   height: 12rem;
   width: 30rem;
-  background-color: gainsboro;
+  background-color: #fafafa;
   opacity: 1;
 `;
 

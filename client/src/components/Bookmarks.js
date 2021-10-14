@@ -7,14 +7,14 @@ import StyledLink from "./StyledLink";
 import axios from "axios";
 
 const BookmarkWrapper = styled(StyledDiv)`
-  border: 1px solid black;
+  box-shadow: 0 0 5px black;
+  border-radius: 10px;
   width: 85%;
   height: 85%;
   position: absolute;
   left: 50%;
-  top: 53%;
+  top: 50%;
   transform: translate(-50%, -50%);
-
   flex-wrap: wrap;
   overflow: auto;
   display: flex;
@@ -40,10 +40,10 @@ const Bookmark = styled.li`
   margin: 1rem;
   width: 90%;
   height: 6rem;
-  background-color: gainsboro;
+  background-color: #fafafa;
   list-style-type: none;
   flex-direction: row;
-  justify-content: space-space-around;
+  justify-content: space-around;
   align-items: center;
   transition: 0.4s;
 
@@ -73,11 +73,12 @@ const Bookmark = styled.li`
 
 const EmptyBookmark = styled.li`
   display: flex;
-  border: 1px solid black;
+  box-shadow: 0 0 5px black;
+  border-radius: 5px;
   margin: 1rem;
   width: 90%;
   height: 6rem;
-  background-color: gainsboro;
+  background-color: #fafafa;
   flex-direction: column;
   overflow: hidden;
 
@@ -122,7 +123,7 @@ const BookmarkImg = styled.div`
   }
 `;
 const BookmarkCarInfo = styled(StyledDiv)`
-  border: 1px solid blue;
+  border-bottom: 1px solid #555555;
   height: 2rem;
   width: 10rem;
   font-size: 1.2rem;
@@ -163,6 +164,7 @@ export default function Bookmarks() {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line
   }, []);
 
   const deleteHandler = (id) => {
@@ -188,7 +190,7 @@ export default function Bookmarks() {
               <Bookmark>
                 <div className={"side"}>
                   <BookmarkImg className={"img"}>
-                    <img src={e.img} />
+                    <img src={e.img} alt="" />
                   </BookmarkImg>
                 </div>
                 <div className={"center"}>
