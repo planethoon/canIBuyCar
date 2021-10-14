@@ -12,35 +12,54 @@ const NaviBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: white;
-  /* 
-  @media only screen and (min-height: 900px) {
-    height: 3.5rem;
-  } */
+  background-color: black;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(to right, black, #555555, black);
+  border-image-slice: 1;
 `;
 
 const TitleText = styled.span`
-  flex: 5 0 0;
-  font-size: 3rem;
-  margin-left: 1rem;
+  flex: 4 0 0;
+  font-size: 2rem;
+  margin: 0.8rem;
+  margin-left: 5rem;
+
+  > a {
+    color: gainsboro;
+    transition: 0.3s;
+    border-bottom: 6px solid black;
+
+    &:hover {
+      transition: 0.2s;
+      border-bottom: 2px solid gainsboro;
+    }
+  }
 `;
 
 const BtnContainer = styled.ul`
   display: flex;
   flex-direction: row;
   flex: 1 0 20;
+  justify-content: space-evenly;
+  margin-right: 3rem;
 `;
 
 const NaviBtn = styled.li`
-  border: 2px solid black;
+  font-size: 1.3rem;
+  border-bottom: 5px solid black;
   padding: 0.4rem;
-  margin-right: 10px;
+  margin: 0.8rem;
   cursor: pointer;
-  color: black;
+  color: gainsboro;
+  transition: 0.3s;
+
   &:hover {
-    color: gainsboro;
+    transition: 0.2s;
+    border-bottom: 1px solid gainsboro;
   }
 `;
+
+const LinkWrapper = styled.div``;
 
 export default function Navbar() {
   const { isLogin } = useSelector((state) => ({
@@ -53,7 +72,6 @@ export default function Navbar() {
     localStorage.clear();
     dispatch(logout());
     dispatch(delInfo());
-    history.push("/");
   };
   return (
     <>
@@ -63,19 +81,26 @@ export default function Navbar() {
         </TitleText>
         <BtnContainer>
           {isLogin ? (
-            <NaviBtn onClick={handleOnclick}>Logout</NaviBtn>
-          ) : (
-            <StyledLink to="/login">
-              <NaviBtn>Login</NaviBtn>
+            <StyledLink exact to="/">
+              <NaviBtn onClick={handleOnclick}>Logout</NaviBtn>
             </StyledLink>
+          ) : (
+            <LinkWrapper>
+              <StyledLink to="/login">
+                <NaviBtn>Login</NaviBtn>
+              </StyledLink>
+            </LinkWrapper>
           )}
-
-          <StyledLink to="/mypage">
-            <NaviBtn>Mypage</NaviBtn>
-          </StyledLink>
-          <StyledLink to="/board">
-            <NaviBtn>Board</NaviBtn>
-          </StyledLink>
+          <LinkWrapper>
+            <StyledLink to="/mypage">
+              <NaviBtn>Mypage</NaviBtn>
+            </StyledLink>
+          </LinkWrapper>
+          <LinkWrapper>
+            <StyledLink to="/board">
+              <NaviBtn>Board</NaviBtn>
+            </StyledLink>
+          </LinkWrapper>
         </BtnContainer>
       </NaviBar>
     </>
