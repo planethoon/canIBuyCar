@@ -4,32 +4,26 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import StyledButton from "../components/StyledButton";
 import StyledDiv from "../components/StyledDiv";
-import StyledLink from "../components/StyledLink";
 import { logout } from "../modules/isLogin";
 
 const OuterContainer = styled(StyledDiv)`
   height: 85vh;
   width: 100vw;
   background-color: black;
+  z-index: -1;
 `;
 
 const InnerContainer = styled(StyledDiv)`
   height: 70vh;
   width: 45rem;
   flex-direction: column;
-  background-color: white;
-`;
-
-const TextBox = styled(StyledDiv)`
-  margin: 1rem;
-  height: 5rem;
-  width: 40rem;
-  background-color: gray;
+  border-radius: 1rem;
+  background: #fafafa;
+  box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
-  height: 8rem;
   width: 30rem;
   flex-direction: column;
 `;
@@ -41,6 +35,10 @@ const InputContainer = styled(StyledDiv)`
 
 const Box = styled(StyledDiv)`
   height: 2rem;
+`;
+
+const DeleteBtn = styled(StyledButton)`
+  color: red;
 `;
 
 export default function DeleteUserinfo() {
@@ -69,7 +67,6 @@ export default function DeleteUserinfo() {
   return (
     <OuterContainer>
       <InnerContainer>
-        <TextBox>로고</TextBox>
         <InfoBox>
           <InputContainer>
             <Box>정말로 탈퇴하시겠습니까? 회원정보는 복구할 수 없습니다</Box>
@@ -77,7 +74,7 @@ export default function DeleteUserinfo() {
           </InputContainer>
         </InfoBox>
         <StyledDiv>
-          <StyledButton onClick={handleDelete}>탈퇴</StyledButton>
+          <DeleteBtn onClick={handleDelete}>탈퇴</DeleteBtn>
         </StyledDiv>
       </InnerContainer>
     </OuterContainer>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import StyledButton from "../components/StyledButton";
 import StyledDiv from "../components/StyledDiv";
-import StyledLink from "../components/StyledLink";
 import StyledInput from "../components/StyledInput";
 import { useState } from "react";
 import { useHistory } from "react-router";
@@ -22,24 +21,17 @@ const OuterContainer = styled(StyledDiv)`
 `;
 
 const InnerContainer = styled(StyledDiv)`
-  height: 40rem;
-  width: 40rem;
+  height: 50rem;
+  width: 45rem;
   flex-direction: column;
   border-radius: 1rem;
   background: #fafafa;
   box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
-const TextBox = styled(StyledDiv)`
-  margin: 1rem;
-  height: 5rem;
-  width: 30rem;
-  background-color: gray;
-`;
-
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
-  height: 15rem;
+  height: 25rem;
   width: 50rem;
   flex-direction: column;
 `;
@@ -51,29 +43,26 @@ const InputContainer = styled(StyledDiv)`
 `;
 
 const Box = styled(StyledDiv)`
-  height: 2rem;
-  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #2f312e;
 `;
 
 const ValidationBox = styled(StyledDiv)`
-  margin-top: 1.6rem;
-  height: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  height: 1.2rem;
+  color: #b3b3b3;
 `;
 
 const ErrorBox = styled(ValidationBox)`
   color: red;
 `;
 
-const SignupContainer = styled(StyledDiv)`
-  margin: 1rem;
-  height: 5rem;
-  width: 40rem;
-  background-color: gray;
-`;
-
-const SignupBox = styled(StyledDiv)`
-  height: 2rem;
-  width: 5rem;
+const SignupBtn = styled(StyledButton)`
+  margin-top: 0.5rem;
+  width: 32rem;
 `;
 
 export default function Login() {
@@ -126,12 +115,9 @@ export default function Login() {
     <Background>
       <OuterContainer>
         <InnerContainer>
-          <StyledLink to="/main">
-            <TextBox>로고</TextBox>
-          </StyledLink>
           <InfoBox>
             <InputContainer>
-              <Box>Email</Box>
+              <Box>E-mail</Box>
               <StyledInput
                 type="email"
                 onChange={handleInputValue("email")}
@@ -139,7 +125,7 @@ export default function Login() {
               />
             </InputContainer>
             <InputContainer>
-              <Box>PW</Box>
+              <Box>비밀번호</Box>
               <StyledInput
                 type="password"
                 onChange={handleInputValue("password")}
@@ -149,15 +135,16 @@ export default function Login() {
             <ErrorBox>{errorMessage}</ErrorBox>
           </InfoBox>
           <StyledDiv>
+            <StyledButton onClick={() => history.push("/main")}>
+              돌아가기
+            </StyledButton>
             <StyledButton onClick={handleLogin}>로그인</StyledButton>
           </StyledDiv>
+          <SignupBtn onClick={() => history.push("/signup")}>
+            <span style={{ margin: "0.5rem" }}>아이디가 없으신가요?</span>
+            <span>회원가입</span>
+          </SignupBtn>
         </InnerContainer>
-        <SignupContainer>
-          아이디가 없으신가요 ?
-          <SignupBox>
-            <StyledLink to="/signup"> 회원가입 </StyledLink>
-          </SignupBox>
-        </SignupContainer>
       </OuterContainer>
     </Background>
   );

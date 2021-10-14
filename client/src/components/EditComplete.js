@@ -18,13 +18,6 @@ const InnerContainer = styled(StyledDiv)`
   box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
-const TextBox = styled(StyledDiv)`
-  margin: 1rem;
-  height: 5rem;
-  width: 40rem;
-  background-color: gray;
-`;
-
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
   height: 2rem;
@@ -38,6 +31,7 @@ const InputContainer = styled(StyledDiv)`
 `;
 
 const Box = styled(StyledDiv)`
+  font-size: 1.2rem;
   height: 2rem;
 `;
 
@@ -45,7 +39,6 @@ export default function EditComplete() {
   return (
     <OuterContainer>
       <InnerContainer>
-        <TextBox>로고</TextBox>
         <InfoBox>
           <InputContainer>
             <Box>🎉 회원정보가 수정되었습니다 🎉</Box>
