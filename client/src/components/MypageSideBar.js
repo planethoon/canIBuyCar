@@ -19,6 +19,8 @@ const GreetingBox = styled(StyledDiv)`
   flex-direction: column;
   border-radius: 10px;
   box-shadow: 0 0 5px white;
+  line-height: 1.5;
+  letter-spacing: 0.1rem;
 `;
 
 const EditUserInfoBox = styled(StyledDiv)`
@@ -43,8 +45,8 @@ export default function MypageSideBar({ handleAll }) {
   return (
     <Navbar>
       <GreetingBox>
-        <StyledDiv>환영합니다</StyledDiv>
-        <StyledDiv>{userName}님!</StyledDiv>
+        <StyledDiv>반갑습니다</StyledDiv>
+        <StyledDiv>{userName}님✨</StyledDiv>
       </GreetingBox>
       <StyledLink to="/mypage/bookmark" onClick={handleAll}>
         <FavoriteBox>즐겨찾기 목록</FavoriteBox>

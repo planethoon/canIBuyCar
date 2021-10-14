@@ -14,6 +14,9 @@ const BrandWrapper = styled.div`
     box-shadow: 0 0 15px black;
     transition: 0.2s;
   }
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const BrandList = styled.ul`
@@ -34,7 +37,7 @@ const BrandName = styled.li`
   background-color: #fafafa;
   border-bottom: 1px solid #aaaaaa;
   width: 100%;
-  height: 1.5rem;
+  height: 2.8rem;
   text-align: center;
   display: flex;
   justify-content: center;

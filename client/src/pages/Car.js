@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 import { useSelector, useDispatch } from "react-redux";
 import { setInfo as setCarInfo } from "../modules/carInfo";
@@ -134,6 +134,7 @@ const InputWrapper = styled.div`
     text-align: center;
     border: none;
     border-bottom: 1px solid black;
+    background-color: #fafafa;
 
     &:focus {
       outline: none;
@@ -232,6 +233,8 @@ export default function Car() {
     setIsShared(true);
   };
 
+  const history = useHistory();
+
   return (
     <>
       <BackgroundOuter>
@@ -291,7 +294,7 @@ export default function Car() {
               )}
             </Result>
             <Share>
-              {isShared ? (
+              {/* {isShared ? (
                 <>
                   <div>클립보드에 복사되었습니다.</div>
                   <StyledButton
@@ -306,8 +309,8 @@ export default function Car() {
               ) : (
                 <StyledButton className={"btn"} onClick={shareHandler}>
                   클립보드에 복사하기
-                </StyledButton>
-              )}
+                </StyledButton> */}
+              <StyledButton onClick={() => history.go(-1)}>확인</StyledButton>
             </Share>
           </ResultContainer>
         </StyledDiv>

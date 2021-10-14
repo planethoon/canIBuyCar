@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import StyledDiv from "./StyledDiv";
 import StyledLink from "./StyledLink";
 import axios from "axios";
+import StyledButton from "./StyledButton";
+import { useHistory } from "react-router";
 
 const BookmarkWrapper = styled(StyledDiv)`
+  background-color: #fafafa;
   box-shadow: 0 0 5px black;
   border-radius: 10px;
   width: 85%;
@@ -77,9 +80,11 @@ const EmptyBookmark = styled.li`
   border-radius: 5px;
   margin: 1rem;
   width: 90%;
-  height: 6rem;
+  height: 15rem;
   background-color: #fafafa;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 
   > div {
@@ -94,10 +99,6 @@ const EmptyBookmark = styled.li`
     padding: 0.3rem;
     transition: 0.4s;
     width: 100%;
-    &:hover {
-      transition: 0.4s;
-      background-color: #5f5f5f;
-    }
     > a {
       display: block;
       height: 100%;
@@ -134,11 +135,14 @@ const BookmarkDelete = styled.div`
   &:hover {
     cursor: pointer;
   }
-  > i {
+  > i.fa-arrow-circle-right {
     color: green;
   }
   > i.fa-trash {
-    color: red;
+    color: gray;
+    :hover {
+      color: red;
+    }
   }
 `;
 
@@ -209,7 +213,7 @@ export default function Bookmarks() {
                     }}
                   >
                     <BookmarkLink>
-                      <i class="fas fa-arrow-circle-right fa-2x"></i>
+                      <i className={"fas fa-arrow-circle-right fa-2x"}></i>
                     </BookmarkLink>
                   </Link>
 
@@ -233,11 +237,25 @@ export default function Bookmarks() {
 }
 
 const Empty = () => {
+  const history = useHistory();
   return (
     <EmptyBookmark>
       <div className={"emptyTitle"}>북마크가 비어있습니다.</div>
-      <div className={"emptyText"}>
-        <StyledLink to="/main">드림카 추가하러 가기</StyledLink>
+      <div
+        className={"emptyText"}
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        <StyledButton
+          style={{
+            width: "12rem",
+            height: "4rem",
+            fontSize: "0.9rem",
+            marginTop: "2rem",
+          }}
+          onClick={() => history.push("/main")}
+        >
+          드림카 추가하러 가기
+        </StyledButton>
       </div>
     </EmptyBookmark>
   );
