@@ -17,7 +17,7 @@ const InnerContainer = styled(StyledDiv)`
   height: 70vh;
   width: 45rem;
   flex-direction: column;
-  background-color: white;
+  background-color: gainsboro;
 `;
 
 const TextBox = styled(StyledDiv)`

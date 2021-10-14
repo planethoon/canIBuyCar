@@ -23,8 +23,8 @@ const InputContainer = styled(StyledDiv)`
   width: 70vw;
   height: 20vh;
   flex-direction: column;
-  /* color: white; */
-  background-color: white;
+  /* color: gainsboro; */
+  background-color: gainsboro;
   border: black 1px solid;
   margin: 1rem;
 `;
@@ -39,7 +39,7 @@ const AddBtn = styled(StyledButton)``;
 const CommentsContainer = styled(StyledDiv)`
   width: 70vw;
   height: 70vh;
-  background-color: white;
+  background-color: gainsboro;
   border: black 1px solid;
   flex-direction: column-reverse;
   justify-content: flex-end;

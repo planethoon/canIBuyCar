@@ -14,7 +14,7 @@ const NaviBar = styled.div`
   align-items: center;
   background-color: black;
   border-bottom: 1px solid;
-  border-image: linear-gradient(to right, black, #555555, black);
+  border-image: linear-gradient(to right, black, gainsboro, black);
   border-image-slice: 1;
 `;
 
@@ -25,6 +25,8 @@ const TitleText = styled.span`
   margin-left: 5rem;
 
   > a {
+    font-family: "Nanum Myeongjo", serif;
+
     color: gainsboro;
     transition: 0.3s;
     border-bottom: 6px solid black;
@@ -45,6 +47,8 @@ const BtnContainer = styled.ul`
 `;
 
 const NaviBtn = styled.li`
+  font-family: "Nanum Myeongjo", serif;
+
   font-size: 1.3rem;
   border-bottom: 5px solid black;
   padding: 0.4rem;
@@ -66,7 +70,6 @@ export default function Navbar() {
     isLogin: state.loginReducer,
   }));
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleOnclick = () => {
     localStorage.clear();
@@ -77,7 +80,7 @@ export default function Navbar() {
     <>
       <NaviBar>
         <TitleText>
-          <StyledLink to="/main">Can I Buy Car ?</StyledLink>
+          <StyledLink to="/main">CanIBuyCar</StyledLink>
         </TitleText>
         <BtnContainer>
           {isLogin ? (

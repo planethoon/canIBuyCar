@@ -22,7 +22,7 @@ const Typewriter = styled.div`
   overflow: hidden;
   text-align: center;
   border-right: 0.15em solid black;
-  white-space: wrap;
+  gainsboro-space: wrap;
   margin: 0 auto;
   letter-spacing: 0.1em; /* Adjust as needed */
   animation: ${typing} 2.5s steps(30, end),

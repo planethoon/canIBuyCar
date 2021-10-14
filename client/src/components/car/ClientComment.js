@@ -16,7 +16,7 @@ from, to { border-color: transparent }
 const Typewriter = styled.div`
   overflow: hidden;
   border-right: 0.15em solid black;
-  white-space: wrap;
+  gainsboro-space: wrap;
   margin: 0 auto;
   letter-spacing: 0.1em;
   text-align: center;
