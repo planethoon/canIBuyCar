@@ -62,7 +62,6 @@ export default function CheckPW({ handleCheckPW }) {
   const handleInputValue = (key) => (e) => {
     setPassword(`${e.target.value.toLowerCase()}`);
     setMessage("");
-    console.log(password);
   };
 
   const handleOnclick = () => {

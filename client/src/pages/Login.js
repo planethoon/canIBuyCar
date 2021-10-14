@@ -22,16 +22,17 @@ const OuterContainer = styled(StyledDiv)`
 `;
 
 const InnerContainer = styled(StyledDiv)`
-  height: 50rem;
-  width: 45rem;
+  height: 40rem;
+  width: 40rem;
   flex-direction: column;
   background-color: white;
+  border-radius: 10px;
 `;
 
 const TextBox = styled(StyledDiv)`
   margin: 1rem;
   height: 5rem;
-  width: 40rem;
+  width: 30rem;
   background-color: gray;
 `;
 
@@ -55,6 +56,10 @@ const Box = styled(StyledDiv)`
 const ValidationBox = styled(StyledDiv)`
   margin-top: 2rem;
   height: 1rem;
+`;
+
+const ErrorBox = styled(ValidationBox)`
+  color: red;
 `;
 
 const SignupContainer = styled(StyledDiv)`
@@ -82,7 +87,6 @@ export default function Login() {
   const handleInputValue = (key) => (e) => {
     setLoginInfo({ ...loginInfo, [key]: e.target.value.toLowerCase() });
     setErrorMessage("");
-    console.log(loginInfo.password);
   };
 
   const handleLogin = () => {
@@ -140,19 +144,18 @@ export default function Login() {
                 onKeyPress={handleKeyPress}
               />
             </InputContainer>
-            <ValidationBox>{errorMessage}</ValidationBox>
+            <ErrorBox>{errorMessage}</ErrorBox>
           </InfoBox>
-          <SignupContainer>
-            아이디가 없으신가요 ?
-            <SignupBox>
-              <StyledLink to="/signup"> 회원가입 </StyledLink>
-            </SignupBox>
-          </SignupContainer>
           <StyledDiv>
             <StyledButton onClick={handleLogin}>로그인</StyledButton>
-            <StyledButton>소셜 로그인</StyledButton>
           </StyledDiv>
         </InnerContainer>
+        <SignupContainer>
+          아이디가 없으신가요 ?
+          <SignupBox>
+            <StyledLink to="/signup"> 회원가입 </StyledLink>
+          </SignupBox>
+        </SignupContainer>
       </OuterContainer>
     </Background>
   );
