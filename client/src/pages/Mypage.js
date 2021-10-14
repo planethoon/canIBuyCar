@@ -100,7 +100,7 @@ export default function Mypage() {
                 )}
               </CarContainer>
             </Route>
-            <Route path="/mypage/bookmark">
+            <Route path="/mypage/">
               <CarContainer>
                 <Bookmarks />
               </CarContainer>

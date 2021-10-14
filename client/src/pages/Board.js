@@ -9,41 +9,52 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../modules/isLogin";
+import Background from "../components/Background";
 
-const Background = styled.div`
+const BackgroundOuter = styled.div`
   height: 100vh;
-  background-color: black;
+  position: relative;
+  z-index: 0;
 `;
 
 const PageContainer = styled(StyledDiv)`
   flex-direction: column;
-`;
-
-const InputContainer = styled(StyledDiv)`
-  width: 70vw;
-  height: 20vh;
-  flex-direction: column;
-  /* color: #fafafa; */
-  background-color: #fafafa;
-  border: black 1px solid;
-  margin: 1rem;
+  height: 10rem;
 `;
 
 const RequestInput = styled(StyledInput)`
-  width: 50vw;
-  height: 4.3rem;
+  height: 3rem;
 `;
 
-const AddBtn = styled(StyledButton)``;
+const AddBtn = styled(StyledButton)`
+  height: 3.5rem;
+  width: 8rem;
+`;
+
+const ErrorBox = styled(StyledDiv)`
+  color: red;
+`;
 
 const CommentsContainer = styled(StyledDiv)`
-  width: 70vw;
-  height: 70vh;
-  background-color: #fafafa;
-  border: black 1px solid;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
+  width: 85%;
+  height: 70%;
+  position: absolute;
+  left: 50%;
+  top: 62.5%;
+  transform: translate(-50%, -50%);
+  flex-wrap: wrap;
   overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const InnerWrapper = styled.ul`
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-evenly;
 `;
 
 export default function Board() {
@@ -78,19 +89,23 @@ export default function Board() {
         "비회원은 게시글 조회만 가능합니다. 로그인이 필요한 서비스입니다."
       );
     } else {
-      axios
-        .post(
-          "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/board",
-          { text },
-          { headers: { authorization: `Bearer ${token}` } }
-        )
-        .then((res) => {
-          handleComments();
-          setText("");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (!text.length) {
+        setMessage("메시지를 입력해주세요.");
+      } else {
+        axios
+          .post(
+            "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/board",
+            { text },
+            { headers: { authorization: `Bearer ${token}` } }
+          )
+          .then((res) => {
+            handleComments();
+            setText("");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
     }
   };
 
@@ -119,42 +134,49 @@ export default function Board() {
       dispatch(login());
     }
     handleComments();
-    // eslint-disable-next-line
   }, []);
 
   return (
     <>
-      <Background>
+      <BackgroundOuter>
+        <Background />
         <Navbar />
         <PageContainer>
-          <InputContainer>
-            <StyledDiv>{message}</StyledDiv>
-            <StyledDiv>
-              <RequestInput
-                value={text}
-                onChange={handleInputValue}
-                onKeyPress={handleKeyPress}
-              />
-              <AddBtn onClick={handleAdd}>등록</AddBtn>
-            </StyledDiv>
-          </InputContainer>
+          <StyledDiv>
+            <RequestInput
+              value={text}
+              onChange={handleInputValue}
+              onKeyPress={handleKeyPress}
+            />
+
+            <AddBtn onClick={handleAdd}>등록</AddBtn>
+          </StyledDiv>
+          {message ===
+          "차 정보 추가요청, 사용후기 등 한줄 의견을 남겨주세요!" ? (
+            <StyledDiv style={{ color: "white" }}> {message} </StyledDiv>
+          ) : message.length ? (
+            <ErrorBox>{message}</ErrorBox>
+          ) : null}
+
           <CommentsContainer>
-            {comments.map((e, index) => (
-              <Comment
-                key={index}
-                content={e.text}
-                userId={e.userId}
-                postId={e.id}
-                handleComments={handleComments}
-                likes={likeData.filter((el) => el[0].commentId === e.id)}
-                isChecked={check(
-                  likeData.filter((el) => el[0].commentId === e.id)
-                )}
-              />
-            ))}
+            <InnerWrapper>
+              {comments.map((e, index) => (
+                <Comment
+                  key={index}
+                  content={e.text}
+                  userId={e.userId}
+                  postId={e.id}
+                  handleComments={handleComments}
+                  likes={likeData.filter((el) => el[0].commentId === e.id)}
+                  isChecked={check(
+                    likeData.filter((el) => el[0].commentId === e.id)
+                  )}
+                />
+              ))}
+            </InnerWrapper>
           </CommentsContainer>
         </PageContainer>
-      </Background>
+      </BackgroundOuter>
       <Footer />
     </>
   );

@@ -25,7 +25,7 @@ const InnerContainer = styled(StyledDiv)`
 
 const InfoBox = styled(StyledDiv)`
   margin: 3rem;
-  height: 16.5rem;
+  height: 18rem;
   width: 60rem;
   flex-direction: column;
 `;
@@ -62,7 +62,7 @@ const Button = styled(StyledButton)`
 `;
 
 const DeleteBtn = styled(StyledButton)`
-  margin-top: 0;
+  margin-top: 0.5rem;
   width: 32rem;
   &:hover {
     color: red;

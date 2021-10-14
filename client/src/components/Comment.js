@@ -6,17 +6,17 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../modules/isLogin";
 
-const CommentBox = styled(StyledDiv)`
-  border-bottom: solid 1px black;
+const CommentBox = styled.li`
   width: 70vw;
-  height: 8vh;
+  height: 10vh;
+  display: flex;
 `;
 
 const TextBox = styled(StyledDiv)`
   background-color: #fafafa;
   width: 30vw;
-  flex: 5 1 auto;
-  height: 7vh;
+  flex: 4 1 auto;
+  height: 8vh;
 `;
 
 const ButtonBox = styled(StyledDiv)`
@@ -24,15 +24,6 @@ const ButtonBox = styled(StyledDiv)`
   width: 5vw;
   flex: 1 1 auto;
   height: 8vh;
-`;
-
-const LikeBtn = styled(StyledButton)`
-  width: 4rem;
-  height: 1rem;
-`;
-
-const DeleteBtn = styled(LikeBtn)`
-  background-color: yellow;
 `;
 
 export default function Comment({
@@ -112,11 +103,36 @@ export default function Comment({
       <TextBox>{content}</TextBox>
       <ButtonBox>
         {!isClicked ? (
-          <LikeBtn onClick={handleLike}>좋아요{like}</LikeBtn>
+          <>
+            <i
+              className={"fa fa-thumbs-up fa-2x"}
+              onClick={handleLike}
+              style={{ cursor: "pointer", color: "gray" }}
+            ></i>
+            <span style={{ width: "1rem", margin: "1rem" }}>{like}</span>
+          </>
         ) : (
-          <DeleteBtn onClick={handleUnlike}>좋아요{like}</DeleteBtn>
+          <>
+            <i
+              className={"fa fa-thumbs-up fa-2x"}
+              onClick={handleUnlike}
+              style={{ cursor: "pointer", color: "skyblue" }}
+            ></i>
+            <span style={{ width: "1rem", margin: "1rem" }}>{like}</span>
+          </>
         )}
-        {isValid ? <LikeBtn onClick={handleDelete}>삭제</LikeBtn> : null}
+        {isValid ? (
+          <i
+            onClick={handleDelete}
+            className={"fas fa-trash fa-2x"}
+            style={{ cursor: "pointer", margin: "0.5rem", color: "red" }}
+          ></i>
+        ) : (
+          <i
+            className={"fas fa-trash fa-2x"}
+            style={{ color: "gray", margin: "0.5rem" }}
+          ></i>
+        )}
       </ButtonBox>
     </CommentBox>
   );

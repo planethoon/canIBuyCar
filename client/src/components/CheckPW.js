@@ -23,7 +23,7 @@ const InnerContainer = styled(StyledDiv)`
 
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
-  height: 8rem;
+  height: 20rem;
   width: 50rem;
   flex-direction: column;
 `;
