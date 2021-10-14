@@ -41,8 +41,8 @@ const CommentsContainer = styled(StyledDiv)`
   height: 70vh;
   background-color: white;
   border: black 1px solid;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
 `;
 
 export default function Board() {
@@ -99,7 +99,7 @@ export default function Board() {
         "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/board"
       )
       .then((res) => {
-        setLikeData(res.data.data.likeData.filter((e) => e.length));
+        setLikeData(res.data.data.likeData.filter((e) => e.length > 0));
         setComments(res.data.data.commentsData);
       })
       .catch((err) => {
@@ -114,10 +114,10 @@ export default function Board() {
   };
 
   useEffect(() => {
-    handleComments();
     if (token) {
       dispatch(login());
     }
+    handleComments();
   }, []);
 
   return (
@@ -144,7 +144,7 @@ export default function Board() {
                 userId={e.userId}
                 postId={e.id}
                 handleComments={handleComments}
-                likes={likeData.filter((el) => el[0].commentId === e.id).length}
+                likes={likeData.filter((el) => el[0].commentId === e.id)}
                 isChecked={check(
                   likeData.filter((el) => el[0].commentId === e.id)
                 )}

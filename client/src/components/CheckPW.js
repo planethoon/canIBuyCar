@@ -58,11 +58,11 @@ const Button = styled(StyledButton)`
 export default function CheckPW({ handleCheckPW }) {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const history = useHistory();
 
   const handleInputValue = (key) => (e) => {
     setPassword(`${e.target.value.toLowerCase()}`);
     setMessage("");
+    console.log(password);
   };
 
   const handleOnclick = () => {

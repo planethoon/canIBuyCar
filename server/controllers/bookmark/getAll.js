@@ -12,18 +12,18 @@ module.exports = async (req, res) => {
     const userInfo = await User.findOne({
       where: {email: data.email},
     });
-
-    if (userInfo) {
+    if(parseInt(req.params.id) === parseInt(userInfo.dataValues.id)) {
       const query = `SELECT Cars.id, Cars.img, Cars.brand, Cars.name FROM Cars 
       INNER JOIN Users_cars ON (Users_cars.carId = Cars.id)
       INNER JOIN Users ON (${req.params.id} = Users_cars.userId);`;
-
       const findBookmark = await User.sequelize.query(query);
-      if (findBookmark[0][0] === undefined) {
-        res.status(403).json({message: '권한이 없습니다'});
-      } else {
-        res.status(200).json({data: findBookmark[0]});
-      }
+      let data = findBookmark[0].filter(
+        (arr, index, callback) => index === callback.findIndex(t => t.id === arr.id)
+      )
+      res.status(200).json({data: data});
+    } else {
+      console.log('asbea')
+      res.status(403).json({message: '권한이 없습니다'});
     }
   }
 };
