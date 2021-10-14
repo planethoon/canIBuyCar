@@ -11,10 +11,12 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import StyledDiv from "../components/StyledDiv";
 import { useEffect } from "react";
+import Background from "../components/Background";
 
-const Background = styled.div`
-  background-color: grey;
+const BackgroundOuter = styled.div`
   height: 100vh;
+  position: relative;
+  z-index: 0;
 `;
 
 const LogoContainer = styled(StyledDiv)`
@@ -34,12 +36,22 @@ const LogoOuter = styled.ul`
 `;
 
 const LogoBtn = styled.li`
-  border: 2px solid black;
   height: 10rem;
   width: 10rem;
   flex: 1 1 auto;
+  border-radius: 50%;
+
   > img {
     max-width: 100%;
+    border-radius: 50%;
+    transition: 0.5s;
+    box-shadow: 0 0 10px white;
+    &:hover {
+      border-radius: 10%;
+      box-shadow: 0 0 25px white;
+
+      transition: 0.2s;
+    }
   }
 `;
 
@@ -66,7 +78,8 @@ export default function Main() {
 
   return (
     <>
-      <Background>
+      <BackgroundOuter>
+        <Background />
         <Navbar />
         <LogoContainer>
           <LogoWrapper>
@@ -83,7 +96,7 @@ export default function Main() {
             })}
           </LogoWrapper>
         </LogoContainer>
-      </Background>
+      </BackgroundOuter>
       <Footer />
     </>
   );

@@ -21,16 +21,25 @@ import Search from "../components/brand/Search";
 
 import { Link } from "react-router-dom";
 import StyledLink from "../components/StyledLink";
+import Background from "../components/Background";
 
-const Background = styled.div`
+const BackgroundOuter = styled.div`
   height: 100vh;
-  background-color: grey;
+  position: relative;
+  z-index: 0;
 `;
 
 // 사이드 검색 바
 const SideContainer = styled(ContentContainer)`
+  background-color: white;
   flex: 1 0 10rem;
   flex-direction: column;
+  border-radius: 2%;
+  transition: 0.6s;
+  &:hover {
+    transition: 0.4s;
+    box-shadow: 0 0 30px white;
+  }
 `;
 
 const Logo = styled.div`
@@ -45,10 +54,21 @@ const Logo = styled.div`
 
 // 카 리스트
 const CarContainer = styled(ContentContainer)`
+  background-color: white;
+  border-radius: 2%;
+  box-shadow: 0 0 10px white;
   flex: 7 0 0;
   flex-wrap: wrap;
   justify-content: space-around;
   overflow: auto;
+  transition: 0.6s;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &:hover {
+    transition: 0.4s;
+    box-shadow: 0 0 30px white;
+  }
 `;
 
 const CarBox = styled.div`
@@ -170,7 +190,7 @@ export default function Brand() {
 
   return (
     <>
-      <Background>
+      <BackgroundOuter>
         <Navbar />
         <StyledDiv>
           <SideContainer>
@@ -211,7 +231,8 @@ export default function Brand() {
             )}
           </CarContainer>
         </StyledDiv>
-      </Background>
+        <Background />
+      </BackgroundOuter>
       <Footer />
     </>
   );
