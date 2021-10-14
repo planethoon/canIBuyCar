@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import StyledButton from "./StyledButton";
 import StyledDiv from "./StyledDiv";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -10,21 +9,35 @@ const CommentBox = styled.li`
   width: 70vw;
   height: 10vh;
   display: flex;
+  border-radius: 1rem;
+  background-color: #fafafa;
+  margin: 0.5rem;
 `;
 
 const TextBox = styled(StyledDiv)`
-  background-color: #fafafa;
   width: 30vw;
   flex: 4 1 auto;
-  height: 8vh;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  overflow: auto;
 `;
 
 const ButtonBox = styled(StyledDiv)`
-  background-color: #fafafa;
   width: 5vw;
   flex: 1 1 auto;
-  height: 8vh;
+  > i.fa-trash {
+    cursor: pointer;
+    color: gray;
+    :hover {
+      color: red;
+    }
+  }
+  > i.fa-thumbs-up {
+    cursor: pointer;
+    color: gray;
+    :hover {
+      color: skyblue;
+    }
+  }
 `;
 
 export default function Comment({
@@ -105,33 +118,43 @@ export default function Comment({
       <ButtonBox>
         {!isClicked ? (
           <>
-            <i
-              className={"fa fa-thumbs-up fa-2x"}
-              onClick={handleLike}
-              style={{ cursor: "pointer", color: "gray" }}
-            ></i>
-            <span style={{ width: "1rem", margin: "1rem" }}>{like}</span>
+            <i className={"fa fa-thumbs-up fa-2x"} onClick={handleLike}></i>
+            <span
+              style={{
+                width: "1rem",
+                margin: "1rem",
+                fontSize: "1.5rem",
+              }}
+            >
+              {like}
+            </span>
           </>
         ) : (
           <>
             <i
               className={"fa fa-thumbs-up fa-2x"}
               onClick={handleUnlike}
-              style={{ cursor: "pointer", color: "skyblue" }}
+              style={{ color: "skyblue" }}
             ></i>
-            <span style={{ width: "1rem", margin: "1rem" }}>{like}</span>
+            <span
+              style={{
+                width: "1rem",
+                margin: "1rem",
+                fontSize: "1.5rem",
+                color: "skyblue",
+                fontWeight: "bold",
+              }}
+            >
+              {like}
+            </span>
           </>
         )}
         {isValid ? (
-          <i
-            onClick={handleDelete}
-            className={"fas fa-trash fa-2x"}
-            style={{ cursor: "pointer", margin: "0.5rem", color: "red" }}
-          ></i>
+          <i onClick={handleDelete} className={"fas fa-trash fa-2x"}></i>
         ) : (
           <i
             className={"fas fa-trash fa-2x"}
-            style={{ color: "gray", margin: "0.5rem" }}
+            style={{ display: "none", margin: "0.5rem" }}
           ></i>
         )}
       </ButtonBox>

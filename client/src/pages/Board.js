@@ -27,6 +27,7 @@ const RequestInput = styled(StyledInput)`
 `;
 
 const AddBtn = styled(StyledButton)`
+  font-size: 1.1rem;
   height: 3.5rem;
   width: 8rem;
 `;
@@ -55,6 +56,11 @@ const InnerWrapper = styled.ul`
   flex-direction: column-reverse;
   align-items: center;
   justify-content: space-evenly;
+`;
+
+const MessageBox = styled(StyledDiv)`
+  justify-content: flex-start;
+  width: 30rem;
 `;
 
 export default function Board() {
@@ -151,12 +157,14 @@ export default function Board() {
 
             <AddBtn onClick={handleAdd}>등록</AddBtn>
           </StyledDiv>
-          {message ===
-          "차 정보 추가요청, 사용후기 등 한줄 의견을 남겨주세요!" ? (
-            <StyledDiv style={{ color: "white" }}> {message} </StyledDiv>
-          ) : message.length ? (
-            <ErrorBox>{message}</ErrorBox>
-          ) : null}
+          <MessageBox>
+            {message ===
+            "차 정보 추가요청, 사용후기 등 한줄 의견을 남겨주세요!" ? (
+              <StyledDiv style={{ color: "white" }}> {message} </StyledDiv>
+            ) : message.length ? (
+              <ErrorBox>{message}</ErrorBox>
+            ) : null}
+          </MessageBox>
 
           <CommentsContainer>
             <InnerWrapper>

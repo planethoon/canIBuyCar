@@ -38,7 +38,9 @@ const InputContainer = styled(StyledDiv)`
 `;
 
 const Box = styled(StyledDiv)`
+  width: 30rem;
   height: 2rem;
+  text-align: center;
 `;
 
 const DeleteBtn = styled(StyledButton)`
@@ -73,8 +75,10 @@ export default function DeleteUserinfo() {
       <InnerContainer>
         <InfoBox>
           <InputContainer>
-            <Box>정말로 탈퇴하시겠습니까? 회원정보는 복구할 수 없습니다</Box>
-            <Box>버튼을 누르면 회원정보가 삭제되고 랜딩페이지로 이동합니다</Box>
+            <Box>정말로 탈퇴하시겠습니까? 회원정보는 복구할 수 없습니다.</Box>
+            <Box>
+              버튼을 누르면 회원정보가 삭제되고 랜딩페이지로 이동합니다.
+            </Box>
           </InputContainer>
         </InfoBox>
         <StyledDiv>

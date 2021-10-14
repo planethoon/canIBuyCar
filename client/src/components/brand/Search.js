@@ -22,10 +22,10 @@ const DropdownContainer = styled.ul`
     text-align: center;
     font-size: 0.9rem;
     &.focused {
-      background-color: yellowgreen;
+      background-color: lightgray;
     }
     &:hover {
-      background-color: yellowgreen;
+      background-color: lightgray;
     }
   }
 `;
@@ -37,6 +37,7 @@ const InputBox = styled.input`
   width: 100%;
   text-align: center;
   transition: 0.2s;
+  background-color: #fafafa;
   &:focus {
     outline: none;
     transition: 0.2s;

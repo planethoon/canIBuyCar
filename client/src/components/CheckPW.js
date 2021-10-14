@@ -44,7 +44,6 @@ const ValidationBox = styled(StyledDiv)`
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   height: 1rem;
-  font-size: 0.8rem;
   color: red;
 `;
 
