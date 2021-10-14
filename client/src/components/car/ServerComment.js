@@ -29,7 +29,6 @@ const Typewriter = styled.div`
 `;
 
 export default function ServerComment({ comment }) {
-  console.log(comment);
   return (
     <Comment>
       <Typewriter>{comment}</Typewriter>

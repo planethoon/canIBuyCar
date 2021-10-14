@@ -46,11 +46,9 @@ export default function BookmarkButton({ brand, carId, page }) {
         const filtered = bookmarkData
           .filter((bookmark) => bookmark.userId === carUser)
           .filter((bookmark) => bookmark.carId === carIdWatching);
-        console.log("filter 1", filtered);
         return filtered;
       })
       .then((result) => {
-        console.log("result", result);
         if (result.length) {
           getIsMarked(true);
         } else {

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import StyledDiv from "./StyledDiv";
-import StyledLink from "./StyledLink";
 import axios from "axios";
 import StyledButton from "./StyledButton";
 import { useHistory } from "react-router";
@@ -189,7 +188,6 @@ export default function Bookmarks() {
   }, []);
 
   const deleteHandler = (id) => {
-    console.log("delete test");
     const token = `Bearer ${userInfo.token}`;
     axios
       .delete(
@@ -197,7 +195,6 @@ export default function Bookmarks() {
         { withCredentials: true, headers: { Authorization: token } }
       )
       .then((res) => {
-        console.log("delete res", res);
         getData();
       });
   };
