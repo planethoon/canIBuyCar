@@ -99,7 +99,7 @@ export default function Mypage() {
                 )}
               </CarContainer>
             </Route>
-            <Route path="/mypage/bookmark">
+            <Route path="/mypage/">
               <CarContainer>
                 <span>나의 드림카 목록</span>
                 <Bookmarks />

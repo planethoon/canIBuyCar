@@ -23,13 +23,6 @@ const InnerContainer = styled(StyledDiv)`
   box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
-const TextBox = styled(StyledDiv)`
-  margin: 1rem;
-  height: 5rem;
-  width: 40rem;
-  background-color: gray;
-`;
-
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
   height: 2rem;
@@ -44,6 +37,7 @@ const InputContainer = styled(StyledDiv)`
 
 const Box = styled(StyledDiv)`
   height: 2rem;
+  font-size: 1.2rem;
 `;
 
 export default function SignupComplete({ signupClear }) {
@@ -56,7 +50,6 @@ export default function SignupComplete({ signupClear }) {
     <Background>
       <OuterContainer>
         <InnerContainer>
-          <TextBox>로고</TextBox>
           <InfoBox>
             <InputContainer>
               <Box>🎉 회원가입을 축하드립니다 🎉</Box>
