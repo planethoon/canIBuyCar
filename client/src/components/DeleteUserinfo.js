@@ -10,7 +10,6 @@ const OuterContainer = styled(StyledDiv)`
   height: 85vh;
   width: 100vw;
   background-color: black;
-  z-index: -1;
 `;
 
 const InnerContainer = styled(StyledDiv)`
