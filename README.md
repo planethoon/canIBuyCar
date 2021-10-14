@@ -12,6 +12,22 @@
 ###### 어쩌면 중세시대부터 모았어야 할 수도 있지만..
 <br/>
 
+## :wrench: 사용된 기술
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
+<img src="https://img.shields.io/badge/Node.js-4FC08D?style=for-the-badge&logo=Node.js&logoColor=white"> 
+<img src="https://img.shields.io/badge/Sequelize-007396?style=for-the-badge&logo=Sequelize&logoColor=white"> 
+<img src="https://img.shields.io/badge/Amazon%20AWS-6DB33F?style=for-the-badge&logo=Amazon%20AWS&logoColor=white"> 
+<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
+<img src="https://img.shields.io/badge/JSON%20Web%20Tokens-003545?style=for-the-badge&logo=JSON%20Web%20Tokens&logoColor=white"> 
+<img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> 
+<img src="https://img.shields.io/badge/Express-0769AD?style=for-the-badge&logo=Express&logoColor=white"> 
+<img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
+<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
+<img src="https://img.shields.io/badge/React%20Router-7952B3?style=for-the-badge&logo=React%20Router&logoColor=white"> 
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> 
+<img src="https://img.shields.io/badge/styled-components-F50057?style=for-the-badge&logo=styled-components&logoColor=white"> 
+
+
 ## :books: 기능
 
 ### [로그인 된 사용자 기능] 
@@ -89,6 +105,8 @@
     + 메인페이지나 다른 브랜드의 화면으로 이동할 수 있는 기능
     
     <br/>
+    
+
 ## 🌲 Project tree
 
 
@@ -208,24 +226,6 @@
 ├── buildspec.yml
 └── README.md
 ```
-
-## :wrench: 사용된 기술
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
-<img src="https://img.shields.io/badge/Node.js-4FC08D?style=for-the-badge&logo=Node.js&logoColor=white"> 
-<img src="https://img.shields.io/badge/Sequelize-007396?style=for-the-badge&logo=Sequelize&logoColor=white"> 
-<img src="https://img.shields.io/badge/Amazon%20AWS-6DB33F?style=for-the-badge&logo=Amazon%20AWS&logoColor=white"> 
-<img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
-<img src="https://img.shields.io/badge/JSON%20Web%20Tokens-003545?style=for-the-badge&logo=JSON%20Web%20Tokens&logoColor=white"> 
-<img src="https://img.shields.io/badge/linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"> 
-<img src="https://img.shields.io/badge/Express-0769AD?style=for-the-badge&logo=Express&logoColor=white"> 
-<img src="https://img.shields.io/badge/html-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
-<img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> 
-<img src="https://img.shields.io/badge/React%20Router-7952B3?style=for-the-badge&logo=React%20Router&logoColor=white"> 
-<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> 
-<img src="https://img.shields.io/badge/styled-components-F50057?style=for-the-badge&logo=styled-components&logoColor=white"> 
-
-
-
 
 ## :rocket: 프로젝트 실행
 실행결과
