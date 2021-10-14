@@ -4,7 +4,6 @@ import StyledDiv from "./StyledDiv";
 import StyledLink from "./StyledLink";
 import StyledInput from "./StyledInput";
 import { useState } from "react";
-import { useHistory } from "react-router";
 import axios from "axios";
 
 const OuterContainer = styled(StyledDiv)`
@@ -22,13 +21,6 @@ const InnerContainer = styled(StyledDiv)`
   box-shadow: inset -9px -9px 18px #e1e1e1, inset 9px 9px 18px #ffffff;
 `;
 
-const TextBox = styled(StyledDiv)`
-  margin: 1rem;
-  height: 5rem;
-  width: 40rem;
-  background-color: gray;
-`;
-
 const InfoBox = styled(StyledDiv)`
   margin: 1rem;
   height: 8rem;
@@ -43,14 +35,16 @@ const InputContainer = styled(StyledDiv)`
 `;
 
 const Box = styled(StyledDiv)`
-  height: 1rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #2f312e;
 `;
 
 const ValidationBox = styled(StyledDiv)`
-  margin: none;
-  margin-top: 1.3rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   height: 1rem;
-  width: 10rem;
+  font-size: 0.8rem;
   color: red;
 `;
 
@@ -92,10 +86,9 @@ export default function CheckPW({ handleCheckPW }) {
   return (
     <OuterContainer>
       <InnerContainer>
-        <TextBox>비밀번호 확인</TextBox>
         <InfoBox>
           <InputContainer>
-            <Box>PW</Box>
+            <Box>비밀번호 확인</Box>
             <StyledInput
               type="password"
               onChange={handleInputValue("password")}

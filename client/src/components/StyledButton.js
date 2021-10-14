@@ -13,7 +13,9 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   color: gray;
+  transition: 0.4s;
   &:hover {
+    transition: 0.2s;
     color: black;
   }
 `;
