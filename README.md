@@ -27,6 +27,8 @@
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> 
 <img src="https://img.shields.io/badge/styled-components-F50057?style=for-the-badge&logo=styled-components&logoColor=white"> 
 
+<br/>
+
 
 ## :books: 기능
 
