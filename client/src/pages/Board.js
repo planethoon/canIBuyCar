@@ -100,7 +100,7 @@ export default function Board() {
       )
       .then((res) => {
         setLikeData(res.data.data.likeData.filter((e) => e.length));
-        setComments(res.data.data.commentsData[0]);
+        setComments(res.data.data.commentsData);
       })
       .catch((err) => {
         console.log(err);

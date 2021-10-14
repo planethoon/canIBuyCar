@@ -31,9 +31,17 @@ const DropdownContainer = styled.ul`
 `;
 
 const InputBox = styled.input`
+  border: none;
+  border-bottom: 1px solid #bbbbbb;
   height: 2rem;
   width: 100%;
   text-align: center;
+  transition: 0.2s;
+  &:focus {
+    outline: none;
+    transition: 0.2s;
+    border-bottom: 1px solid black;
+  }
 `;
 
 export default function Search() {

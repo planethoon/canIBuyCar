@@ -179,7 +179,7 @@ export default function Bookmarks() {
               </div>
               <div className={"side"}>
                 <Link to={`/car/${e.brand.toLowerCase()}-${e.id}`}>
-                  <BookmarkLink>-></BookmarkLink>
+                  <BookmarkLink>{"->"}</BookmarkLink>
                 </Link>
 
                 <BookmarkDelete
