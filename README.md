@@ -265,4 +265,3 @@
   </tr>
 </table>
 
-## :dart: Advanced
