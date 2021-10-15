@@ -235,7 +235,7 @@ canIBuyCar
 ```
 <linha de comando>
 ```
-
+![결과메세지만 보이도록](https://user-images.githubusercontent.com/75651376/137420533-845a73a4-d024-4440-8fb4-ca2d2f27b480.gif)
 <br/>
 
 ## :soon: 링크 주소
