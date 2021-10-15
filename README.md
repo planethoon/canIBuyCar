@@ -231,10 +231,6 @@ canIBuyCar
 <br/>
 
 ## :rocket: 프로젝트 실행
-실행결과
-```
-<linha de comando>
-```
 ![벤츠로들어감](https://user-images.githubusercontent.com/75651376/137420962-6e7846c4-395d-4248-8794-136b2c938ca6.gif)
 
 ![결과메세지만 보이도록](https://user-images.githubusercontent.com/75651376/137420533-845a73a4-d024-4440-8fb4-ca2d2f27b480.gif)
