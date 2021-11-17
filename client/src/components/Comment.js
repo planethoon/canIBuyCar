@@ -66,7 +66,7 @@ export default function Comment({
   const handleLike = () => {
     axios
       .post(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/comment/${postId}`,
+        `http://ec2-13-125-41-226.ap-northeast-2.compute.amazonaws.com:8080/comment/${postId}`,
         null,
         {
           headers: { authorization: `Bearer ${token}` },
@@ -82,7 +82,7 @@ export default function Comment({
   const handleUnlike = () => {
     axios
       .delete(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/comment/${postId}`,
+        `http://ec2-13-125-41-226.ap-northeast-2.compute.amazonaws.com:8080/comment/${postId}`,
         { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => {
@@ -95,7 +95,7 @@ export default function Comment({
   const handleDelete = () => {
     axios
       .delete(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/board/${postId}`,
+        `http://ec2-13-125-41-226.ap-northeast-2.compute.amazonaws.com:8080/board/${postId}`,
         { headers: { authorization: `Bearer ${token}` } }
       )
       .then((res) => handleComments())

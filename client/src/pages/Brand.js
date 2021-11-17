@@ -173,7 +173,7 @@ export default function Brand() {
 
     axios
       .get(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
+        `http://ec2-13-125-41-226.ap-northeast-2.compute.amazonaws.com:8080/car?brand=${selected}`,
         {
           withCredentials: true,
         }

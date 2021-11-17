@@ -162,7 +162,7 @@ export default function Bookmarks() {
     const token = `Bearer ${userInfo.token}`;
     axios
       .get(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${userInfo.userId}`,
+        `http://ec2-13-125-41-226.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${userInfo.userId}`,
         { withCredentials: true, headers: { Authorization: token } }
       )
       .then((res) => {
@@ -191,7 +191,7 @@ export default function Bookmarks() {
     const token = `Bearer ${userInfo.token}`;
     axios
       .delete(
-        `http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${id}`,
+        `http://ec2-13-125-41-226.ap-northeast-2.compute.amazonaws.com:8080/bookmark/${id}`,
         { withCredentials: true, headers: { Authorization: token } }
       )
       .then((res) => {

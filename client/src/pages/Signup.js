@@ -111,7 +111,7 @@ export default function Signup({ signupComplete }) {
     }
     axios
       .post(
-        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth/email",
+        "http://ec2-13-125-41-226.ap-northeast-2.compute.amazonaws.com:8080/auth/email",
         { [key]: e.target.value }
       ) //
       .then((res) => {
@@ -132,7 +132,7 @@ export default function Signup({ signupComplete }) {
     const { email, username, password } = signupInfo;
     axios
       .post(
-        "http://ec2-52-79-144-13.ap-northeast-2.compute.amazonaws.com:8080/auth/signup",
+        "http://ec2-13-125-41-226.ap-northeast-2.compute.amazonaws.com:8080/auth/signup",
         { email, username, password }
       )
       .then((res) => {
